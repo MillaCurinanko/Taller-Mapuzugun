@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía 2: inche, eimi, fey · Kimeltun mapuzugun</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230A2D8F'/%3E%3Cpolygon fill='%23fff' points='50,6 56,36 81,19 64,44 94,50 64,56 81,81 56,64 50,94 44,64 19,81 36,56 6,50 36,44 19,19 44,36'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="cab"><div class="cab-in">
+  <a class="marca" href="index.html">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,2 56.5,34.3 83.9,16.1 65.7,43.5 98,50 65.7,56.5 83.9,83.9 56.5,65.7 50,98 43.5,65.7 16.1,83.9 34.3,56.5 2,50 34.3,43.5 16.1,16.1 43.5,34.3"/></svg>
+    <span><b>Kimeltun mapuzugun</b><small>Iney am ta inche mapuzugun mew</small></span>
+  </a>
+  <nav><a href="index.html">Inicio</a><a href="guia-1.html">Guía 1: chalin</a><a href="guia-2.html">Guía 2: inche, eimi, fey</a><a href="clases.html">Clases</a></nav>
+</div></header>
+<div class="nimin"></div>
+
+<main>
+<section class="bloque">
+  <h2>Guía 2: inche, eimi, fey<small>Conjugación en modo indicativo singular. Kimeltun 2 y 3.</small></h2>
+  <p>En esta guía aprendes a decir quién hace la acción. En todo el sitio cada persona tiene su color, igual que las tarjetas de clase:</p>
+  <p style="font-size:1.3rem"><span class="chip p-inche">inche</span> yo, termina en <b class="suf p-inche">-n</b> &nbsp; <span class="chip p-eimi">eimi</span> tú, termina en <b class="suf p-eimi">-imi</b> &nbsp; <span class="chip p-fey">fey</span> él / ella / elle, termina en <b class="suf p-fey">-i</b></p>
+  <div class="acciones"><button class="btn imprimir">Guardar como PDF</button><span class="es">En la ventana de impresión, elige «Guardar como PDF».</span></div>
+</section>
+
+<!-- I. QUIÉN ES QUIÉN -->
+<section class="bloque">
+  <h2>I. Pu che ñi zugun<small>¿Quién habla, a quién le habla y de quién habla?</small></h2>
+  <div class="grid">
+    <p><span class="chip p-inche">inche</span> <b>yo</b>. ¿La acción la hago yo, la persona que está hablando? <span class="mz">Inche zugun</span>: yo hablé.</p>
+    <p><span class="chip p-eimi">eimi</span> <b>tú</b>. ¿La hace la persona a quien le hablo, frente a mí? <span class="mz">Eimi zuguimi</span>: tú hablaste.</p>
+    <p><span class="chip p-fey">fey</span> <b>él / ella / elle</b>. ¿La hace alguien de quien hablo, que no participa? <span class="mz">Fey zugui</span>: habló.</p>
+  </div>
+  <p class="nota"><b class="mz">Fey</b> no distingue género. En español necesitamos «él / ella / elle»; en mapuzugun basta con fey.</p>
+
+  <div class="solo-web">
+    <h3>El rol cambia según quién habla</h3>
+    <p>Las mismas tres personas. Elige quién habla y a quién le habla, y mira cómo cambian inche, eimi y fey.</p>
+    <p style="font-family:var(--sans);font-weight:700;margin-bottom:0">Habla:</p>
+    <div class="selector" id="escena-habla"><button type="button">A</button><button type="button">B</button><button type="button">C</button></div>
+    <p style="font-family:var(--sans);font-weight:700;margin-bottom:0">Le habla a:</p>
+    <div class="selector" id="escena-oye"><button type="button">A</button><button type="button">B</button><button type="button">C</button></div>
+    <div class="escena" id="escena">
+      <div class="persona"><div class="cabeza">A</div><div class="rol"></div></div>
+      <div class="persona"><div class="cabeza">B</div><div class="rol"></div></div>
+      <div class="persona"><div class="cabeza">C</div><div class="rol"></div></div>
+    </div>
+    <p id="escena-texto" style="text-align:center"></p>
+  </div>
+</section>
+
+<!-- II. CONJUGACIÓN -->
+<section class="bloque">
+  <h2>II. Chumgechi zewmagei<small>Raíz + terminación de persona</small></h2>
+  <p>Quitamos la terminación del verbo y agregamos la de quien hace la acción. Si la raíz termina en consonante, inche lleva <b class="suf p-inche">-ün</b> (azüm<b class="suf p-inche">ün</b>).</p>
+  <div class="solo-web">
+    <h3>Máquina de conjugar</h3>
+    <p class="es">Elige un verbo.</p>
+    <div class="selector" id="conj-verbos"></div>
+    <p id="conj-raiz"></p>
+    <div class="conj" id="conj-filas"></div>
+  </div>
+  <p class="nota"><b>¿Hablé o hablo?</b> Sin marca de tiempo, los verbos de acción se entienden como acción realizada (<span class="mz">zugun</span> = hablé). Los verbos de estado se entienden en presente (<span class="mz">mülen</span> = estoy).<br><b>Truco:</b> <b class="suf p-inche">-n</b> suena a «inche», <b class="suf p-eimi">-imi</b> termina como «eimi», y <b class="suf p-fey">-i</b> es la más corta, para quien no está en la conversación.</p>
+
+  <h3>Los verbos del taller</h3>
+  <div class="tabla-wrap"><table>
+    <thead><tr><th>Verbo</th><th>inche · yo</th><th>eimi · tú</th><th>fey · él / ella / elle</th></tr></thead>
+    <tbody id="tabla-verbos"></tbody>
+  </table></div>
+  <details><summary>Para más adelante: dual y plural</summary>
+    <div class="tabla-wrap"><table>
+      <tr><th></th><th>Pronombre</th><th>Sufijo</th><th>Ejemplo</th><th>Traducción</th></tr>
+      <tr><td rowspan="3">Dos personas</td><td class="mz">inchiw</td><td>-yu</td><td class="mz">zuguyu</td><td>hablamos los dos</td></tr>
+      <tr><td class="mz">eimu</td><td>-imu</td><td class="mz">zuguimu</td><td>hablaron ustedes dos</td></tr>
+      <tr><td class="mz">feyegü</td><td>-igü</td><td class="mz">zuguigü</td><td>hablaron ellas o ellos dos</td></tr>
+      <tr><td rowspan="3">Más de dos</td><td class="mz">inchiñ</td><td>-iñ</td><td class="mz">zuguiñ</td><td>hablamos</td></tr>
+      <tr><td class="mz">eimün</td><td>-imün</td><td class="mz">zuguimün</td><td>hablaron ustedes</td></tr>
+      <tr><td class="mz">feyegün</td><td>-igün</td><td class="mz">zuguigün</td><td>hablaron ellas o ellos</td></tr>
+    </table></div>
+  </details>
+</section>
+
+<!-- III. JUEGOS -->
+<section class="bloque solo-web">
+  <h2>III. Awkantun<small>Juegos para practicar</small></h2>
+
+  <h3>Semáforo: ¿inche, eimi o fey?</h3>
+  <div class="semaforo" id="semaforo">
+    <div class="sem-palabra" id="sem-palabra" aria-live="polite"></div>
+    <div class="sem-botones">
+      <button type="button" class="p-inche">inche<small>yo · -n</small></button>
+      <button type="button" class="p-eimi">eimi<small>tú · -imi</small></button>
+      <button type="button" class="p-fey">fey<small>él / ella / elle · -i</small></button>
+    </div>
+    <p class="fb" id="sem-fb"></p>
+    <p class="marcador" id="sem-marcador">También puedes usar las teclas 1, 2 y 3.</p>
+  </div>
+
+  <h3 style="margin-top:2rem">Los gatos del Kimeltun 2</h3>
+  <p>¿Qué hizo cada gato? Elige el verbo en primera persona.</p>
+  <div class="memes">
+    <div class="meme"><div class="foto"><img class="a-camina" src="img/gato-txekan.jpg" alt="Gato caminando en dos patas"></div>
+      <div class="opc" data-fb="Inche txekan: yo caminé."><button>Inche lelin</button><button data-ok>Inche txekan</button><button>Inche putun</button></div><p class="fb"></p></div>
+    <div class="meme"><div class="foto"><img class="a-mira" src="img/gato-lelin.jpg" alt="Gato mirando fijo"></div>
+      <div class="opc" data-fb="Inche lelin: yo miré."><button data-ok>Inche lelin</button><button>Inche txipan</button><button>Inche zugun</button></div><p class="fb"></p></div>
+    <div class="meme"><div class="foto"><img class="a-sale" src="img/gato-txipan.jpg" alt="Gato saliendo a toda prisa"></div>
+      <div class="opc" data-fb="Inche txipan: yo salí."><button>Inche allkütun</button><button>Inche pigen</button><button data-ok>Inche txipan</button></div><p class="fb"></p></div>
+    <div class="meme"><div class="foto"><img class="a-habla" src="img/gato-zugun.jpg" alt="Dos gatos conversando"></div>
+      <div class="opc" data-fb="Inche zugun: yo hablé."><button data-ok>Inche zugun</button><button>Inche txekan</button><button>Inche lelin</button></div><p class="fb"></p></div>
+    <div class="meme"><div class="foto"><img class="a-nombre" src="img/gato-pigen.jpg" alt="Gato que dice hola, me llamo Víctor"></div>
+      <div class="opc" data-fb="Inche Víctor pigen: me llamo Víctor."><button>Inche Víctor putun</button><button data-ok>Inche Víctor pigen</button><button>Inche Víctor amun</button></div><p class="fb"></p></div>
+  </div>
+
+  <h3 style="margin-top:2rem">Rueda de nombres: pigen, pigeimi, pigei</h3>
+  <p>En círculo, de a tres. Escribe dos nombres y practica la rueda en voz alta.</p>
+  <form id="rueda" onsubmit="return false" class="acciones" style="margin-top:0">
+    <label>Nombre de A <input name="a" class="medio" value="Ayelen"></label>
+    <label>Nombre de B <input name="b" class="medio" value="Lautaro"></label>
+  </form>
+  <div class="conj" id="rueda-salida" style="margin-top:1rem"></div>
+</section>
+
+<!-- IV. EJERCICIOS -->
+<section class="bloque">
+  <h2>IV. Ejercicios<small>Escribe y presiona «Revisar».</small></h2>
+
+  <div class="ej">
+    <h3>1. Completa con la terminación correcta</h3>
+    <ol>
+      <li><span class="mz">Inche küpa</span><input class="corto" data-r="n"> <span class="es">Vine.</span></li>
+      <li><span class="mz">Eimi zugu</span><input class="corto" data-r="imi"> <span class="es">Hablaste.</span></li>
+      <li><span class="mz">Fey amu</span><input class="corto" data-r="i"> <span class="es">Fue.</span></li>
+      <li><span class="mz">Inche azüm</span><input class="corto" data-r="ün"> <span class="es">Entendí.</span></li>
+      <li><span class="mz">Eimi ruka mew müle</span><input class="corto" data-r="imi"> <span class="es">Estás en la casa.</span></li>
+      <li><span class="mz">Fey ülkantu</span><input class="corto" data-r="i"> <span class="es">Cantó.</span></li>
+      <li><span class="mz">Inche ko putu</span><input class="corto" data-r="n"> <span class="es">Tomé agua.</span></li>
+      <li><span class="mz">Eimi fachantü küzaw</span><input class="corto" data-r="imi"> <span class="es">Trabajaste hoy.</span></li>
+    </ol>
+    <div class="acciones"><button class="btn revisar">Revisar</button><button class="btn sec ver">Ver respuestas</button></div><p class="fb"></p>
+  </div>
+
+  <div class="ej">
+    <h3>2. ¿Quién es? Escribe inche, eimi o fey</h3>
+    <ol>
+      <li><span class="mz">azümimi</span> <input class="medio" data-r="eimi"></li>
+      <li><span class="mz">küpai</span> <input class="medio" data-r="fey"></li>
+      <li><span class="mz">mülen</span> <input class="medio" data-r="inche"></li>
+      <li><span class="mz">zugui</span> <input class="medio" data-r="fey"></li>
+      <li><span class="mz">allkütuimi</span> <input class="medio" data-r="eimi"></li>
+      <li><span class="mz">txipan</span> <input class="medio" data-r="inche"></li>
+      <li><span class="mz">küzawi</span> <input class="medio" data-r="fey"></li>
+      <li><span class="mz">amuimi</span> <input class="medio" data-r="eimi"></li>
+    </ol>
+    <div class="acciones"><button class="btn revisar">Revisar</button><button class="btn sec ver">Ver respuestas</button></div><p class="fb"></p>
+  </div>
+
+  <div class="ej">
+    <h3>3. Diálogo guiado: completa y luego léelo en pareja</h3>
+    <div class="dialogo" id="dialogo-2">
+      <div class="globo"><b>Kiñe che</b><span class="mz">Mari mari lamgen. ¿Chumle<input class="corto" data-r="imi">?</span><span class="es">Hola lamgen. ¿Cómo estás?</span></div>
+      <div class="globo b"><b>Epu che</b><span class="mz">Kümelkale<input class="corto" data-r="n">. ¿Eimi kay?</span><span class="es">Estoy bien. ¿Y tú?</span></div>
+      <div class="globo"><b>Kiñe che</b><span class="mz">Inche ka kümelkalen. ¿Chew müle<input class="corto" data-r="imi"> fachantü?</span><span class="es">Yo también estoy bien. ¿Dónde estás hoy?</span></div>
+      <div class="globo b"><b>Epu che</b><span class="mz">Inche Santiago mew müle<input class="corto" data-r="n">.</span><span class="es">Estoy en Santiago.</span></div>
+      <div class="globo"><b>Kiñe che</b><span class="mz">¿Chew müle<input class="corto" data-r="i"> Pedro?</span><span class="es">¿Dónde está Pedro?</span></div>
+      <div class="globo b"><b>Epu che</b><span class="mz">Fey ruka mew müle<input class="corto" data-r="i">.</span><span class="es">Está en la casa.</span></div>
+      <div class="globo"><b>Kiñe che</b><span class="mz">Feley. Pewkayal lamgen.</span><span class="es">De acuerdo. Hasta luego lamgen.</span></div>
+    </div>
+    <div class="acciones"><button class="btn revisar">Revisar</button><button class="btn sec ver">Ver respuestas</button><button class="btn sec" data-alterna="#dialogo-2">Mostrar traducción</button></div><p class="fb"></p>
+  </div>
+
+  <div class="ej">
+    <h3>4. Escribe tres frases sobre tu semana</h3>
+    <p>Una con <span class="chip p-inche">inche</span>, una con <span class="chip p-eimi">eimi</span> y una con <span class="chip p-fey">fey</span>. Usa los verbos de la tabla.</p>
+    <textarea data-check="#check-frases" aria-label="Tus tres frases"></textarea>
+    <ul class="lista-check solo-web" id="check-frases">
+      <li data-k="inche">Una frase con inche</li>
+      <li data-k="eimi">Una frase con eimi</li>
+      <li data-k="fey">Una frase con fey</li>
+    </ul>
+  </div>
+</section>
+
+<section class="bloque">
+  <h2>Práctica con un hablante</h2>
+  <p>Pregúntale <b class="mz">¿chumleimi?</b> a alguien de tu familia o comunidad y escucha cómo responde. Luego pregúntale <b class="mz">¿chew müleimi fachantü?</b> Anota las formas que usa y tráelas a clase.</p>
+  <details class="solo-print"><summary>Solucionario</summary>
+    <p>1) küpan, zuguimi, amui, azümün, müleimi, ülkantui, putun, küzawimi. 2) eimi, fey, inche, fey, eimi, inche, fey, eimi. 3) chumleimi, kümelkalen, müleimi, mülen, mülei, mülei.</p>
+  </details>
+</section>
+</main>
+
+<footer class="pie">
+  <p><b>Taller de mapuzugun nivel básico</b>. Grafemario Azümchefe.</p>
+  <p>Kimelfe: Cristián Milla Curiñanco · cristian.milla@ug.uchile.cl</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
