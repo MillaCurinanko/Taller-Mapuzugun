@@ -3,47 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kimeltun Mapuzugun · Plataforma Interactiva de Aprendizaje</title>
-  <!-- Tailwind CSS -->
+  <title>Taller de Mapuzugun - Kimeltun Web</title>
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
             kalfu: {
-              900: '#071b3b',
-              800: '#0a2552',
-              700: '#0d3b7a',
-              600: '#164e9a',
-              500: '#2563eb',
-              100: '#eff6ff',
+              50: '#f0f4fd',
+              100: '#dbe6fa',
+              500: '#1d4ed8',
+              700: '#1e40af',
+              800: '#002B7A', /* Azul kalfü sagrado */
+              900: '#001A4E',
             },
-            choz: '#f59e0b',
-            karu: '#10b981',
-            kelu: '#ef4444'
-          },
-          fontFamily: {
-            title: ['Cinzel', 'serif'],
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            choz: '#EAB308', /* Amarillo solar */
+            karu: '#15803D', /* Verde tierra */
+            kelu: '#B91C1C', /* Rojo newen */
           }
         }
       }
     }
   </script>
   <style>
+    .wunelfe-star {
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
     .card-flip {
       perspective: 1000px;
     }
-    .card-flip-inner {
+    .card-inner {
       transition: transform 0.6s;
       transform-style: preserve-3d;
     }
-    .card-flip.flipped .card-flip-inner {
+    .card-flip:hover .card-inner, .card-flip.is-flipped .card-inner {
       transform: rotateY(180deg);
     }
     .card-front, .card-back {
@@ -52,800 +47,487 @@
     .card-back {
       transform: rotateY(180deg);
     }
-    /* Estilos de botones de sonido */
-    .audio-btn:active {
-      transform: scale(0.95);
-    }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-900 font-sans min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
 
-  <!-- TOP BAR / MASTHEAD KALFÜ -->
-  <header class="bg-gradient-to-r from-kalfu-900 via-kalfu-800 to-kalfu-700 text-white shadow-xl border-b-4 border-choz">
-    <div class="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-4 text-center md:text-left">
-        <!-- SVG WÜNELFE -->
-        <div class="w-14 h-14 bg-kalfu-700 p-2 rounded-xl border-2 border-white/40 shadow-inner flex-shrink-0 flex items-center justify-center">
-          <svg viewBox="0 0 100 100" class="w-10 h-10 filter drop-shadow">
-            <polygon points="50,2 62,38 98,50 62,62 50,98 38,62 2,50 38,38" fill="#ffffff" stroke="#f59e0b" stroke-width="3"/>
-          </svg>
+  <!-- ENCABEZADO KALFÜ -->
+  <header class="bg-kalfu-800 text-white shadow-xl border-b-4 border-choz sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <!-- Emblema Sagrado Wünelfe -->
+        <div class="w-12 h-12 bg-white flex items-center justify-center rounded-full shadow-inner p-1">
+          <div class="w-10 h-10 bg-kalfu-800 wunelfe-star flex items-center justify-center"></div>
         </div>
         <div>
-          <div class="flex items-center justify-center md:justify-start gap-2">
-            <span class="bg-yellow-400 text-yellow-950 text-xs font-black uppercase px-2.5 py-0.5 rounded-full tracking-wider">U. de Chile · Kimeltun</span>
-            <span class="text-xs text-blue-200">Azümchefe Mew</span>
-          </div>
-          <h1 class="font-title text-xl sm:text-2xl font-bold tracking-wide mt-0.5">Taller de Mapuzugun</h1>
-          <p class="text-xs sm:text-sm text-blue-100">«Iney am ta inche mapuzugun mew» · Kimelfe: Cristián Milla Curiñanco</p>
+          <h1 class="text-xl md:text-2xl font-black tracking-wide">KIMELTUN MAPUZUGUN</h1>
+          <p class="text-xs text-blue-200 uppercase font-semibold tracking-wider">«Iney am ta inche mapuzugun mew» · Grafemario Azümchefe</p>
         </div>
       </div>
-
-      <!-- BOTONES DE NAVEGACIÓN RÁPIDA -->
-      <nav class="flex flex-wrap justify-center gap-2 text-xs sm:text-sm font-semibold">
-        <a href="#grafemario" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5"><i class="fa-solid fa-spell-check text-yellow-400"></i> Azümchefe</a>
-        <a href="#chalin" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5"><i class="fa-solid fa-comments text-blue-300"></i> Chalin</a>
-        <a href="#memes" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5"><i class="fa-solid fa-cat text-pink-300"></i> Memes Verbos</a>
-        <a href="#awkantun" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5"><i class="fa-solid fa-palette text-emerald-300"></i> Pronombres</a>
-        <a href="#rakin" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 transition flex items-center gap-1.5"><i class="fa-solid fa-calculator text-amber-300"></i> Rakin</a>
-        <a href="#kizu" class="px-3 py-1.5 rounded-lg bg-yellow-400 text-slate-900 hover:bg-yellow-300 transition flex items-center gap-1.5 shadow font-bold"><i class="fa-solid fa-user-check"></i> Presentación</a>
+      <nav class="flex flex-wrap gap-2 text-xs md:text-sm font-bold">
+        <a href="#fonetica" class="px-3 py-1.5 rounded-lg bg-kalfu-900/60 hover:bg-kalfu-700 transition">Azümchefe</a>
+        <a href="#chalin" class="px-3 py-1.5 rounded-lg bg-kalfu-900/60 hover:bg-kalfu-700 transition">Chalin (Saludos)</a>
+        <a href="#verbos" class="px-3 py-1.5 rounded-lg bg-kalfu-900/60 hover:bg-kalfu-700 transition">Awkantun (Memes)</a>
+        <a href="#semaforo" class="px-3 py-1.5 rounded-lg bg-kalfu-900/60 hover:bg-kalfu-700 transition">Semáforo de Persona</a>
+        <a href="#rakin" class="px-3 py-1.5 rounded-lg bg-kalfu-900/60 hover:bg-kalfu-700 transition">Rakin (Números)</a>
+        <a href="#presentacion" class="px-3 py-1.5 rounded-lg bg-choz text-kalfu-900 hover:bg-yellow-400 transition shadow">Mi Presentación</a>
       </nav>
     </div>
   </header>
 
-  <!-- BANNER CULTURAL / SOCIO-LINGÜÍSTICO (PPT 1) -->
-  <section class="bg-blue-50 border-b border-blue-200 py-3 px-4">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-xs sm:text-sm text-blue-900 gap-2">
-      <div class="flex items-center gap-2">
-        <i class="fa-solid fa-earth-americas text-kalfu-700 text-lg"></i>
-        <span><strong>Az zugun:</strong> El mapuzugun es una lengua aglutinante, polisintética y viva. En el taller respetamos todas las identidades territoriales del Wallmapu.</span>
-      </div>
-      <div class="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-blue-200 font-medium text-slate-700">
-        <i class="fa-solid fa-chart-line text-blue-600"></i>
-        <span>67% en desplazamiento · 75% urbano · <strong>¡Revitalizar hablando!</strong></span>
+  <!-- BANNER IDENTITARIO -->
+  <section class="bg-gradient-to-r from-kalfu-900 via-kalfu-800 to-kalfu-700 text-white py-10 px-4 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto text-center relative z-10 space-y-3">
+      <span class="inline-block px-3 py-1 bg-white/10 rounded-full text-xs font-semibold uppercase tracking-widest text-blue-200 border border-white/20">
+        Plataforma Interactiva de Aprendizaje Autónomo
+      </span>
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight">Chumgechi kimürkei che kagelu kewün</h2>
+      <p class="text-blue-100 text-sm md:text-base leading-relaxed max-w-2xl mx-auto">
+        «La lógica gramatical es siempre limitada en el aprendizaje. Se debe privilegiar hablar (<strong>ZUGUN</strong>), modular en distintas tonalidades (<strong>ALKÜTÜN</strong>) y evitar traducciones literales (<strong>AZ ZUGUN</strong>).»
+      </p>
+      <div class="pt-2 flex justify-center gap-3">
+        <a href="guia_1.html" target="_blank" class="text-xs bg-white text-kalfu-800 px-4 py-2 rounded-lg font-bold shadow hover:bg-blue-50 transition flex items-center gap-1.5">
+          📄 Ver Guía 1 (PDF)
+        </a>
+        <a href="guia_2.html" target="_blank" class="text-xs bg-white text-kalfu-800 px-4 py-2 rounded-lg font-bold shadow hover:bg-blue-50 transition flex items-center gap-1.5">
+          📄 Ver Guía 2 (PDF)
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 flex-1">
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-12 flex-1">
 
-    <!-- SECCIÓN 1: GRAFEMARIO AZÜMCHEFE Y FONÉTICA (PPT 1 & GUÍA 1) -->
-    <section id="grafemario" class="scroll-mt-6 bg-white rounded-2xl shadow-md border border-slate-200 p-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-6">
-        <div>
-          <span class="text-xs font-bold text-kalfu-700 uppercase tracking-wider bg-blue-100 px-2.5 py-1 rounded">Módulo 1 · Kiñe Xoy</span>
-          <h2 class="font-title text-2xl font-bold text-kalfu-800 mt-1">Grafemario Azümchefe ka Fonética</h2>
-          <p class="text-sm text-slate-600">Haz clic en cada tarjeta para escuchar la articulación fonética y los ejemplos de uso en voz alta.</p>
-        </div>
-        <div class="bg-amber-50 text-amber-900 border border-amber-200 px-4 py-2 rounded-xl text-xs flex items-center gap-2">
-          <i class="fa-solid fa-volume-high text-amber-600 text-base"></i>
-          <span>Audio interactivo con síntesis de voz en tiempo real integrada.</span>
-        </div>
-      </div>
-
-      <!-- GRID DE GRAFEMAS INTERACTIVOS -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        
-        <!-- Ü -->
-        <div class="border border-slate-200 rounded-xl p-4 hover:border-kalfu-500 hover:shadow-lg transition bg-slate-50 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-4xl font-extrabold text-kalfu-700">ü</span>
-              <button onclick="speakText('kümelkalen txipantü ülkantun', 'map')" class="audio-btn w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow">
-                <i class="fa-solid fa-volume-high"></i>
-              </button>
-            </div>
-            <div class="mt-2 text-xs text-slate-500">Unificado: <strong>ü</strong> · Raguileo: <strong>v</strong></div>
-            <p class="text-sm font-semibold text-slate-800 mt-2">Vocal cerrada central no redondeada.</p>
-            <p class="text-xs text-slate-600 mt-1">Labios estirados como para "i", pero articulando hacia "u".</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-slate-200 text-xs font-mono text-blue-900 bg-white p-2 rounded border">
-            Ej: <em>kümelkalen</em> (estar bien), <em>txipantü</em> (año)
-          </div>
-        </div>
-
-        <!-- G -->
-        <div class="border border-slate-200 rounded-xl p-4 hover:border-kalfu-500 hover:shadow-lg transition bg-slate-50 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-4xl font-extrabold text-kalfu-700">g</span>
-              <button onclick="speakText('lamgen gen zugun', 'map')" class="audio-btn w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow">
-                <i class="fa-solid fa-volume-high"></i>
-              </button>
-            </div>
-            <div class="mt-2 text-xs text-slate-500">Unificado: <strong>ng</strong> · Raguileo: <strong>g</strong></div>
-            <p class="text-sm font-semibold text-slate-800 mt-2">Nasal velar sonoro (como en "gong").</p>
-            <p class="text-xs text-slate-600 mt-1">Sonido similar a la "n" antes de "c" en castellano ("banco").</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-slate-200 text-xs font-mono text-blue-900 bg-white p-2 rounded border">
-            Ej: <em>lamgen</em> (hermana/o), <em>gen</em> (dueño/ser)
-          </div>
-        </div>
-
-        <!-- TX -->
-        <div class="border border-slate-200 rounded-xl p-4 hover:border-kalfu-500 hover:shadow-lg transition bg-slate-50 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-4xl font-extrabold text-kalfu-700">tx</span>
-              <button onclick="speakText('txipantü txewa txawün', 'map')" class="audio-btn w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow">
-                <i class="fa-solid fa-volume-high"></i>
-              </button>
-            </div>
-            <div class="mt-2 text-xs text-slate-500">Unificado: <strong>tr</strong> · Raguileo: <strong>x</strong></div>
-            <p class="text-sm font-semibold text-slate-800 mt-2">Oclusiva africada alveolar retrasada.</p>
-            <p class="text-xs text-slate-600 mt-1">Pronunciación enérgica "arrastrada" (como "tr" chileno).</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-slate-200 text-xs font-mono text-blue-900 bg-white p-2 rounded border">
-            Ej: <em>txipantü</em> (año), <em>txewa</em> (perro), <em>txawün</em> (reunión)
-          </div>
-        </div>
-
-        <!-- Z -->
-        <div class="border border-slate-200 rounded-xl p-4 hover:border-kalfu-500 hover:shadow-lg transition bg-slate-50 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-4xl font-extrabold text-kalfu-700">z</span>
-              <button onclick="speakText('zugun mapuzugun kizu', 'map')" class="audio-btn w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow">
-                <i class="fa-solid fa-volume-high"></i>
-              </button>
-            </div>
-            <div class="mt-2 text-xs text-slate-500">Unificado: <strong>d</strong> · Raguileo: <strong>z</strong></div>
-            <p class="text-sm font-semibold text-slate-800 mt-2">Fricativa interdental (lengua entre dientes).</p>
-            <p class="text-xs text-slate-600 mt-1">Como la "z" española o la "th" inglesa en "they".</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-slate-200 text-xs font-mono text-blue-900 bg-white p-2 rounded border">
-            Ej: <em>zugun</em> (hablar), <em>mapuzugun</em> (habla de la tierra)
-          </div>
-        </div>
-
-        <!-- R -->
-        <div class="border border-slate-200 rounded-xl p-4 hover:border-kalfu-500 hover:shadow-lg transition bg-slate-50 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-4xl font-extrabold text-kalfu-700">r</span>
-              <button onclick="speakText('mari rali ruka', 'map')" class="audio-btn w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow">
-                <i class="fa-solid fa-volume-high"></i>
-              </button>
-            </div>
-            <div class="mt-2 text-xs text-slate-500">Unificado: <strong>r</strong> · Raguileo: <strong>r</strong></div>
-            <p class="text-sm font-semibold text-slate-800 mt-2">Fricativa retrofleja suave (no vibrante múltiple).</p>
-            <p class="text-xs text-slate-600 mt-1">Ápice curvado hacia el paladar (similar a la "r" inglesa en "run").</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-slate-200 text-xs font-mono text-blue-900 bg-white p-2 rounded border">
-            Ej: <em>mari</em> (diez), <em>rali</em> (plato de greda)
-          </div>
-        </div>
-
-        <!-- LL -->
-        <div class="border border-slate-200 rounded-xl p-4 hover:border-kalfu-500 hover:shadow-lg transition bg-slate-50 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-start">
-              <span class="text-4xl font-extrabold text-kalfu-700">ll</span>
-              <button onclick="speakText('aylla chillkatun', 'map')" class="audio-btn w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition shadow">
-                <i class="fa-solid fa-volume-high"></i>
-              </button>
-            </div>
-            <div class="mt-2 text-xs text-slate-500">Unificado: <strong>ll</strong> · Raguileo: <strong>j</strong></div>
-            <p class="text-sm font-semibold text-slate-800 mt-2">Lateral palatal sonoro (como "ll" tradicional).</p>
-            <p class="text-xs text-slate-600 mt-1">Pronunciación nítida con el dorso de la lengua en el paladar.</p>
-          </div>
-          <div class="mt-3 pt-3 border-t border-slate-200 text-xs font-mono text-blue-900 bg-white p-2 rounded border">
-            Ej: <em>aylla</em> (nueve), <em>chillkatun</em> (estudiar)
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECCIÓN 2: EL CHALIN Y LA RED SOCIAL (PPT 2 & GUÍA 1) -->
-    <section id="chalin" class="scroll-mt-6 bg-white rounded-2xl shadow-md border border-slate-200 p-6">
-      <div class="border-b border-slate-200 pb-4 mb-6">
-        <span class="text-xs font-bold text-kalfu-700 uppercase tracking-wider bg-blue-100 px-2.5 py-1 rounded">Módulo 2 · Epu Xoy</span>
-        <h2 class="font-title text-2xl font-bold text-kalfu-800 mt-1">El Chalin: Saludo y Relación entre Che (Personas)</h2>
-        <p class="text-sm text-slate-600">En mapuzugun, el saludo define el vínculo afectivo y comunitario entre quienes se encuentran.</p>
-      </div>
-
-      <!-- FLASHCARDS INTERACTIVAS DE SALUDO -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-        
-        <!-- CARD 1: KOM PU CHE -->
-        <div class="card-flip h-44 cursor-pointer" onclick="this.classList.toggle('flipped')">
-          <div class="card-flip-inner relative w-full h-full">
-            <div class="card-front absolute inset-0 bg-blue-50 border-2 border-kalfu-600 rounded-xl p-4 flex flex-col justify-between shadow-sm">
-              <span class="text-xs font-bold uppercase tracking-wider text-kalfu-700">A todo el grupo reunido</span>
-              <div class="text-center">
-                <div class="text-lg font-bold text-kalfu-900">Mari mari kom pu che</div>
-                <div class="text-xs text-slate-500 mt-1">Toca para ver significado</div>
-              </div>
-              <div class="text-right text-xs text-blue-600 font-semibold"><i class="fa-solid fa-rotate"></i> Girar</div>
-            </div>
-            <div class="card-back absolute inset-0 bg-kalfu-800 text-white rounded-xl p-4 flex flex-col justify-between shadow-md">
-              <span class="text-xs text-yellow-300 font-semibold">Traducción contextual:</span>
-              <p class="text-sm font-medium text-center">«Hola a todas las personas reunidas / Hola a toda la comunidad»</p>
-              <div class="text-right text-xs text-blue-300"><i class="fa-solid fa-rotate"></i> Volver</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 2: PEÑI -->
-        <div class="card-flip h-44 cursor-pointer" onclick="this.classList.toggle('flipped')">
-          <div class="card-flip-inner relative w-full h-full">
-            <div class="card-front absolute inset-0 bg-blue-50 border-2 border-kalfu-600 rounded-xl p-4 flex flex-col justify-between shadow-sm">
-              <span class="text-xs font-bold uppercase tracking-wider text-kalfu-700">Entre hombres (wentxu mew)</span>
-              <div class="text-center">
-                <div class="text-xl font-bold text-kalfu-900">Mari mari peñi</div>
-                <div class="text-xs text-slate-500 mt-1">Toca para ver significado</div>
-              </div>
-              <div class="text-right text-xs text-blue-600 font-semibold"><i class="fa-solid fa-rotate"></i> Girar</div>
-            </div>
-            <div class="card-back absolute inset-0 bg-kalfu-800 text-white rounded-xl p-4 flex flex-col justify-between shadow-md">
-              <span class="text-xs text-yellow-300 font-semibold">Traducción contextual:</span>
-              <p class="text-sm font-medium text-center">«Hola hermano» (Trato exclusivo y fraterno entre varones).</p>
-              <div class="text-right text-xs text-blue-300"><i class="fa-solid fa-rotate"></i> Volver</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3: LAMGEN -->
-        <div class="card-flip h-44 cursor-pointer" onclick="this.classList.toggle('flipped')">
-          <div class="card-flip-inner relative w-full h-full">
-            <div class="card-front absolute inset-0 bg-blue-50 border-2 border-kalfu-600 rounded-xl p-4 flex flex-col justify-between shadow-sm">
-              <span class="text-xs font-bold uppercase tracking-wider text-kalfu-700">Entre mujeres, o mujer y varón</span>
-              <div class="text-center">
-                <div class="text-xl font-bold text-kalfu-900">Mari mari lamgen</div>
-                <div class="text-xs text-slate-500 mt-1">Toca para ver significado</div>
-              </div>
-              <div class="text-right text-xs text-blue-600 font-semibold"><i class="fa-solid fa-rotate"></i> Girar</div>
-            </div>
-            <div class="card-back absolute inset-0 bg-kalfu-800 text-white rounded-xl p-4 flex flex-col justify-between shadow-md">
-              <span class="text-xs text-yellow-300 font-semibold">Traducción contextual:</span>
-              <p class="text-sm font-medium text-center">«Hola hermana / hermano» (Trato de reciprocidad y equilibrio).</p>
-              <div class="text-right text-xs text-blue-300"><i class="fa-solid fa-rotate"></i> Volver</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 4: PAPAY & CHACHAY -->
-        <div class="card-flip h-44 cursor-pointer" onclick="this.classList.toggle('flipped')">
-          <div class="card-flip-inner relative w-full h-full">
-            <div class="card-front absolute inset-0 bg-amber-50 border-2 border-amber-600 rounded-xl p-4 flex flex-col justify-between shadow-sm">
-              <span class="text-xs font-bold uppercase tracking-wider text-amber-800">Personas mayores (respeto)</span>
-              <div class="text-center">
-                <div class="text-lg font-bold text-slate-900">Mari mari papay / chachay</div>
-                <div class="text-xs text-slate-500 mt-1">Toca para ver significado</div>
-              </div>
-              <div class="text-right text-xs text-amber-700 font-semibold"><i class="fa-solid fa-rotate"></i> Girar</div>
-            </div>
-            <div class="card-back absolute inset-0 bg-amber-900 text-white rounded-xl p-4 flex flex-col justify-between shadow-md">
-              <span class="text-xs text-yellow-300 font-semibold">Traducción contextual:</span>
-              <p class="text-xs font-medium text-center"><strong>Papay:</strong> Sra. mayor / abuela.<br><strong>Chachay:</strong> Sr. mayor / abuelo.<br>Muestra máxima deferencia.</p>
-              <div class="text-right text-xs text-amber-300"><i class="fa-solid fa-rotate"></i> Volver</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- SIMULADOR PASO A PASO DE DIÁLOGO CHALIN -->
-      <div class="bg-slate-50 rounded-xl p-6 border border-slate-300">
-        <h3 class="font-title text-lg font-bold text-kalfu-800 mb-4 flex items-center gap-2">
-          <i class="fa-solid fa-play text-blue-600"></i> Simulador Interactivo de Chalin (Paso a Paso)
+    <!-- SECCIÓN 1: LABORATORIO AUDITIVO AZÜMCHEFE -->
+    <section id="fonetica" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <h3 class="text-2xl font-black text-kalfu-800 flex items-center gap-2">
+          <span>🔊</span> Laboratorio Fonético · Grafemario Azümchefe
         </h3>
-        <div id="dialogue-container" class="space-y-3 mb-6">
-          <!-- Las líneas se insertan con JS -->
+        <p class="text-slate-600 text-sm mt-1">Haz clic en cada ficha para escuchar la modulación del fonema y su ejemplo contextual.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Ü -->
+        <div class="p-4 rounded-xl border-2 border-blue-100 bg-blue-50/50 hover:border-kalfu-500 transition space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-3xl font-black text-kalfu-800">Ü / ü</span>
+            <button onclick="speakMapuche('ü', 'kümelkalen')" class="p-2 bg-kalfu-800 text-white rounded-full hover:bg-kalfu-700 shadow">▶</button>
+          </div>
+          <p class="text-xs text-slate-500 font-semibold">Vocal cerrada central no redondeada (sonido entre i y u).</p>
+          <div class="text-sm font-bold text-slate-700 bg-white p-2 rounded border border-blue-100">
+            Ej: <span class="text-kalfu-800">Kümelkalen</span> (Estoy bien)
+          </div>
         </div>
-        <div class="flex flex-wrap gap-3">
-          <button id="btn-next-step" onclick="advanceDialogue()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-5 rounded-xl transition shadow flex items-center gap-2 text-sm">
-            <i class="fa-solid fa-forward-step"></i> Siguiente intervención
-          </button>
-          <button onclick="resetDialogue()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold py-2.5 px-4 rounded-xl transition text-sm">
-            <i class="fa-solid fa-rotate-left"></i> Reiniciar diálogo
-          </button>
-          <button onclick="playFullDialogue()" class="bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded-xl transition shadow flex items-center gap-2 text-sm">
-            <i class="fa-solid fa-volume-high"></i> Escuchar todo
-          </button>
+
+        <!-- G (NG) -->
+        <div class="p-4 rounded-xl border-2 border-blue-100 bg-blue-50/50 hover:border-kalfu-500 transition space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-3xl font-black text-kalfu-800">G / g</span>
+            <button onclick="speakMapuche('ng', 'lamgen')" class="p-2 bg-kalfu-800 text-white rounded-full hover:bg-kalfu-700 shadow">▶</button>
+          </div>
+          <p class="text-xs text-slate-500 font-semibold">Nasal velar (como <em>ng</em> en inglés 'sing' o 'banco').</p>
+          <div class="text-sm font-bold text-slate-700 bg-white p-2 rounded border border-blue-100">
+            Ej: <span class="text-kalfu-800">Lamgen</span> (Hermana/o)
+          </div>
+        </div>
+
+        <!-- TX (TR) -->
+        <div class="p-4 rounded-xl border-2 border-blue-100 bg-blue-50/50 hover:border-kalfu-500 transition space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-3xl font-black text-kalfu-800">TX / tx</span>
+            <button onclick="speakMapuche('tr', 'txawün')" class="p-2 bg-kalfu-800 text-white rounded-full hover:bg-kalfu-700 shadow">▶</button>
+          </div>
+          <p class="text-xs text-slate-500 font-semibold">Sonido retroflejo tenso (semejante a <em>tr</em> arrastrada chilena).</p>
+          <div class="text-sm font-bold text-slate-700 bg-white p-2 rounded border border-blue-100">
+            Ej: <span class="text-kalfu-800">Txawün</span> (Reunión)
+          </div>
+        </div>
+
+        <!-- Z (D) -->
+        <div class="p-4 rounded-xl border-2 border-blue-100 bg-blue-50/50 hover:border-kalfu-500 transition space-y-2">
+          <div class="flex justify-between items-center">
+            <span class="text-3xl font-black text-kalfu-800">Z / z</span>
+            <button onclick="speakMapuche('th', 'mapuzugun')" class="p-2 bg-kalfu-800 text-white rounded-full hover:bg-kalfu-700 shadow">▶</button>
+          </div>
+          <p class="text-xs text-slate-500 font-semibold">Interdental fricativo (como la <em>z</em> española o <em>th</em> en inglés).</p>
+          <div class="text-sm font-bold text-slate-700 bg-white p-2 rounded border border-blue-100">
+            Ej: <span class="text-kalfu-800">Mapuzugun</span> (Habla de la tierra)
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 3: MINIJUEGO DE MEMES GATUNOS - VERBOS EN 1ª PERSONA (PPT 2) -->
-    <section id="memes" class="scroll-mt-6 bg-gradient-to-br from-slate-900 to-kalfu-900 text-white rounded-2xl shadow-xl p-6 border-4 border-slate-700">
-      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-slate-700 pb-4 mb-6">
-        <div>
-          <span class="text-xs font-black uppercase tracking-wider bg-pink-500/20 text-pink-300 px-3 py-1 rounded-full border border-pink-500/40">Kimeltun 2 · Dinámica de fijación</span>
-          <h2 class="font-title text-2xl font-bold text-white mt-2">Awkantun de Memes: Verbos desde el «Inche»</h2>
-          <p class="text-sm text-slate-300">Asocia cada meme del Kimeltun 2 con la acción exacta que realiza el gato en 1ª persona.</p>
-        </div>
-        <div class="text-right">
-          <span class="text-xs text-slate-400">Puntaje:</span>
-          <div id="game-score" class="text-2xl font-black text-yellow-400">0 / 6</div>
-        </div>
+    <!-- SECCIÓN 2: SIMULADOR DE CHALIN (SALUDOS RELACIONALES) -->
+    <section id="chalin" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <h3 class="text-2xl font-black text-kalfu-800 flex items-center gap-2">
+          <span>🤝</span> Chalin · El Saludo según la Relación (*Che*)
+        </h3>
+        <p class="text-slate-600 text-sm mt-1">«Mari mari» representa darse ambas manos (10 y 10). Toca cada persona para escuchar el saludo exacto.</p>
       </div>
 
-      <!-- CONTENEDOR DEL JUEGO -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <!-- ÁREA VISUAL DEL MEME -->
-        <div class="bg-slate-800 rounded-2xl p-6 border border-slate-700 flex flex-col items-center justify-center min-h-[300px] text-center">
-          <div id="meme-emoji" class="text-7xl mb-4 transition transform duration-300">🐱💨</div>
-          <div id="meme-situation" class="text-base font-semibold text-blue-200 mb-2">Situación del meme:</div>
-          <p id="meme-desc" class="text-lg font-bold text-white max-w-sm">"Gato corriendo a toda velocidad por el pasillo"</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <button onclick="playGreeting('Mari mari peñi', 'Trato recíproco entre hombres (hermano)')" class="p-4 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 text-center transition space-y-1">
+          <div class="text-2xl">👨🏽‍🌾</div>
+          <div class="font-extrabold text-kalfu-800 text-sm">Peñi</div>
+          <div class="text-[11px] text-slate-500">Entre hombres</div>
+        </button>
+
+        <button onclick="playGreeting('Mari mari lamgen', 'Reciprocidad entre mujeres, o entre mujer y hombre')" class="p-4 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 text-center transition space-y-1">
+          <div class="text-2xl">👩🏽‍🌾</div>
+          <div class="font-extrabold text-kalfu-800 text-sm">Lamgen</div>
+          <div class="text-[11px] text-slate-500">Hermana / Hermano</div>
+        </button>
+
+        <button onclick="playGreeting('Mari mari ñaña', 'Hacia una mujer amiga o cercana (wenüy zomo)')" class="p-4 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 text-center transition space-y-1">
+          <div class="text-2xl">👵🏽</div>
+          <div class="font-extrabold text-kalfu-800 text-sm">Ñaña</div>
+          <div class="text-[11px] text-slate-500">Mujer cercana</div>
+        </button>
+
+        <button onclick="playGreeting('Mari mari chacha', 'Hacia un hombre amigo o cercano (wenüy wentxu)')" class="p-4 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 text-center transition space-y-1">
+          <div class="text-2xl">👴🏽</div>
+          <div class="font-extrabold text-kalfu-800 text-sm">Chacha</div>
+          <div class="text-[11px] text-slate-500">Hombre cercano</div>
+        </button>
+
+        <button onclick="playGreeting('Mari mari papay', 'Trato de profundo respeto a mujer adulta mayor (kuche zomo)')" class="p-4 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 text-center transition space-y-1">
+          <div class="text-2xl">👵🏽👑</div>
+          <div class="font-extrabold text-kalfu-800 text-sm">Papay</div>
+          <div class="text-[11px] text-slate-500">Anciana venerable</div>
+        </button>
+
+        <button onclick="playGreeting('Mari mari chachay', 'Trato de profundo respeto a hombre adulto mayor (fücha wentxu)')" class="p-4 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 text-center transition space-y-1">
+          <div class="text-2xl">👴🏽👑</div>
+          <div class="font-extrabold text-kalfu-800 text-sm">Chachay</div>
+          <div class="text-[11px] text-slate-500">Anciano venerable</div>
+        </button>
+      </div>
+
+      <!-- Cuadro de reproducción de saludo -->
+      <div id="greeting-box" class="p-4 rounded-xl bg-kalfu-50 border border-kalfu-100 flex items-center justify-between">
+        <div>
+          <span id="greeting-text" class="text-lg font-black text-kalfu-900">Mari mari kom pu che</span>
+          <p id="greeting-desc" class="text-xs text-slate-600">Saludo general a todas y todos los presentes.</p>
+        </div>
+        <button onclick="replayGreeting()" class="px-4 py-2 bg-kalfu-800 text-white rounded-lg text-xs font-bold shadow hover:bg-kalfu-700">
+          🔊 Escuchar Saludo
+        </button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: JUEGO INTERACTIVO DE MEMES DE GATOS (KIMELTUN 2) -->
+    <section id="verbos" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <h3 class="text-2xl font-black text-kalfu-800 flex items-center gap-2">
+          <span>🐱</span> Awkantun: Los Memes y la Acción en Primera Persona (*Inche*)
+        </h3>
+        <p class="text-slate-600 text-sm mt-1">Asocia cada meme del Kimeltun 2 con su verbo conjugado en 1ª persona singular (-n).</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tarjeta 1: Caminar -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-slate-50 flex flex-col">
+          <div class="h-44 bg-slate-200 flex items-center justify-center text-5xl">🐈‍⬛ 🚶🏽</div>
+          <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-xs uppercase font-bold text-slate-400">Acción corporal</span>
+              <h4 class="font-black text-slate-800 text-base">Gato caminando erguido</h4>
+            </div>
+            <div class="space-y-1">
+              <button onclick="checkMeme(this, true, '¡May! Inche txekan = Yo caminé')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">A) Inche txekan (Yo caminé)</button>
+              <button onclick="checkMeme(this, false, 'Inche zugun significa yo hablé')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">B) Inche zugun (Yo hablé)</button>
+              <button onclick="checkMeme(this, false, 'Inche lelin significa yo miré')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">C) Inche lelin (Yo miré)</button>
+            </div>
+            <p class="text-[11px] font-bold text-emerald-700 hidden feedback"></p>
+          </div>
         </div>
 
-        <!-- OPCIONES INTERACTIVAS -->
+        <!-- Tarjeta 2: Mirar fijamente -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-slate-50 flex flex-col">
+          <div class="h-44 bg-slate-200 flex items-center justify-center text-5xl">🐱 👀</div>
+          <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-xs uppercase font-bold text-slate-400">Acción visual</span>
+              <h4 class="font-black text-slate-800 text-base">Gato mirando fijo a la cámara</h4>
+            </div>
+            <div class="space-y-1">
+              <button onclick="checkMeme(this, false, 'Inche txipan significa yo salí')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">A) Inche txipan (Yo salí)</button>
+              <button onclick="checkMeme(this, true, '¡May! Inche lelin = Yo miré')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">B) Inche lelin (Yo miré)</button>
+              <button onclick="checkMeme(this, false, 'Inche purun significa yo bailé')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">C) Inche purun (Yo bailé)</button>
+            </div>
+            <p class="text-[11px] font-bold text-emerald-700 hidden feedback"></p>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Correr apresurado -->
+        <div class="border border-slate-200 rounded-xl overflow-hidden shadow-sm bg-slate-50 flex flex-col">
+          <div class="h-44 bg-slate-200 flex items-center justify-center text-5xl">🐈 💨</div>
+          <div class="p-4 flex-1 flex flex-col justify-between space-y-3">
+            <div>
+              <span class="text-xs uppercase font-bold text-slate-400">Acción de traslación</span>
+              <h4 class="font-black text-slate-800 text-base">Gatito corriendo a toda prisa</h4>
+            </div>
+            <div class="space-y-1">
+              <button onclick="checkMeme(this, false, 'Inche alkütun significa yo escuché')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">A) Inche alkütun (Yo escuché)</button>
+              <button onclick="checkMeme(this, false, 'Inche pigen significa me llaman')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">B) Inche pigen (Me llaman)</button>
+              <button onclick="checkMeme(this, true, '¡May! Inche txipan = Yo salí (o lefün = corrí)')" class="w-full py-2 px-3 text-xs font-bold text-left rounded bg-white border border-slate-200 hover:bg-blue-50">C) Inche txipan (Yo salí)</button>
+            </div>
+            <p class="text-[11px] font-bold text-emerald-700 hidden feedback"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: SIMULADOR DE SEMÁFORO (KIMELTUN 3 · AWKANTUN 2) -->
+    <section id="semaforo" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <h3 class="text-2xl font-black text-kalfu-800 flex items-center gap-2">
+          <span>🚦</span> Awkantun de Pronombres · Rojo, Azul y Verde
+        </h3>
+        <p class="text-slate-600 text-sm mt-1">Identifica quién realiza la acción según la terminación verbal (-n / -imi / -i).</p>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center space-y-4 max-w-xl mx-auto">
+        <span class="text-xs uppercase font-extrabold text-slate-400 tracking-wider">Verbo proyectado</span>
+        <div id="semaforo-verb" class="text-3xl font-black text-kalfu-800 tracking-wide bg-white py-4 rounded-xl border border-slate-200 shadow-sm">
+          zuguimi
+        </div>
+        <p id="semaforo-prompt" class="text-sm text-slate-600 font-medium">¿Quién realiza la acción?</p>
+
+        <div class="grid grid-cols-3 gap-3 pt-2">
+          <button onclick="checkSemaforo('inche')" class="py-3 px-2 rounded-xl bg-kelu text-white font-extrabold text-sm shadow hover:opacity-90 transition">
+            🔴 Inche (-n)<br><span class="text-[10px] font-normal">Yo</span>
+          </button>
+          <button onclick="checkSemaforo('eimi')" class="py-3 px-2 rounded-xl bg-kalfu-700 text-white font-extrabold text-sm shadow hover:opacity-90 transition">
+            🔵 Eimi (-imi)<br><span class="text-[10px] font-normal">Tú</span>
+          </button>
+          <button onclick="checkSemaforo('fey')" class="py-3 px-2 rounded-xl bg-karu text-white font-extrabold text-sm shadow hover:opacity-90 transition">
+            🟢 Fey (-i)<br><span class="text-[10px] font-normal">Él / Ella</span>
+          </button>
+        </div>
+
+        <div id="semaforo-feedback" class="text-xs font-black min-h-[20px] pt-1"></div>
+        <button onclick="nextSemaforoWord()" class="px-4 py-2 bg-slate-800 text-white rounded-lg text-xs font-bold hover:bg-slate-700 transition">
+          Siguiente Verbo ↻
+        </button>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: CALCULADORA Y CONVERSOR DE RAKIN -->
+    <section id="rakin" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <h3 class="text-2xl font-black text-kalfu-800 flex items-center gap-2">
+          <span>🔢</span> Rakin · Los Números en Mapuzugun
+        </h3>
+        <p class="text-slate-600 text-sm mt-1">Ingresa tu edad o cualquier número para obtener su traducción exacta en Azümchefe.</p>
+      </div>
+
+      <div class="max-w-md mx-auto space-y-4">
+        <div class="flex gap-2">
+          <input type="number" id="num-input" min="1" max="999" value="28" class="flex-1 px-4 py-2.5 rounded-xl border border-slate-300 font-bold text-center text-lg focus:outline-none focus:border-kalfu-500 shadow-sm" placeholder="Ej: 28">
+          <button onclick="convertNumber()" class="px-5 py-2.5 bg-kalfu-800 text-white rounded-xl font-bold text-sm shadow hover:bg-kalfu-700 transition">
+            Traducir Rakin
+          </button>
+        </div>
+
+        <div class="p-4 rounded-xl bg-blue-50 border border-blue-100 text-center space-y-1">
+          <span class="text-xs font-bold text-slate-500 uppercase">En Mapuzugun:</span>
+          <div id="rakin-result" class="text-xl font-black text-kalfu-800">epu mari pura</div>
+          <div id="rakin-age" class="text-xs text-slate-600 italic">«Inche epu mari pura txipantü nien» (Tengo 28 años)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: CONSTRUCTOR DE PRESENTACIÓN PERSONAL (8 PASOS) -->
+    <section id="presentacion" class="bg-white rounded-2xl shadow-md border border-slate-200 p-6 md:p-8 space-y-6">
+      <div class="border-b border-slate-200 pb-4">
+        <h3 class="text-2xl font-black text-kalfu-800 flex items-center gap-2">
+          <span>📝</span> Constructor Guiado de Presentación Personal
+        </h3>
+        <p class="text-slate-600 text-sm mt-1">Completa los 8 pasos reglamentarios para generar tu presentación oral completa.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="space-y-3">
-          <p class="text-sm text-slate-300 font-medium mb-2">¿Cómo dice el gato en Mapuzugun?</p>
-          <div id="options-container" class="grid grid-cols-1 gap-3">
-            <!-- Opciones renderizadas con JS -->
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">1. Tu Nombre (Üy):</label>
+            <input type="text" id="p-nombre" value="Antü" oninput="updateProfile()" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-kalfu-500">
           </div>
-          <div id="feedback-msg" class="min-h-[28px] text-sm font-bold text-center mt-3"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 4: AWKANTUN DE COLORES - INCHE / EIMI / FEY (PPT 3) -->
-    <section id="awkantun" class="scroll-mt-6 bg-white rounded-2xl shadow-md border border-slate-200 p-6">
-      <div class="border-b border-slate-200 pb-4 mb-6">
-        <span class="text-xs font-bold text-kalfu-700 uppercase tracking-wider bg-blue-100 px-2.5 py-1 rounded">Kimeltun 3 · Awkantun 2</span>
-        <h2 class="font-title text-2xl font-bold text-kalfu-800 mt-1">Semáforo de Pronombres: Inche · Eimi · Fey</h2>
-        <p class="text-sm text-slate-600">Apunta y levanta tu color. Identifica la terminación verbal (-n / -imi / -i) y presiona la tarjeta correspondiente.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-        <div class="lg:col-span-1 bg-slate-50 border rounded-xl p-5">
-          <h3 class="font-bold text-slate-800 text-sm mb-3">Código de Colores de Aula:</h3>
-          <ul class="space-y-2 text-xs">
-            <li class="flex items-center gap-2 p-2 rounded-lg bg-red-50 border border-red-200 text-red-900 font-semibold">
-              <span class="w-4 h-4 rounded-full bg-red-500 flex-shrink-0"></span>
-              <span><strong>ROJO (Inche / Yo):</strong> Terminación <strong>-n</strong> (zugun, amun, mülen)</span>
-            </li>
-            <li class="flex items-center gap-2 p-2 rounded-lg bg-blue-50 border border-blue-200 text-blue-900 font-semibold">
-              <span class="w-4 h-4 rounded-full bg-blue-600 flex-shrink-0"></span>
-              <span><strong>AZUL (Eimi / Tú):</strong> Terminación <strong>-imi</strong> (zuguimi, amuimi, müleimi)</span>
-            </li>
-            <li class="flex items-center gap-2 p-2 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 font-semibold">
-              <span class="w-4 h-4 rounded-full bg-emerald-500 flex-shrink-0"></span>
-              <span><strong>VERDE (Fey / Él o Ella):</strong> Terminación <strong>-i</strong> (zugui, amui, mülei)</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- ÁREA DE JUEGO -->
-        <div class="lg:col-span-2 text-center p-6 bg-slate-100 rounded-2xl border border-slate-300">
-          <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Verbo proyectado en la pizarra:</span>
-          <div id="target-verb" class="text-3xl sm:text-4xl font-extrabold text-kalfu-900 my-4 tracking-wide font-mono">
-            allkütuimi
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">2. Tu Edad en Números:</label>
+            <input type="number" id="p-edad" value="25" oninput="updateProfile()" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-kalfu-500">
           </div>
-          <p id="target-gloss" class="text-sm text-slate-600 italic mb-6">«escuchaste»</p>
-
-          <div class="grid grid-cols-3 gap-3 max-w-md mx-auto">
-            <button onclick="checkPronoun('inche')" class="py-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-black text-sm sm:text-base shadow-md transition active:scale-95">
-              INCHE<br><span class="text-xs font-normal opacity-80">Yo (-n)</span>
-            </button>
-            <button onclick="checkPronoun('eimi')" class="py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-black text-sm sm:text-base shadow-md transition active:scale-95">
-              EIMI<br><span class="text-xs font-normal opacity-80">Tú (-imi)</span>
-            </button>
-            <button onclick="checkPronoun('fey')" class="py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm sm:text-base shadow-md transition active:scale-95">
-              FEY<br><span class="text-xs font-normal opacity-80">Él/Ella (-i)</span>
-            </button>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">3. Tuwün (Territorio de origen):</label>
+            <input type="text" id="p-tuwun" value="Lumako" oninput="updateProfile()" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-kalfu-500" placeholder="Ej: Temuko, Lumako, Curicó">
           </div>
-
-          <div id="pronoun-feedback" class="mt-4 font-bold text-sm min-h-[24px]"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 5: RAKIN - CALCULADORA Y CONVERSOR DE NÚMEROS (GUÍA 1 & PPT 2) -->
-    <section id="rakin" class="scroll-mt-6 bg-white rounded-2xl shadow-md border border-slate-200 p-6">
-      <div class="border-b border-slate-200 pb-4 mb-6">
-        <span class="text-xs font-bold text-kalfu-700 uppercase tracking-wider bg-blue-100 px-2.5 py-1 rounded">Módulo 3 · Rakin</span>
-        <h2 class="font-title text-2xl font-bold text-kalfu-800 mt-1">Rakin: Números y Cálculo de Edad</h2>
-        <p class="text-sm text-slate-600">Ingresa cualquier cifra (del 1 al 9.999) para ver cómo se compone con base decimal en Mapuzugun y cómo se expresa para la edad.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <label for="num-input" class="block text-sm font-bold text-slate-700 mb-2">Escribe un número:</label>
-          <div class="flex gap-3">
-            <input type="number" id="num-input" value="28" min="1" max="9999" class="w-full px-4 py-3 rounded-xl border border-slate-300 text-xl font-bold text-kalfu-800 focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="Ej. 28">
-            <button onclick="convertNumber()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition flex items-center gap-2">
-              <i class="fa-solid fa-sync"></i> Traducir
-            </button>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">4. Küpan (Linaje familiar / Apellidos):</label>
+            <input type="text" id="p-kupan" value="Painemal ka Huenchumil" oninput="updateProfile()" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-kalfu-500">
           </div>
-          <div class="flex flex-wrap gap-2 mt-3">
-            <span class="text-xs text-slate-500 font-semibold self-center">Prueba rápida:</span>
-            <button onclick="setQuickNum(11)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-xs">11</button>
-            <button onclick="setQuickNum(20)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-xs">20</button>
-            <button onclick="setQuickNum(35)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-xs">35</button>
-            <button onclick="setQuickNum(100)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-xs">100</button>
-            <button onclick="setQuickNum(2026)" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 rounded text-xs">2026</button>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 uppercase mb-1">5. Mülen (Donde vives hoy):</label>
+            <input type="text" id="p-mulen" value="Pudahuel" oninput="updateProfile()" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-sm focus:border-kalfu-500">
           </div>
         </div>
 
-        <!-- TARJETA DE RESULTADO -->
-        <div class="bg-blue-50 border-2 border-kalfu-500 rounded-2xl p-6">
-          <span class="text-xs font-bold text-kalfu-700 uppercase tracking-wider">Resultado en Mapuzugun:</span>
-          <div id="result-mapu" class="text-2xl font-black text-kalfu-900 mt-2 mb-1">epu mari pura</div>
-          <div id="result-breakdown" class="text-xs text-slate-600 mb-4">Desglose: (2 x 10) + 8 = epu mari pura</div>
-
-          <div class="pt-4 border-t border-blue-200">
-            <span class="text-xs font-semibold text-slate-600">Para decir tu edad en tu presentación personal:</span>
-            <div id="result-age" class="text-base font-bold text-blue-950 mt-1 italic">
-              «Inche epu mari pura txipantü nien.»
+        <!-- Tarjeta de Salida -->
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
+              <span class="text-xs font-extrabold uppercase text-kalfu-800">Discurso Completo (8 Pasos)</span>
+              <button onclick="copyPresentation()" class="text-xs text-kalfu-600 font-bold hover:underline">Copiar texto</button>
             </div>
+            <p id="presentation-output" class="text-sm text-slate-700 leading-relaxed font-medium font-serif bg-white p-4 rounded-lg border border-slate-200 shadow-inner">
+              Mari mari kom pu che. Inche Antü pigen. Epu mari kechu txipantü nien. Tañi tuwün Lumako mapu mew. Tañi küpan Painemal ka Huenchumil. Fachantü Pudahuel mew mülen. Fachantü kümelkalen. Fey mütem. Mañum.
+            </p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 6: SIMULADOR DE PRESENTACIÓN PERSONAL (8 PASOS) -->
-    <section id="kizu" class="scroll-mt-6 bg-white rounded-2xl shadow-md border border-slate-200 p-6">
-      <div class="border-b border-slate-200 pb-4 mb-6">
-        <span class="text-xs font-bold text-kalfu-700 uppercase tracking-wider bg-blue-100 px-2.5 py-1 rounded">Módulo 4 · Discurso Canónico</span>
-        <h2 class="font-title text-2xl font-bold text-kalfu-800 mt-1">Generador de Presentación Personal (8 Pasos)</h2>
-        <p class="text-sm text-slate-600">Completa tus datos identitarios para generar tu presentación canónica completa lista para ensayar.</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- FORMULARIO -->
-        <div class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">1. Tu Nombre (Üy):</label>
-            <input type="text" id="kizu-name" value="Ayelen" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">2. Tu Edad en Números:</label>
-            <input type="number" id="kizu-age" value="24" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">3. Tu Origen Territorial (Tuwün):</label>
-            <input type="text" id="kizu-tuwun" value="Temuko waria" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500" placeholder="Ej: Lumako mapu / Temuko waria">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">4. Tu Linaje / Apellidos (Küpan):</label>
-            <input type="text" id="kizu-kupan" value="Painemal ka Catrileo" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500" placeholder="Ej: Painemal ka Curimil">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">5. Lugar donde vives hoy (Mülen):</label>
-            <input type="text" id="kizu-mulen" value="Santiago" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500" placeholder="Ej: Santiago / Pudahuel">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">6. Estado actual:</label>
-            <select id="kizu-state" class="w-full px-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-blue-500">
-              <option value="kümelkalen">Fachantü kümelkalen (Hoy me encuentro bien)</option>
-              <option value="txemolen">Fachantü txemolen (Hoy estoy bien de salud)</option>
-            </select>
-          </div>
-          <button onclick="generateKizuText()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow flex items-center justify-center gap-2">
-            <i class="fa-solid fa-wand-magic-sparkles"></i> Generar Presentación en Mapuzugun
+          <button onclick="readPresentationOral()" class="w-full py-2.5 bg-kalfu-800 text-white rounded-lg font-bold text-xs shadow hover:bg-kalfu-700 transition flex items-center justify-center gap-2">
+            <span>🔊</span> Practicar Lectura Oral Guiada
           </button>
-        </div>
-
-        <!-- VISTA PREVIA Y LECTURA -->
-        <div class="bg-slate-50 border border-slate-300 rounded-2xl p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-center mb-3">
-              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Discurso Canónico Generado:</span>
-              <button onclick="copyKizuText()" class="text-xs text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1">
-                <i class="fa-regular fa-copy"></i> Copiar texto
-              </button>
-            </div>
-            <div id="kizu-output" class="bg-white p-5 rounded-xl border border-slate-200 text-base leading-relaxed font-serif text-slate-900 shadow-inner min-h-[180px]">
-              «Mari mari kom pu che. Inche Ayelen pigen. Epu mari meli txipantü nien. Tañi tuwün Temuko waria mew. Tañi küpan Painemal ka Catrileo. Fachantü Santiago mew mülen. Fachantü kümelkalen. Fey mütem. Mañum.»
-            </div>
-          </div>
-          <div class="mt-4 pt-4 border-t border-slate-200 flex gap-3">
-            <button onclick="speakKizu()" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded-xl transition shadow flex items-center justify-center gap-2 text-sm">
-              <i class="fa-solid fa-volume-high"></i> Practicar Lectura en Voz Alta
-            </button>
-          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-slate-900 text-slate-400 py-8 px-4 text-center text-xs border-t-2 border-slate-800 mt-12">
-    <div class="max-w-7xl mx-auto space-y-2">
-      <p class="font-title text-sm text-slate-200">Taller de Mapuzugun · Nivel Básico · Universidad de Chile</p>
-      <p>Material educativo desarrollado para revitalización y adquisición activa de segundas lenguas (SLA).</p>
-      <p class="text-slate-500">Listo para publicar en GitHub Pages o Netlify · Grafemario oficial Azümchefe.</p>
+  <!-- PIE DE PÁGINA KALFÜ -->
+  <footer class="bg-kalfu-900 text-white py-6 border-t-2 border-choz">
+    <div class="max-w-6xl mx-auto px-4 text-center text-xs text-blue-200 space-y-1">
+      <p class="font-bold text-white">Taller de Mapuzugun Nivel Básico · «Iney am ta inche mapuzugun mew»</p>
+      <p>Kimelfe: Cristián Milla Curiñanco · Universidad de Chile</p>
+      <p class="text-[10px] text-blue-300">Diseñado bajo estándares de Adquisición de Segundas Lenguas (SLA) y Grafemario Oficial Azümchefe.</p>
     </div>
   </footer>
 
-  <!-- LÓGICA JAVASCRIPT AUTOCONTENIDA -->
+  <!-- LÓGICA INTERACTIVA EN JAVASCRIPT -->
   <script>
-    // 1. SÍNTESIS DE VOZ
-    function speakText(text, lang) {
+    // Sintetizador de voz fonético
+    function speakMapuche(phoneme, word) {
       if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 0.85; // velocidad pausada para captar fonética
-        utterance.pitch = 1.0;
-        utterance.lang = 'es-CL'; // aproximación fonética más limpia en sintetizadores hispanos
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert("Tu navegador no soporta síntesis de audio.");
+        const utter = new SpeechSynthesisUtterance(word);
+        utter.lang = 'es-CL';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
       }
     }
 
-    // 2. SIMULADOR DE DIÁLOGO
-    const dialogueSteps = [
-      { speaker: 'A', mapu: 'Mari mari lamgen.', es: 'Hola lamgen (hermana/o).' },
-      { speaker: 'B', mapu: 'Mari mari lamgen. ¿Chumleimi?', es: 'Hola lamgen. ¿Cómo estás tú?' },
-      { speaker: 'A', mapu: 'Kümelkalen. ¿Eimi kay?', es: 'Estoy bien. ¿Y tú?' },
-      { speaker: 'B', mapu: 'Inche ka kümelkalen.', es: 'Yo también estoy bien.' },
-      { speaker: 'A', mapu: 'Feley. Pewkayal lamgen.', es: 'De acuerdo. Hasta pronto lamgen.' }
+    // Saludos relacionales
+    let currentGreeting = "Mari mari kom pu che";
+    function playGreeting(text, desc) {
+      currentGreeting = text;
+      document.getElementById('greeting-text').innerText = text;
+      document.getElementById('greeting-desc').innerText = desc;
+      replayGreeting();
+    }
+    function replayGreeting() {
+      if ('speechSynthesis' in window) {
+        const utter = new SpeechSynthesisUtterance(currentGreeting);
+        utter.lang = 'es-CL';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
+      }
+    }
+
+    // Minijuego Memes
+    function checkMeme(btn, isCorrect, feedbackText) {
+      const container = btn.closest('.p-4');
+      const fb = container.querySelector('.feedback');
+      fb.classList.remove('hidden');
+      if (isCorrect) {
+        fb.className = "text-[11px] font-bold text-emerald-700 pt-2 block";
+        fb.innerText = feedbackText;
+        btn.classList.add('bg-emerald-100', 'border-emerald-400');
+      } else {
+        fb.className = "text-[11px] font-bold text-rose-700 pt-2 block";
+        fb.innerText = "Revisa de nuevo: " + feedbackText;
+        btn.classList.add('bg-rose-100', 'border-rose-400');
+      }
+    }
+
+    // Semáforo de Pronombres
+    const semaforoList = [
+      { verb: 'zuguimi', person: 'eimi', text: 'Eimi zuguimi = Tú hablaste' },
+      { verb: 'zugun', person: 'inche', text: 'Inche zugun = Yo hablé' },
+      { verb: 'zugui', person: 'fey', text: 'Fey zugui = Él/Ella habló' },
+      { verb: 'küpan', person: 'inche', text: 'Inche küpan = Yo vine' },
+      { verb: 'amuimi', person: 'eimi', text: 'Eimi amuimi = Tú fuiste' },
+      { verb: 'amui', person: 'fey', text: 'Fey amui = Él/Ella fue' },
+      { verb: 'azümimi', person: 'eimi', text: 'Eimi azümimi = Tú entendiste' },
+      { verb: 'mülen', person: 'inche', text: 'Inche mülen = Yo estoy' }
     ];
-    let currentStep = 0;
+    let semaforoIndex = 0;
 
-    function renderDialogue() {
-      const container = document.getElementById('dialogue-container');
-      container.innerHTML = '';
-      for (let i = 0; i < currentStep; i++) {
-        const item = dialogueSteps[i];
-        const row = document.createElement('div');
-        row.className = 'flex items-start gap-3 p-3 rounded-xl bg-white border border-slate-200 shadow-sm animate-fade-in';
-        row.innerHTML = `
-          <div class="w-8 h-8 rounded-full ${item.speaker === 'A' ? 'bg-blue-600' : 'bg-emerald-600'} text-white font-bold flex items-center justify-center flex-shrink-0 text-sm">
-            ${item.speaker}
-          </div>
-          <div class="flex-1">
-            <div class="text-base font-bold text-slate-900">${item.mapu}</div>
-            <div class="text-xs text-slate-500 italic mt-0.5">${item.es}</div>
-          </div>
-          <button onclick="speakText('${item.mapu}', 'map')" class="text-slate-400 hover:text-blue-600 p-1.5 transition">
-            <i class="fa-solid fa-volume-high text-sm"></i>
-          </button>
-        `;
-        container.appendChild(row);
-      }
-      const nextBtn = document.getElementById('btn-next-step');
-      if (currentStep >= dialogueSteps.length) {
-        nextBtn.disabled = true;
-        nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    function checkSemaforo(selected) {
+      const current = semaforoList[semaforoIndex];
+      const fb = document.getElementById('semaforo-feedback');
+      if (selected === current.person) {
+        fb.innerText = "¡KÜMEY! (Correcto) " + current.text;
+        fb.className = "text-xs font-black text-emerald-600 min-h-[20px] pt-1";
       } else {
-        nextBtn.disabled = false;
-        nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        fb.innerText = "¡Welulay! Recuerda la terminación: -n (inche), -imi (eimi), -i (fey).";
+        fb.className = "text-xs font-black text-rose-600 min-h-[20px] pt-1";
       }
     }
 
-    function advanceDialogue() {
-      if (currentStep < dialogueSteps.length) {
-        currentStep++;
-        renderDialogue();
-        speakText(dialogueSteps[currentStep - 1].mapu, 'map');
-      }
+    function nextSemaforoWord() {
+      semaforoIndex = (semaforoIndex + 1) % semaforoList.length;
+      document.getElementById('semaforo-verb').innerText = semaforoList[semaforoIndex].verb;
+      document.getElementById('semaforo-feedback').innerText = "";
     }
 
-    function resetDialogue() {
-      currentStep = 0;
-      renderDialogue();
-    }
-
-    function playFullDialogue() {
-      currentStep = dialogueSteps.length;
-      renderDialogue();
-      let fullText = dialogueSteps.map(d => d.mapu).join('. ');
-      speakText(fullText, 'map');
-    }
-
-    // Inicializar diálogo al cargar
-    currentStep = 2;
-    renderDialogue();
-
-    // 3. MINIJUEGO DE MEMES DE GATOS (PPT 2)
-    const memeQuestions = [
-      {
-        emoji: '🐱💨',
-        desc: 'Gato corriendo a toda velocidad por el pasillo',
-        correct: 'Inche txipan',
-        options: ['Inche txipan', 'Inche zugun', 'Inche lelin'],
-        feedback: '¡Feyti! «Inche txipan» significa "yo salí / yo corrí afuera".'
-      },
-      {
-        emoji: '🐱🗣️',
-        desc: 'Gato maullando como si estuviera dando un discurso',
-        correct: 'Inche zugun',
-        options: ['Inche purun', 'Inche zugun', 'Inche txekan'],
-        feedback: '¡May! «Inche zugun» significa "yo hablé".'
-      },
-      {
-        emoji: '🐱👀',
-        desc: 'Gato con ojos gigantes mirando fijamente a la cámara',
-        correct: 'Inche lelin',
-        options: ['Inche allkütun', 'Inche lelin', 'Inche pin'],
-        feedback: '¡Küme! «Inche lelin» significa "yo miré".'
-      },
-      {
-        emoji: '🐱🚶',
-        desc: 'Gato caminando erguido en dos patas de forma cómica',
-        correct: 'Inche txekan',
-        options: ['Inche txekan', 'Inche pigen', 'Inche purun'],
-        feedback: '¡Feley! «Inche txekan» significa "yo caminé".'
-      },
-      {
-        emoji: '🐱🕺',
-        desc: 'Gato haciendo una pose de baile extravagante',
-        correct: 'Inche purun',
-        options: ['Inche zugun', 'Inche purun', 'Inche txipan'],
-        feedback: '¡Rume kümey! «Inche purun» significa "yo bailé".'
-      },
-      {
-        emoji: '🐱👂',
-        desc: 'Gato con las orejas paradas escuchando un sonido lejano',
-        correct: 'Inche allkütun',
-        options: ['Inche allkütun', 'Inche lelin', 'Inche pin'],
-        feedback: '¡Allkütun! «Inche allkütun» significa "yo escuché".'
+    // Conversor Rakin
+    const rakinUnits = ["", "kiñe", "epu", "küla", "meli", "kechu", "kayu", "regle", "pura", "aylla"];
+    function getRakin(n) {
+      if (n <= 0) return "—";
+      if (n === 10) return "mari";
+      if (n < 10) return rakinUnits[n];
+      if (n < 20) return "mari " + rakinUnits[n % 10];
+      if (n < 100) {
+        const tens = Math.floor(n / 10);
+        const unit = n % 10;
+        return rakinUnits[tens] + " mari" + (unit > 0 ? " " + rakinUnits[unit] : "");
       }
-    ];
-
-    let currentMemeIndex = 0;
-    let score = 0;
-
-    function renderMemeQuestion() {
-      const q = memeQuestions[currentMemeIndex];
-      document.getElementById('meme-emoji').textContent = q.emoji;
-      document.getElementById('meme-desc').textContent = `"${q.desc}"`;
-      document.getElementById('feedback-msg').textContent = '';
-      
-      const container = document.getElementById('options-container');
-      container.innerHTML = '';
-      
-      q.options.forEach(opt => {
-        const btn = document.createElement('button');
-        btn.className = 'w-full py-3 px-4 text-left rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 font-bold text-white transition flex justify-between items-center';
-        btn.innerHTML = `<span>${opt}</span> <i class="fa-solid fa-arrow-right text-xs opacity-50"></i>`;
-        btn.onclick = () => handleMemeAnswer(opt);
-        container.appendChild(btn);
-      });
-      document.getElementById('game-score').textContent = `${score} / ${memeQuestions.length}`;
-    }
-
-    function handleMemeAnswer(selected) {
-      const q = memeQuestions[currentMemeIndex];
-      const feedback = document.getElementById('feedback-msg');
-      if (selected === q.correct) {
-        score++;
-        feedback.className = 'text-emerald-400 font-bold';
-        feedback.textContent = `¡Correcto! ${q.feedback}`;
-        speakText(q.correct, 'map');
-      } else {
-        feedback.className = 'text-rose-400 font-bold';
-        feedback.textContent = `Incorrecto. La respuesta era «${q.correct}».`;
-      }
-      setTimeout(() => {
-        currentMemeIndex = (currentMemeIndex + 1) % memeQuestions.length;
-        renderMemeQuestion();
-      }, 1500);
-    }
-
-    renderMemeQuestion();
-
-    // 4. AWKANTUN DE PRONOMBRES (INCHE/EIMI/FEY)
-    const verbsToTest = [
-      { verb: 'allkütuimi', gloss: 'escuchaste', pronoun: 'eimi' },
-      { verb: 'mülen', gloss: 'estoy / vivo', pronoun: 'inche' },
-      { verb: 'zugui', gloss: 'habló', pronoun: 'fey' },
-      { verb: 'azümimi', gloss: 'entendiste', pronoun: 'eimi' },
-      { verb: 'küzawün', gloss: 'trabajé', pronoun: 'inche' },
-      { verb: 'küpai', gloss: 'vino', pronoun: 'fey' },
-      { verb: 'txipaimi', gloss: 'saliste', pronoun: 'eimi' },
-      { verb: 'ülkantun', gloss: 'canté', pronoun: 'inche' },
-      { verb: 'putui', gloss: 'tomó', pronoun: 'fey' }
-    ];
-    let currentVerbIdx = 0;
-
-    function renderVerbTest() {
-      const v = verbsToTest[currentVerbIdx];
-      document.getElementById('target-verb').textContent = v.verb;
-      document.getElementById('target-gloss').textContent = `«${v.gloss}»`;
-      document.getElementById('pronoun-feedback').textContent = '';
-    }
-
-    function checkPronoun(selected) {
-      const v = verbsToTest[currentVerbIdx];
-      const fb = document.getElementById('pronoun-feedback');
-      if (selected === v.pronoun) {
-        fb.className = 'mt-4 font-bold text-sm text-emerald-600';
-        fb.textContent = `¡Muy bien! «${v.verb}» corresponde a ${v.pronoun.toUpperCase()}.`;
-        speakText(v.verb, 'map');
-      } else {
-        fb.className = 'mt-4 font-bold text-sm text-red-600';
-        fb.textContent = `¡Ojo con la desinencia! Corresponde a ${v.pronoun.toUpperCase()}.`;
-      }
-      setTimeout(() => {
-        currentVerbIdx = (currentVerbIdx + 1) % verbsToTest.length;
-        renderVerbTest();
-      }, 1300);
-    }
-
-    renderVerbTest();
-
-    // 5. RAKIN / CONVERSOR DE NÚMEROS
-    const unitNames = ['', 'kiñe', 'epu', 'küla', 'meli', 'kechu', 'kayu', 'regle', 'pura', 'aylla'];
-
-    function numberToMapu(n) {
-      if (n < 1 || n > 9999) return 'Número fuera de rango (1-9999)';
-      if (n === 10) return 'mari';
-      if (n === 100) return 'pataka';
-      if (n === 1000) return 'warangka';
-
-      let parts = [];
-
-      // Miles
-      const thousands = Math.floor(n / 1000);
-      if (thousands > 0) {
-        if (thousands === 1) parts.push('warangka');
-        else parts.push(`${numberToMapu(thousands)} warangka`);
-      }
-      let rem = n % 1000;
-
-      // Cientos
-      const hundreds = Math.floor(rem / 100);
-      if (hundreds > 0) {
-        if (hundreds === 1) parts.push('pataka');
-        else parts.push(`${unitNames[hundreds]} pataka`);
-      }
-      rem = rem % 100;
-
-      // Decenas y unidades
-      const tens = Math.floor(rem / 10);
-      const units = rem % 10;
-
-      if (tens > 0) {
-        if (tens === 1) parts.push('mari');
-        else parts.push(`${unitNames[tens]} mari`);
-      }
-
-      if (units > 0) {
-        parts.push(unitNames[units]);
-      }
-
-      return parts.join(' ');
+      return n.toString();
     }
 
     function convertNumber() {
-      const val = parseInt(document.getElementById('num-input').value, 10);
-      if (isNaN(val)) return;
-      const mapuStr = numberToMapu(val);
-      document.getElementById('result-mapu').textContent = mapuStr;
-      document.getElementById('result-breakdown').textContent = `Desglose sistemático: ${val} = ${mapuStr}`;
-      document.getElementById('result-age').textContent = `«Inche ${mapuStr} txipantü nien.»`;
-      speakText(mapuStr, 'map');
+      const val = parseInt(document.getElementById('num-input').value) || 1;
+      const r = getRakin(val);
+      document.getElementById('rakin-result').innerText = r;
+      document.getElementById('rakin-age').innerText = `«Inche ${r} txipantü nien» (Tengo ${val} años)`;
     }
 
-    function setQuickNum(n) {
-      document.getElementById('num-input').value = n;
-      convertNumber();
+    // Constructor de presentación personal
+    function updateProfile() {
+      const nombre = document.getElementById('p-nombre').value || "______";
+      const edadVal = parseInt(document.getElementById('p-edad').value) || 0;
+      const edadRakin = getRakin(edadVal) || "______";
+      const tuwun = document.getElementById('p-tuwun').value || "______";
+      const kupan = document.getElementById('p-kupan').value || "______";
+      const mulen = document.getElementById('p-mulen').value || "______";
+
+      const txt = `Mari mari kom pu che. Inche ${nombre} pigen. ${edadRakin} txipantü nien. Tañi tuwün ${tuwun} mapu mew. Tañi küpan ${kupan}. Fachantü ${mulen} mew mülen. Fachantü kümelkalen. Fey mütem. Mañum.`;
+      document.getElementById('presentation-output').innerText = txt;
     }
 
-    // 6. GENERADOR DE PRESENTACIÓN PERSONAL
-    function generateKizuText() {
-      const name = document.getElementById('kizu-name').value.trim() || 'Antü';
-      const ageNum = parseInt(document.getElementById('kizu-age').value, 10) || 20;
-      const tuwun = document.getElementById('kizu-tuwun').value.trim() || 'Lumako mapu';
-      const kupan = document.getElementById('kizu-kupan').value.trim() || 'Painemal';
-      const mulen = document.getElementById('kizu-mulen').value.trim() || 'Santiago';
-      const state = document.getElementById('kizu-state').value;
-
-      const ageMapu = numberToMapu(ageNum);
-
-      const fullText = `«Mari mari kom pu che. Inche ${name} pigen. ${ageMapu} txipantü nien. Tañi tuwün ${tuwun} mew. Tañi küpan ${kupan}. Fachantü ${mulen} mew mülen. Fachantü ${state}. Fey mütem. Mañum.»`;
-      
-      document.getElementById('kizu-output').textContent = fullText;
+    function copyPresentation() {
+      const txt = document.getElementById('presentation-output').innerText;
+      navigator.clipboard.writeText(txt);
+      alert("¡Texto copiado al portapapeles!");
     }
 
-    function copyKizuText() {
-      const text = document.getElementById('kizu-output').textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        alert("Texto copiado al portapapeles. ¡Listo para ensayar!");
-      });
-    }
-
-    function speakKizu() {
-      const text = document.getElementById('kizu-output').textContent;
-      speakText(text, 'map');
+    function readPresentationOral() {
+      const txt = document.getElementById('presentation-output').innerText;
+      if ('speechSynthesis' in window) {
+        const utter = new SpeechSynthesisUtterance(txt);
+        utter.lang = 'es-CL';
+        utter.rate = 0.85;
+        window.speechSynthesis.speak(utter);
+      }
     }
   </script>
 </body>
