@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Guía 1 · Chalin, Azümchefe ka Rakin</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 10px auto;
+  padding: 16mm 18mm 14mm 18mm;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+}
+.page-content {
+  flex: 1 1 auto;
+}
+.header-kalfu {
+  background: linear-gradient(135deg, #0a2552 0%, #0d3b7a 65%, #1e40af 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 4px solid #f59e0b;
+}
+.header-kalfu h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 16pt;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+.header-kalfu p {
+  margin: 0;
+  font-size: 9.8pt;
+  color: #cbd5e1;
+}
+.badge-pill {
+  display: inline-block;
+  background: #fef08a;
+  color: #854d0e;
+  font-size: 8pt;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.wunelfe-svg {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 10px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #0d3b7a;
+}
+.section-badge {
+  background: #0d3b7a;
+  color: #ffffff;
+  font-size: 8.5pt;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.section-title h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 12.5pt;
+  margin: 0;
+  color: #0d3b7a;
+}
+.callout-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid #0d3b7a;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #1e3a8a;
+  margin-bottom: 14px;
+}
+.callout-cultural {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 5px solid #d97706;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #78350f;
+  margin-bottom: 14px;
+}
+table.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+  margin-bottom: 14px;
+}
+table.custom-table th {
+  background-color: #0d3b7a;
+  color: #ffffff;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 9.5pt;
+  border: 1px solid #0d3b7a;
+}
+table.custom-table td {
+  padding: 7px 10px;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  line-height: 1.35;
+}
+table.custom-table tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+.highlight-cell {
+  font-weight: 700;
+  color: #0d3b7a;
+}
+.dialogue-card {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+}
+.dialogue-row {
+  display: flex;
+  padding: 5px 0;
+  border-bottom: 1px dashed #e2e8f0;
+  font-size: 10.2pt;
+}
+.dialogue-row:last-child {
+  border-bottom: none;
+}
+.dialogue-speaker {
+  width: 32px;
+  font-weight: 800;
+  color: #0d3b7a;
+  flex-shrink: 0;
+}
+.dialogue-mapu {
+  width: 50%;
+  font-weight: 600;
+  color: #0f172a;
+  padding-right: 10px;
+}
+.dialogue-es {
+  width: 45%;
+  color: #475569;
+  font-style: italic;
+}
+.particle-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.particle-box {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #0284c7;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 9.5pt;
+  line-height: 1.4;
+}
+.numbers-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin: 10px 0 14px 0;
+}
+.number-box {
+  background: #eff6ff;
+  border: 1.5px solid #93c5fd;
+  border-radius: 8px;
+  padding: 8px 6px;
+  text-align: center;
+}
+.num-digit {
+  font-size: 16pt;
+  font-weight: 800;
+  color: #0d3b7a;
+  line-height: 1;
+}
+.num-mapu {
+  font-size: 10pt;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-top: 4px;
+}
+.num-es {
+  font-size: 8.5pt;
+  color: #64748b;
+}
+.exercise-box {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+}
+.exercise-header {
+  font-weight: 700;
+  color: #0d3b7a;
+  font-size: 10.5pt;
+  margin-bottom: 8px;
+}
+.line-write {
+  border-bottom: 1.5px solid #94a3b8;
+  height: 28px;
+  margin-bottom: 8px;
+}
+.solucionario-box {
+  background: #f1f5f9;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 9pt;
+  color: #334155;
+  margin-top: 10px;
+}
+.footer-bar {
+  border-top: 1px solid #cbd5e1;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9pt;
+  color: #64748b;
+  flex-shrink: 0;
+}
+@media print {
+  body {
+    background: transparent;
+  }
+  .page-sheet {
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    min-height: 297mm;
+    height: 297mm;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1: MARCO FONÉTICO Y AZÜMCHEFE -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="header-kalfu">
+      <div>
+        <span class="badge-pill">KIMELTUN 1 & 2 · NIVEL BÁSICO</span>
+        <h1>Guía 1 · Chalin, Azümchefe ka Rakin</h1>
+        <p>Taller de Mapuzugun · Universidad de Chile · Kimelfe: Cristián Milla Curiñanco</p>
+      </div>
+      <svg class="wunelfe-svg" viewBox="0 0 100 100">
+        <polygon points="50,2 62,38 98,50 62,62 50,98 38,62 2,50 38,38" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="callout-box">
+      <strong><i class="fa-solid fa-graduation-cap"></i> Kimeltuchefe ñi gülam (Propósito pedagógico):</strong> Esta guía entrega las bases fonéticas y los códigos de interacción comunitaria. Recuerda: el mapuzugun es un idioma vivo y sonoro. Léelo y practícalo siempre en voz alta, privilegiando el hablar (<strong>zugun</strong>) y la escucha activa (<strong>allkütun</strong>).
+    </div>
+
+    <div class="callout-cultural">
+      <strong><i class="fa-solid fa-star-of-david"></i> Az zugun ka Wünelfe (Cosmovisión del Kalfü):</strong> El color <strong>kalfü</strong> (azul cósmico) representa el espacio sagrado del origen (*Wenumapu*), la dimensión espiritual y el cielo protector. Al centro resplandece <strong>Wünelfe</strong> o <strong>Waglen</strong> (el lucero del amanecer de 8 puntas), símbolo de renovación del pensamiento (*rakizuam*), luz matinal y resistencia comunitaria.
+    </div>
+
+    <div class="section-title">
+      <span class="section-badge">Fonética</span>
+      <h2>1. El Grafemario Azümchefe y Variaciones Territoriales</h2>
+    </div>
+
+    <p style="font-size: 10pt; line-height: 1.45; color: #334155; margin: 0 0 8px 0;">
+      En el taller escribimos en <strong>Azümchefe</strong> (norma oficial consensuada con CONADI), reconociendo las equivalencias con el sistema Unificado y Raguileo. El mapuche respeta la diversidad en la unidad (*ixofijmogen*), considerando legítimas todas las variantes del Wallmapu:
+    </p>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Azümchefe</th>
+          <th style="width: 20%;">Unificado</th>
+          <th style="width: 20%;">Raguileo</th>
+          <th style="width: 40%;">Sonido y Ejemplos de Uso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">ü</td>
+          <td>ü</td>
+          <td>v</td>
+          <td>Vocal cerrada central: <em>kümelkalen</em>, <em>txipantü</em>, <em>ülkantun</em></td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">g</td>
+          <td>ng</td>
+          <td>g</td>
+          <td>Nasal velar (como en "gong" o "banco"): <em>lamgen</em>, <em>gen</em>, <em>zugun</em></td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">tx</td>
+          <td>tr</td>
+          <td>x</td>
+          <td>Alveolar oclusiva africada retrasada: <em>txipantü</em>, <em>txawün</em>, <em>txewa</em></td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">z</td>
+          <td>d</td>
+          <td>z</td>
+          <td>Fricativa interdental: <em>zugun</em>, <em>mapuzugun</em>, <em>kizu</em></td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">ll</td>
+          <td>ll</td>
+          <td>j</td>
+          <td>Lateral palatal: <em>allkütun</em>, <em>aylla</em>, <em>chillkatun</em></td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">q</td>
+          <td>g</td>
+          <td>q</td>
+          <td>Velar suave: <em>reqle</em> (siete), <em>kuqü</em> (mano)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #64748b; padding: 8px 12px; border-radius: 4px; font-size: 9.5pt; color: #475569;">
+      <strong>Variación fonética por territorio:</strong> En algunos territorios el grafema <strong>z</strong> suena <strong>d</strong> (<em>mapuzugun / mapudungun</em>) y la <strong>f</strong> suena <strong>b</strong> (<em>feley / beley</em>). Además, recuerda la regla sintáctica clave: <strong>el adjetivo siempre antecede a la palabra</strong> (<em>küme newen</em> = energía positiva; <em>weza zugu</em> = asunto negativo).
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 1 & 2</span>
+    <span>Página 1 · Azümchefe ka Variaciones</span>
+  </footer>
+</div>
+
+<!-- PÁGINA 2: EL CHALIN RELACIONAL -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="section-title" style="margin-top: 0;">
+      <span class="section-badge">Pragmática</span>
+      <h2>2. El Chalin: El Saludo y la Relación entre Personas (Che)</h2>
+    </div>
+
+    <p style="font-size: 10.2pt; line-height: 1.5; color: #1e293b; margin: 0 0 10px 0;">
+      <strong>Mari mari</strong> es el saludo matriz de nuestro pueblo. <em>Mari</em> significa «diez»: al decir <em>mari mari</em> nos estrechamos ambas manos mutuamente, diez dedos y diez dedos, en señal de encuentro pleno, confianza y reciprocidad. Se utiliza en la mañana, la tarde o la noche. El saludo cambia según el vínculo con la persona (*che*):
+    </p>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th style="width: 35%;">Forma de Saludar</th>
+          <th style="width: 35%;">Vínculo Social / Che</th>
+          <th style="width: 30%;">Significado Contextual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">Mari mari kom pu che</td>
+          <td>A toda la asamblea / grupo</td>
+          <td>Hola a todas las personas reunidas</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Mari mari peñi</td>
+          <td>Trato entre hombres (wentxu mew)</td>
+          <td>Hola hermano</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Mari mari lamgen</td>
+          <td>Entre mujeres, o de hombre a mujer</td>
+          <td>Hola hermana / hermano (vínculo de equidad)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Mari mari ñaña</td>
+          <td>Hacia una mujer cercana / amiga (wenüy)</td>
+          <td>Hola amiga, ñaña</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Mari mari chacha</td>
+          <td>Hacia un hombre cercano / amigo</td>
+          <td>Hola amigo, chacha</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Mari mari papay</td>
+          <td>Hacia mujer adulta mayor (kuche zomo)</td>
+          <td>Hola abuela / señora mayor (respeto)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Mari mari chachay</td>
+          <td>Hacia hombre adulto mayor (fücha wentxu)</td>
+          <td>Hola abuelo / señor mayor (respeto)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">
+      <span class="section-badge">Diálogo</span>
+      <h2>3. Diálogo Guiado de Saludo y Despedida</h2>
+    </div>
+
+    <div class="dialogue-card">
+      <div class="dialogue-row">
+        <span class="dialogue-speaker">A:</span>
+        <span class="dialogue-mapu">Mari mari lamgen.</span>
+        <span class="dialogue-es">Hola lamgen (hermana/o).</span>
+      </div>
+      <div class="dialogue-row">
+        <span class="dialogue-speaker">B:</span>
+        <span class="dialogue-mapu">Mari mari lamgen. ¿Chumleimi?</span>
+        <span class="dialogue-es">Hola lamgen. ¿Cómo estás tú?</span>
+      </div>
+      <div class="dialogue-row">
+        <span class="dialogue-speaker">A:</span>
+        <span class="dialogue-mapu">Kümelkalen. ¿Eimi kay?</span>
+        <span class="dialogue-es">Estoy bien. ¿Y tú?</span>
+      </div>
+      <div class="dialogue-row">
+        <span class="dialogue-speaker">B:</span>
+        <span class="dialogue-mapu">Inche ka kümelkalen.</span>
+        <span class="dialogue-es">Yo también me encuentro bien.</span>
+      </div>
+      <div class="dialogue-row">
+        <span class="dialogue-speaker">A:</span>
+        <span class="dialogue-mapu">Feley. Pewkayal lamgen.</span>
+        <span class="dialogue-es">De acuerdo. Hasta pronto lamgen.</span>
+      </div>
+    </div>
+
+    <div class="particle-grid">
+      <div class="particle-box">
+        <strong>ka:</strong> Partícula sumativa («y, otro, también»). En este contexto actúa como adverbio de inclusión: <em>Inche ka</em> = Yo también.
+      </div>
+      <div class="particle-box">
+        <strong>kay:</strong> Variación enfática de <em>ka</em> utilizada comúnmente con el pronombre <em>eimi</em> (tú): <em>¿Eimi kay?</em> = ¿Y tú?
+      </div>
+      <div class="particle-box">
+        <strong>Chumleimi:</strong> Pregunta orientada al estado actual: raíz *chum-* (cómo) + estativo *-le* + 2ª persona *-imi* (tú).
+      </div>
+      <div class="particle-box">
+        <strong>Kümelkalen:</strong> Estado favorable actual de la persona, construido sobre el adjetivo *küme* (bueno/bien).
+      </div>
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 1 & 2</span>
+    <span>Página 2 · El Chalin Relacional</span>
+  </footer>
+</div>
+
+<!-- PÁGINA 3: FORMAS DE ESTAR Y PREGUNTAS DE CLASE -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="section-title" style="margin-top:0;">
+      <span class="section-badge">Morfología</span>
+      <h2>4. Formas de Estar: Sufijo Estativo (-le / -küle) y Negación (-la-)</h2>
+    </div>
+
+    <p style="font-size: 10.2pt; line-height: 1.45; color: #334155; margin: 0 0 10px 0;">
+      En mapuzugun, para expresar cómo se encuentra una persona o cómo quedó un estado se añade el sufijo <strong>-le</strong> a raíces terminadas en vocal, o <strong>-küle</strong> si la raíz termina en consonante. Para negar el estado, se intercala la partícula negativa <strong>-la-</strong>:
+    </p>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Afirmación (+le)</th>
+          <th style="width: 32%;">Traducción al Español</th>
+          <th style="width: 40%;">Forma Negativa (-la-)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">kümelkalen</td>
+          <td>Estoy bien</td>
+          <td><strong>kümelkalelan</strong> · No estoy bien</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">txemolen</td>
+          <td>Estoy bien de salud</td>
+          <td><strong>txemolelan</strong> · No estoy bien de salud</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">ürkülen</td>
+          <td>Tengo cansancio / estoy cansado</td>
+          <td><strong>ürkülelan</strong> · No tengo cansancio</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">kütxankülen</td>
+          <td>Estoy enfermo / con dolencia</td>
+          <td><strong>kütxankülelan</strong> · No estoy enfermo</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">mañumkülen</td>
+          <td>Estoy con gratitud (agradezco)</td>
+          <td><em>(Expresión de reconocimiento y reciprocidad)</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">
+      <span class="section-badge">Auxiliares</span>
+      <h2>5. Keyu ke ramtun (Preguntas Auxiliares para la Clase)</h2>
+    </div>
+
+    <p style="font-size: 9.8pt; color: #475569; margin: 0 0 8px 0;">
+      Estas fórmulas son indispensables para la inmersión pedagógica activa dentro del aula del taller:
+    </p>
+
+    <table class="custom-table">
+      <tbody>
+        <tr>
+          <td class="highlight-cell" style="width: 50%;">Inche nien kiñe ramtun</td>
+          <td style="width: 50%;">Tengo una pregunta para hacer</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">¿Chem am ta ___ wigkazugun mew?</td>
+          <td>¿Qué significa ___ en castellano?</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">¿Chumgechi pigei ___ mapuzugun mew?</td>
+          <td>¿Cómo se dice ___ en mapuzugun?</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">¿Kelluafen? · ¿Chumgechi am?</td>
+          <td>¿Me puedes ayudar? · ¿De qué manera? / ¿Cómo?</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Feley · Rume mañumeyu</td>
+          <td>De acuerdo / así es · Te agradezco muchísimo</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout-box" style="margin-bottom:0;">
+      <strong><i class="fa-solid fa-lightbulb"></i> Regla de oro comunicativa:</strong> Nunca sientas temor de consultar. Formular preguntas en mapuzugun usando <em>«Inche nien kiñe ramtun»</em> ya es ejercer soberanía lingüística y participar activamente del proceso de revitalización.
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 1 & 2</span>
+    <span>Página 3 · Formas de Estar ka Preguntas de Clase</span>
+  </footer>
+</div>
+
+<!-- PÁGINA 4: RAKIN Y EJERCICIOS -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="section-title" style="margin-top:0;">
+      <span class="section-badge">Rakin</span>
+      <h2>6. Los Números en Mapuzugun (Base para la edad y el conteo)</h2>
+    </div>
+
+    <div class="numbers-container">
+      <div class="number-box"><div class="num-digit">1</div><div class="num-mapu">kiñe</div><div class="num-es">uno</div></div>
+      <div class="number-box"><div class="num-digit">2</div><div class="num-mapu">epu</div><div class="num-es">dos</div></div>
+      <div class="number-box"><div class="num-digit">3</div><div class="num-mapu">küla</div><div class="num-es">tres</div></div>
+      <div class="number-box"><div class="num-digit">4</div><div class="num-mapu">meli</div><div class="num-es">cuatro</div></div>
+      <div class="number-box"><div class="num-digit">5</div><div class="num-mapu">kechu</div><div class="num-es">cinco</div></div>
+      <div class="number-box"><div class="num-digit">6</div><div class="num-mapu">kayu</div><div class="num-es">seis</div></div>
+      <div class="number-box"><div class="num-digit">7</div><div class="num-mapu">regle</div><div class="num-es">siete</div></div>
+      <div class="number-box"><div class="num-digit">8</div><div class="num-mapu">pura</div><div class="num-es">ocho</div></div>
+      <div class="number-box"><div class="num-digit">9</div><div class="num-mapu">aylla</div><div class="num-es">nueve</div></div>
+      <div class="number-box"><div class="num-digit">10</div><div class="num-mapu">mari</div><div class="num-es">diez</div></div>
+    </div>
+
+    <div class="callout-box" style="margin-bottom:12px; font-size:9.5pt;">
+      <strong>Regla de formación de cifras compuestas:</strong>
+      <br>• Decenas (multiplicación antepuesta): <strong>epu mari</strong> (20), <strong>küla mari</strong> (30), <strong>meli mari</strong> (40).
+      <br>• Unidades compuestas (adición pospuesta): <strong>mari kiñe</strong> (11), <strong>epu mari kechu</strong> (25), <strong>küla mari kayu</strong> (36).
+      <br>• Centenas: <strong>pataka</strong> (100) · Millar: <strong>warangka</strong> (1.000). Esta base es fundamental para decir tus años (*txipantü nien*).
+    </div>
+
+    <div class="section-title">
+      <span class="section-badge">Kuzaw</span>
+      <h2>7. Ejercitación y Autocontrol</h2>
+    </div>
+
+    <div class="exercise-box">
+      <div class="exercise-header">1. Completa el chalin con las palabras exactas del diálogo:</div>
+      <p style="font-size: 10pt; line-height: 1.8; margin:0;">
+        <strong>A:</strong> Mari mari _____________________. &nbsp;&nbsp;&nbsp;&nbsp; 
+        <strong>B:</strong> Mari mari lamgen. ¿_____________________?
+        <br>
+        <strong>A:</strong> Kümelkalen. ¿Eimi ____________? &nbsp;&nbsp;&nbsp;&nbsp; 
+        <strong>B:</strong> Inche ____________ kümelkalen.
+        <br>
+        <strong>A:</strong> Feley. ________________________ lamgen.
+      </p>
+    </div>
+
+    <div class="exercise-box">
+      <div class="exercise-header">2. Escribe en mapuzugun tu edad y el número de familiares:</div>
+      <p style="font-size: 10pt; margin: 0 0 6px 0;">a) Mi edad en número mapuche (ej. 28 = epu mari pura): __________________________________________________</p>
+      <p style="font-size: 10pt; margin: 0;">b) ¿Cómo dirías "Tengo cansancio, pero no estoy enfermo"?:</p>
+      <div class="line-write"></div>
+    </div>
+
+    <div class="solucionario-box">
+      <strong>Solucionario de autocontrol:</strong><br>
+      <strong>1)</strong> lamgen (o peñi) · ¿Chumleimi? · kay · ka · Pewkayal.<br>
+      <strong>2b)</strong> Ürkülen, welu kütxankülelan.
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 1 & 2</span>
+    <span>Página 4 · Rakin ka Kuzaw</span>
+  </footer>
+</div>
+
+</body>
+</html>

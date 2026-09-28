@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Guía 2 · Kizu Nütramkan ka Zugu</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #0f172a;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.page-sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 10px auto;
+  padding: 16mm 18mm 14mm 18mm;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  page-break-after: always;
+  break-after: page;
+}
+.page-content {
+  flex: 1 1 auto;
+}
+.header-kalfu {
+  background: linear-gradient(135deg, #0a2552 0%, #0d3b7a 65%, #1e40af 100%);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  border-bottom: 4px solid #f59e0b;
+}
+.header-kalfu h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 16pt;
+  margin: 0 0 4px 0;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+.header-kalfu p {
+  margin: 0;
+  font-size: 9.8pt;
+  color: #cbd5e1;
+}
+.badge-pill {
+  display: inline-block;
+  background: #fef08a;
+  color: #854d0e;
+  font-size: 8pt;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+.wunelfe-svg {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0 10px 0;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #0d3b7a;
+}
+.section-badge {
+  background: #0d3b7a;
+  color: #ffffff;
+  font-size: 8.5pt;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.section-title h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 12.5pt;
+  margin: 0;
+  color: #0d3b7a;
+}
+.callout-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-left: 5px solid #0d3b7a;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #1e3a8a;
+  margin-bottom: 14px;
+}
+.callout-cultural {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 5px solid #d97706;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #78350f;
+  margin-bottom: 14px;
+}
+.concept-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.concept-card {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-top: 4px solid #0d3b7a;
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+.concept-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 10.5pt;
+  margin: 0 0 5px 0;
+  color: #0d3b7a;
+}
+.concept-card p {
+  margin: 0;
+  font-size: 9.3pt;
+  line-height: 1.4;
+  color: #334155;
+}
+table.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10pt;
+  margin-bottom: 14px;
+}
+table.custom-table th {
+  background-color: #0d3b7a;
+  color: #ffffff;
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 9.5pt;
+  border: 1px solid #0d3b7a;
+}
+table.custom-table td {
+  padding: 7px 10px;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  line-height: 1.35;
+}
+table.custom-table tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+.highlight-cell {
+  font-weight: 700;
+  color: #0d3b7a;
+}
+.model-box {
+  background: #eff6ff;
+  border: 1.5px solid #93c5fd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+}
+.model-title {
+  font-weight: 800;
+  color: #1e3a8a;
+  font-size: 10.5pt;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.model-text {
+  margin: 0;
+  font-size: 10.2pt;
+  line-height: 1.55;
+  color: #0f172a;
+  font-style: italic;
+  background: #ffffff;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #bfdbfe;
+}
+.exercise-box {
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+}
+.exercise-header {
+  font-weight: 700;
+  color: #0d3b7a;
+  font-size: 10.5pt;
+  margin-bottom: 8px;
+}
+.line-write {
+  border-bottom: 1.5px solid #94a3b8;
+  height: 28px;
+  margin-bottom: 8px;
+}
+.solucionario-box {
+  background: #f1f5f9;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 9.2pt;
+  color: #334155;
+  margin-top: 10px;
+}
+.footer-bar {
+  border-top: 1px solid #cbd5e1;
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9pt;
+  color: #64748b;
+  flex-shrink: 0;
+}
+@media print {
+  body {
+    background: transparent;
+  }
+  .page-sheet {
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    min-height: 297mm;
+    height: 297mm;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1: TRES PILARES IDENTITARIOS -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="header-kalfu">
+      <div>
+        <span class="badge-pill">KIMELTUN 2 & 3 · NIVEL BÁSICO</span>
+        <h1>Guía 2 · Kizu Nütramkan ka Zugu</h1>
+        <p>Taller de Mapuzugun · Universidad de Chile · Kimelfe: Cristián Milla Curiñanco</p>
+      </div>
+      <svg class="wunelfe-svg" viewBox="0 0 100 100">
+        <polygon points="50,2 62,38 98,50 62,62 50,98 38,62 2,50 38,38" fill="#ffffff" stroke="#f59e0b" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="callout-box">
+      <strong><i class="fa-solid fa-compass"></i> Dimensión Identitaria:</strong> En el pensamiento mapuche, presentarse (*kizu nütramkan*) trasciende el mero acto de decir el nombre civil: sitúa a la persona en su territorio (*Tuwün*), en su memoria familiar y espiritual (*Küpan*) y en su hábitat presente (*Mülen*).
+    </div>
+
+    <div class="section-title">
+      <span class="section-badge">Pilares</span>
+      <h2>1. Tres Conceptos Clave de la Identidad Mapuche</h2>
+    </div>
+
+    <div class="concept-grid-3">
+      <div class="concept-card">
+        <h3>1. Tuwün</h3>
+        <p>
+          <strong>Origen territorial:</strong> De dónde proviene mi familia, linaje o ancestros. Vínculo sagrado con la tierra de origen.<br>
+          <em>Pregunta:</em> ¿Chew tuwimi?<br>
+          <em>(Ojo: Tuwün también significa sujetar/asir).</em>
+        </p>
+      </div>
+      <div class="concept-card">
+        <h3>2. Küpan</h3>
+        <p>
+          <strong>Linaje y ascendencia:</strong> Tronco consanguíneo y ramas familiares de las que desciendo (apellidos de origen o mención de mayores).<br>
+          <em>Pregunta:</em> ¿Chem küpan nieymi?<br>
+          <em>(Ojo: Küpan también es venir).</em>
+        </p>
+      </div>
+      <div class="concept-card">
+        <h3>3. Mülen</h3>
+        <p>
+          <strong>Residencia presente:</strong> Dónde estoy viviendo, trabajando o habitando en la actualidad.<br>
+          <em>Pregunta:</em> ¿Chew müleimi?<br>
+          <em>(Uso de la partícula locativa mew / mu).</em>
+        </p>
+      </div>
+    </div>
+
+    <div class="callout-cultural">
+      <strong><i class="fa-solid fa-tree"></i> Transmisión comunitaria del Küpan:</strong> La forma de nombrar el <em>küpan</em> varía según los territorios. Pregunta en tu familia cómo se recuerda: en muchos *lof* se acostumbra nombrar a los bisabuelos, abuelas machi, loncos o personas destacadas de la comunidad para vincular el linaje vivo a la fuerza espiritual ancestral.
+    </div>
+
+    <div class="section-title">
+      <span class="section-badge">Gramática</span>
+      <h2>2. El Verbo Pigen y la Primera Persona (Inche)</h2>
+    </div>
+
+    <p style="font-size: 10pt; line-height: 1.45; color: #334155; margin: 0 0 10px 0;">
+      Para decir nuestro nombre utilizamos la expresión pasiva <strong>pigen</strong> («me llaman / me dicen»). No se dice literalmente "yo soy llamado", sino que se expresa el reconocimiento que los otros hacen de mí:
+    </p>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th style="width: 35%;">Expresión en Mapuzugun</th>
+          <th style="width: 35%;">Estructura Morfológica</th>
+          <th style="width: 30%;">Traducción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">Inche Victor pigen</td>
+          <td>Inche (yo) + Victor + pi- (decir) + -nge- (pasivo) + -n (1ª pers.)</td>
+          <td>Yo me llamo Víctor / A mí me dicen Víctor</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">¿Inei pigeimi?</td>
+          <td>¿Inei (quién) + pi- (decir) + -nge- + -imi (2ª pers. tú)?</td>
+          <td>¿Cómo te llamas tú?</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Fey Francisca pigei</td>
+          <td>Fey (él/ella) + Francisca + pi- + -nge- + -i (3ª pers.)</td>
+          <td>Ella se llama Francisca / A ella le dicen...</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">Inche machi gen</td>
+          <td>Inche (yo) + machi + gen (raíz del verbo ser: 'soy')</td>
+          <td>Yo soy machi</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 2 & 3</span>
+    <span>Página 1 · Pilares Identitarios ka Pigen</span>
+  </footer>
+</div>
+
+<!-- PÁGINA 2: ESTRUCTURA CANÓNICA DE 8 PASOS -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="section-title" style="margin-top:0;">
+      <span class="section-badge">Canónico</span>
+      <h2>3. Estructura de los 8 Pasos de la Presentación Personal</h2>
+    </div>
+
+    <p style="font-size: 10pt; line-height: 1.45; color: #334155; margin: 0 0 10px 0;">
+      Sigue con precisión este andamiaje secuencial para construir tu intervención oral frente a tus compañeros y la comunidad:
+    </p>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th style="width: 6%;">N°</th>
+          <th style="width: 18%;">Momento</th>
+          <th style="width: 38%;">Patrón Estructurado</th>
+          <th style="width: 38%;">Traducción / Norma Pedagógica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align:center; font-weight:800;">1</td>
+          <td class="highlight-cell">Chalin</td>
+          <td>Mari mari kom pu che.</td>
+          <td>Saludo a todo el grupo / asamblea reunida.</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">2</td>
+          <td class="highlight-cell">Üy (Nombre)</td>
+          <td>Inche _________ pigen.</td>
+          <td>Yo me llamo _________.</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">3</td>
+          <td class="highlight-cell">Rakin (Edad)</td>
+          <td>Inche _________ txipantü nien.</td>
+          <td>Tengo _________ años (usar números mapuche).</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">4</td>
+          <td class="highlight-cell">Tuwün</td>
+          <td>Tañi tuwün _________ mapu / waria mew.</td>
+          <td>Mi origen es _________ (<em>mapu</em>: campo / <em>waria</em>: ciudad).</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">5</td>
+          <td class="highlight-cell">Küpan</td>
+          <td>Tañi küpan _________.</td>
+          <td>Mi linaje familiar es _________ (apellidos de origen).</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">6</td>
+          <td class="highlight-cell">Mülen</td>
+          <td>Fachantü _________ mew mülen.</td>
+          <td>Hoy vivo en _________ (lugar actual de residencia).</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">7</td>
+          <td class="highlight-cell">Estado</td>
+          <td>Fachantü kümelkalen (o <em>txemolen</em>).</td>
+          <td>Hoy me encuentro bien / con buena salud.</td>
+        </tr>
+        <tr>
+          <td style="text-align:center; font-weight:800;">8</td>
+          <td class="highlight-cell">Cierre</td>
+          <td>Fey mütem. Mañum.</td>
+          <td>Eso es todo. Muchas gracias por escuchar.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="model-box">
+      <div class="model-title">
+        <i class="fa-solid fa-quote-left"></i> Ejemplo Modelado Canónico (Antü Painemal):
+      </div>
+      <p class="model-text">
+        «Mari mari kom pu che. Inche Antü pigen. Küla mari txipantü nien. Tañi tuwün Lumako mapu mew. Tañi küpan Painemal ka Huenchumil. Fachantü Pudahuel mew mülen. Fachantü kümelkalen. Fey mütem. Mañum.»
+      </p>
+    </div>
+
+    <div class="callout-box" style="margin-bottom:0; font-size:9.5pt;">
+      <strong>Postposición <em>mew / mu</em>:</strong> Funciona como indicador locativo («en / desde / con»). Observa cómo se pospone al nombre de la ciudad o localidad: <em>Lumako mapu mew</em> (en la tierra de Lumaco), <em>Santiago waria mew</em> (en la ciudad de Santiago).
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 2 & 3</span>
+    <span>Página 2 · Estructura de 8 Pasos</span>
+  </footer>
+</div>
+
+<!-- PÁGINA 3: LOS 10 VERBOS DEL KIMELTUN 3 -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="section-title" style="margin-top:0;">
+      <span class="section-badge">Kimeltun 3</span>
+      <h2>4. Kiñeke Nemül: Los 10 Verbos Cotidianos en Indicativo Singular</h2>
+    </div>
+
+    <p style="font-size: 10pt; line-height: 1.45; color: #334155; margin: 0 0 10px 0;">
+      En mapuzugun, para conjugar en tiempo indicativo se quita la terminación de infinitivo <strong>-n</strong> y se aplican las marcas personales de singular: <strong>-n</strong> (Inche / yo), <strong>-imi</strong> (Eimi / tú), <strong>-i</strong> (Fey / él o ella):
+    </p>
+
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th style="width: 20%;">Verbo Infinitivo</th>
+          <th style="width: 25%;">INCHE (Yo / -n)</th>
+          <th style="width: 25%;">EIMI (Tú / -imi)</th>
+          <th style="width: 30%;">FEY (Él-Ella / -i)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight-cell">zugun (hablar)</td>
+          <td>inche zugun (hablé)</td>
+          <td>eimi zuguimi (hablaste)</td>
+          <td>fey zugui (habló)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">allkütun (escuchar)</td>
+          <td>inche allkütun (escuché)</td>
+          <td>eimi allkütuimi (escuchaste)</td>
+          <td>fey allkütui (escuchó)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">azümün (entender)</td>
+          <td>inche azümün (entendí)</td>
+          <td>eimi azümimi (entendiste)</td>
+          <td>fey azümi (entendió)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">küpan (venir)</td>
+          <td>inche küpan (vine)</td>
+          <td>eimi küpaimi (viniste)</td>
+          <td>fey küpai (vino)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">amun (ir)</td>
+          <td>inche amun (fui)</td>
+          <td>eimi amuimi (fuiste)</td>
+          <td>fey amui (fue)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">txipan (salir)</td>
+          <td>inche txipan (salí)</td>
+          <td>eimi txipaimi (saliste)</td>
+          <td>fey txipai (salió)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">mülen (estar/vivir)</td>
+          <td>inche mülen (estoy/vivo)</td>
+          <td>eimi müleimi (estás/vives)</td>
+          <td>fey mülei (está/vive)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">küzawün (trabajar)</td>
+          <td>inche küzawün (trabajé)</td>
+          <td>eimi küzawimi (trabajaste)</td>
+          <td>fey küzawi (trabajó)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">ülkantun (cantar)</td>
+          <td>inche ülkantun (canté)</td>
+          <td>eimi ülkantuimi (cantaste)</td>
+          <td>fey ülkantui (cantó)</td>
+        </tr>
+        <tr>
+          <td class="highlight-cell">putun (beber/tomar)</td>
+          <td>inche putun (tomé)</td>
+          <td>eimi putuimi (tomaste)</td>
+          <td>fey putui (tomó)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="section-title">
+      <span class="section-badge">Awkantun</span>
+      <h2>5. Dinámica de Salón: Rueda de Presentación Cruzada</h2>
+    </div>
+
+    <div class="callout-box" style="margin-bottom:0; font-size:9.8pt; line-height:1.5;">
+      <strong>Práctica oral en parejas (Presentación de un compañero/a):</strong>
+      <br><strong>1.</strong> Tú te presentas en 1ª persona: <em>«Inche Carmen pigen. Temuko mew mülen.»</em>
+      <br><strong>2.</strong> Tu pareja te responde directamente en 2ª persona: <em>«Eimi Carmen pigeimi. Temuko mew müleimi.»</em>
+      <br><strong>3.</strong> Tu pareja te presenta al resto del grupo usando la 3ª persona: <em>«Fey Carmen pigei. Temuko mew mülei.»</em>
+      <br><em>¡De esta forma entrenas activamente las tres desinencias fundamentales (-n / -imi / -i)!</em>
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 2 & 3</span>
+    <span>Página 3 · Verbos Cotidianos ka Desinencias</span>
+  </footer>
+</div>
+
+<!-- PÁGINA 4: KUZAW - EJERCICIOS Y SOLUCIONARIO -->
+<div class="page-sheet">
+  <div class="page-content">
+    <div class="section-title" style="margin-top:0;">
+      <span class="section-badge">Kuzaw</span>
+      <h2>6. Ejercicios Prácticos de Aplicación y Fijación</h2>
+    </div>
+
+    <div class="exercise-box">
+      <div class="exercise-header">1. Une cada pregunta con la respuesta que le corresponde lógicamente:</div>
+      <table style="width:100%; font-size:9.5pt; border-collapse:collapse;">
+        <tr>
+          <td style="width:48%; padding:3px 0;"><strong>a)</strong> ¿Inei pigeimi?</td>
+          <td style="width:8%; text-align:center; color:#64748b;">( &nbsp; )</td>
+          <td style="width:44%; padding:3px 0;"><strong>1)</strong> Santiago waria mew mülen.</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 0;"><strong>b)</strong> ¿Chumleimi?</td>
+          <td style="text-align:center; color:#64748b;">( &nbsp; )</td>
+          <td style="padding:3px 0;"><strong>2)</strong> Inche Millaray pigen.</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 0;"><strong>c)</strong> ¿Chew tuwimi?</td>
+          <td style="text-align:center; color:#64748b;">( &nbsp; )</td>
+          <td style="padding:3px 0;"><strong>3)</strong> Epu mari kechu txipantü nien.</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 0;"><strong>d)</strong> ¿Chew müleimi?</td>
+          <td style="text-align:center; color:#64748b;">( &nbsp; )</td>
+          <td style="padding:3px 0;"><strong>4)</strong> Fachantü kümelkalen.</td>
+        </tr>
+        <tr>
+          <td style="padding:3px 0;"><strong>e)</strong> ¿Chumten txipantü nieimi?</td>
+          <td style="text-align:center; color:#64748b;">( &nbsp; )</td>
+          <td style="padding:3px 0;"><strong>5)</strong> Tañi tuwün Imperial mapu mew.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="exercise-box">
+      <div class="exercise-header">2. Traduce las siguientes frases al grafemario Azümchefe:</div>
+      <p style="font-size: 9.5pt; margin: 0 0 4px 0;">• Yo me llamo Lautaro: ____________________________________________________________________</p>
+      <p style="font-size: 9.5pt; margin: 0 0 4px 0;">• Ayer trabajé en la reunión (*txawün mew*): _________________________________________________</p>
+      <p style="font-size: 9.5pt; margin: 0 0 4px 0;">• Mi origen es Temuco, pero vivo en Santiago (*welu* = pero): __________________________________</p>
+    </div>
+
+    <div class="exercise-box">
+      <div class="exercise-header">3. Redacta tu presentación personal completa (los 8 pasos) en este espacio caligráfico:</div>
+      <div class="line-write"></div>
+      <div class="line-write"></div>
+      <div class="line-write"></div>
+      <div class="line-write"></div>
+      <div class="line-write"></div>
+    </div>
+
+    <div class="solucionario-box">
+      <strong>Solucionario oficial de autocontrol:</strong><br>
+      <strong>1)</strong> a-2 · b-4 · c-5 · d-1 · e-3<br>
+      <strong>2)</strong> Inche Leftraru pigen. · Wiya inche küzawün txawün mew. · Tañi tuwün Temuko mapu/waria mew, welu Santiago mew mülen.<br>
+      <strong>3)</strong> Revisa que tu texto contenga: Chalin (1) + Üy (2) + Edad (3) + Tuwün (4) + Küpan (5) + Mülen (6) + Estado (7) + Cierre (8).
+    </div>
+  </div>
+  <footer class="footer-bar">
+    <span>Taller de Mapuzugun · Kimeltun 2 & 3</span>
+    <span>Página 4 · Kuzaw ka Solucionario</span>
+  </footer>
+</div>
+
+</body>
+</html>
