@@ -22,6 +22,7 @@
 
 <main>
 <section class="bloque">
+  <div class="divisor" aria-hidden="true" style="justify-content:flex-start;margin:0 0 .5rem"><svg class="mece" viewBox="0 0 120 160"><use href="#copihue"/></svg><svg viewBox="0 0 120 120"><use href="#kultxug"/></svg><svg class="mece lento" viewBox="0 0 120 160"><use href="#pewen"/></svg></div>
   <h2>Guía 1: chalin ka üy<small>Saludar y presentarse. Kimeltun 1 y 2.</small></h2>
   <p>Esta guía acompaña tu trabajo personal de cada semana. Léela en voz alta: el mapuzugun se aprende hablando. Todo está escrito en grafemario Azümchefe.</p>
   <div class="acciones"><button class="btn imprimir">Guardar como PDF</button><span class="es">En la ventana de impresión, elige «Guardar como PDF».</span></div>
@@ -30,7 +31,21 @@
 <!-- I. GRAFEMARIO -->
 <section class="bloque">
   <h2>I. Chumgechi wirintukugekey<small>Tres grafemarios, una misma lengua</small></h2>
-  <div class="tabla-wrap"><table>
+  <p class="solo-web">Toca una letra para ver cómo se escribe una palabra en los tres grafemarios.</p>
+  <div class="grafemas solo-web" id="grafemas">
+    <button type="button" class="grafema" data-w="txipantü"><span class="g">ü</span><div class="eq">Unificado <b>ü</b>, Ragileo <b>v</b></div><div class="ej-g">k<mark>ü</mark>melkalen<br>txipant<mark>ü</mark></div></button>
+    <button type="button" class="grafema" data-w="lamgen"><span class="g">g</span><div class="eq">Unificado <b>ng</b>, Ragileo <b>g</b></div><div class="ej-g">lam<mark>g</mark>en<br><mark>g</mark>en</div></button>
+    <button type="button" class="grafema" data-w="txawün"><span class="g">tx</span><div class="eq">Unificado <b>tr</b>, Ragileo <b>x</b></div><div class="ej-g"><mark>tx</mark>ipantü<br><mark>tx</mark>awün</div></button>
+    <button type="button" class="grafema" data-w="mapuzugun"><span class="g">z</span><div class="eq">Unificado <b>d</b>, Ragileo <b>z</b></div><div class="ej-g"><mark>z</mark>ugun<br>mapu<mark>z</mark>ugun</div></button>
+    <button type="button" class="grafema" data-w="allkütun"><span class="g">ll</span><div class="eq">Unificado <b>ll</b>, Ragileo <b>j</b></div><div class="ej-g">ay<mark>ll</mark>a<br>a<mark>ll</mark>kütun</div></button>
+    <button type="button" class="grafema" data-w="reqle"><span class="g">q</span><div class="eq">Unificado <b>g</b>, Ragileo <b>q</b></div><div class="ej-g">re<mark>q</mark>le<br><span class="es" style="font-size:1rem">siete</span></div></button>
+  </div>
+  <div class="conversor solo-web">
+    <label for="conv-in"><b>Escribe en Azümchefe</b></label><br>
+    <input id="conv-in" value="txipantü" autocomplete="off">
+    <div class="conv-salida"><div><small>Unificado</small><b id="conv-u"></b></div><div><small>Ragileo</small><b id="conv-r"></b></div></div>
+  </div>
+  <div class="solo-print"><div class="tabla-wrap"><table>
     <tr><th>Azümchefe</th><th>Unificado</th><th>Ragileo</th><th>Ejemplos</th></tr>
     <tr><td class="mz">ü</td><td>ü</td><td>v</td><td>kümelkalen, txipantü</td></tr>
     <tr><td class="mz">g</td><td>ng</td><td>g</td><td>lamgen, gen</td></tr>
@@ -38,7 +53,7 @@
     <tr><td class="mz">z</td><td>d</td><td>z</td><td>zugun, mapuzugun</td></tr>
     <tr><td class="mz">ll</td><td>ll</td><td>j</td><td>aylla, allkütun</td></tr>
     <tr><td class="mz">q</td><td>g</td><td>q</td><td>reqle (siete)</td></tr>
-  </table></div>
+  </table></div></div>
   <h3 style="margin-top:1.5rem">Kiñeke aukiñ: cuatro sonidos para practicar</h3>
   <div class="grid">
     <div class="sonido"><img src="img/ulkantun.jpg" alt="Manos tocando un kultxug" style="height:150px;width:100%;object-fit:cover"><div><span class="letra">ü</span><br><span class="mz">ülkantun</span> <span class="es">canto</span></div></div>
@@ -100,15 +115,30 @@
 
 <!-- III. CHALIN BÁSICO -->
 <section class="bloque">
-  <h2>III. Un chalin básico<small>Lee en voz alta con otra persona y luego cambien de rol</small></h2>
-  <div class="dialogo" id="dialogo-1">
+  <h2>III. Un chalin por mensajes<small>Conversa con Rayen, una lamgen. Escribe tus respuestas: mientras escribes, abajo aparece qué significa cada palabra.</small></h2>
+  <div class="wsp-zona solo-web">
+    <div class="wsp">
+      <div class="wsp-cab"><span class="av">R</span><div><b>Rayen</b><small>lamgen · en línea</small></div></div>
+      <div class="wsp-msgs" id="wsp-msgs" aria-live="polite"></div>
+      <div class="wsp-sug" id="wsp-sug"></div>
+      <div class="wsp-pie"><input id="wsp-in" placeholder="Escribe en mapuzugun…" autocomplete="off" aria-label="Tu mensaje"><button type="button" id="wsp-env" aria-label="Enviar">➤</button></div>
+    </div>
+    <div>
+      <p class="tarea" id="wsp-tarea"></p>
+      <div class="glosa"><h4>Mientras escribes</h4><div class="glosa-chips" id="wsp-glosa"></div></div>
+      <div class="explica" id="wsp-explica"><p>Aquí aparece la explicación de cada respuesta.</p></div>
+      <div class="acciones"><button class="btn sec" type="button" id="wsp-reinicia">Reiniciar conversación</button></div>
+    </div>
+  </div>
+  <div class="solo-print">
+    <div class="dialogo" id="dialogo-1">
     <div class="globo"><b>A</b><span class="mz">Mari mari lamgen.</span><span class="es">Hola lamgen.</span></div>
     <div class="globo b"><b>B</b><span class="mz">Mari mari lamgen. ¿Chumleimi?</span><span class="es">Hola lamgen. ¿Cómo estás?</span></div>
     <div class="globo"><b>A</b><span class="mz">Kümelkalen. ¿Eimi kay?</span><span class="es">Estoy bien. ¿Y tú?</span></div>
     <div class="globo b"><b>B</b><span class="mz">Inche ka kümelkalen.</span><span class="es">Yo también estoy bien.</span></div>
     <div class="globo"><b>A</b><span class="mz">Feley. Pewkayal lamgen.</span><span class="es">De acuerdo. Hasta luego lamgen.</span></div>
   </div>
-  <div class="acciones"><button class="btn sec" data-alterna="#dialogo-1">Mostrar traducción</button></div>
+  </div>
   <div class="grid" style="margin-top:1.2rem">
     <p><b class="mz">ka</b>: suma, como «y, otro, también». <span class="mz">Inche ka</span> = yo también.</p>
     <p><b class="mz">kay</b>: variación de ka que suele ir con eimi. <span class="mz">¿Eimi kay?</span> = ¿y tú?</p>
@@ -116,7 +146,8 @@
   </div>
 </section>
 
-<!-- IV. FORMAS DE ESTAR -->
+<div class="divisor solo-web" aria-hidden="true"><svg class="mece" viewBox="0 0 120 160"><use href="#copihue"/></svg><svg viewBox="0 0 120 120"><use href="#kultxug"/></svg><svg class="mece lento" viewBox="0 0 120 160"><use href="#pewen"/></svg></div>
+
 <section class="bloque">
   <h2>IV. Algunas formas de estar<small>El sufijo -le / -küle</small></h2>
   <p>El sufijo <b class="mz">-le</b> indica un estado: cómo está o cómo quedó alguien. Si la raíz termina en consonante se agrega <b class="mz">kü</b>. Con <b class="mz">-la</b> se niega.</p>
@@ -131,6 +162,14 @@
     <label style="font-family:var(--sans);font-weight:700"><input type="checkbox" id="estado-neg"> Negar con -la</label>
     <div style="margin:1rem 0"><div class="morf" id="estado-tira"></div></div>
     <p id="estado-tr" style="font-size:1.3rem"></p>
+  </div>
+  <div class="traductor solo-web">
+    <h3>De español a mapuzugun</h3>
+    <p>Escribe cómo estás (o cómo está otra persona) y mira cómo se arma la palabra. Puedes usar «no», «hoy», «tú» o «ella».</p>
+    <input id="tr-in" placeholder="Ej: hoy no estoy cansado" autocomplete="off" aria-label="Frase en español">
+    <div class="selector" id="tr-ej"><button type="button">hoy estoy bien</button><button type="button">no estoy cansada</button><button type="button">tú estás enfermo</button><button type="button">ella está con energía</button><button type="button">estoy agradecido</button></div>
+    <div id="tr-salida" aria-live="polite"></div>
+    <p class="es" style="font-size:.95rem">Las formas con tú y fey siguen el mismo patrón que chum-le-imi y akula-imi. Las marcadas «por verificar» conviene confirmarlas con un hablante.</p>
   </div>
   <div class="tabla-wrap solo-print"><table>
     <tr><th>Mapuzugun</th><th>Español</th><th>Negación</th></tr>
@@ -175,7 +214,8 @@
   </div>
 </section>
 
-<!-- VI. PRESENTACIÓN -->
+<div class="divisor solo-web" aria-hidden="true"><svg class="mece" viewBox="0 0 120 160"><use href="#copihue"/></svg><svg viewBox="0 0 120 120"><use href="#kultxug"/></svg><svg class="mece lento" viewBox="0 0 120 160"><use href="#pewen"/></svg></div>
+
 <section class="bloque">
   <h2>VI. Presentación personal<small>Ocho partes</small></h2>
   <div class="grid">

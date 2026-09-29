@@ -289,7 +289,172 @@ function initRueda() {
   f.addEventListener('input', pinta); pinta();
 }
 
+
+/* ---------- Adornos SVG (dibujos originales) ---------- */
+const ADORNOS = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+<symbol id="copihue" viewBox="0 0 120 160"><path d="M60 158C58 120 40 90 20 60M40 90C60 70 70 50 68 20" stroke="#3E6B3A" stroke-width="3" fill="none"/>
+<path d="M30 100c-18-4-24-16-22-28 12 2 22 12 22 28zM52 76c14-10 28-8 34 2-12 8-24 8-34-2zM36 82c-16-10-18-24-12-34 10 8 14 20 12 34z" fill="#3E6B3A"/>
+<path d="M20 60c-8 4-18 0-20-10 6-2 12 0 16 4l2-8c4 2 6 8 2 14z" fill="#B3262E"/><path d="M8 48c2 6 8 10 12 12" stroke="#7A1418" stroke-width="1.5" fill="none"/>
+<path d="M68 20c-2-10 4-18 14-20 4 10-2 18-8 20 6 2 10 6 10 12-8 2-14-4-16-12z" fill="#B3262E"/><circle cx="72" cy="30" r="2" fill="#F6F2E8"/></symbol>
+<symbol id="pewen" viewBox="0 0 120 160"><path d="M58 160V40h4v120z" fill="#8A5A2B"/>
+<g fill="#3E6B3A"><path d="M60 30C40 30 22 36 8 48c18-4 36-6 52-4zM60 30c20 0 38 6 52 18-18-4-36-6-52-4z"/><path d="M60 48C44 48 30 54 18 64c14-4 28-5 42-3zM60 48c16 0 30 6 42 16-14-4-28-5-42-3z"/><path d="M60 14c-12 0-22 4-30 10 10-2 20-3 30-2zM60 14c12 0 22 4 30 10-10-2-20-3-30-2z"/><path d="M60 0c-4 6-6 12-6 18h12c0-6-2-12-6-18z"/></g></symbol>
+<symbol id="kultxug" viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="54" ry="54" fill="#E9D3A8" stroke="#8A5A2B" stroke-width="5"/><ellipse cx="60" cy="60" rx="44" ry="44" fill="none" stroke="#8A5A2B" stroke-width="1.5" stroke-dasharray="3 5"/>
+<path d="M92 108l24 10" stroke="#8A5A2B" stroke-width="4" stroke-linecap="round"/><circle cx="118" cy="119" r="3" fill="#B3262E"/></symbol>
+<symbol id="txegul" viewBox="0 0 140 150"><path d="M58 96l-4 50M74 96l6 50" stroke="#B3262E" stroke-width="3"/>
+<path d="M30 70c0-20 20-34 44-30 22 4 36 20 34 40-16 14-40 20-60 14-12-4-18-12-18-24z" fill="#8C7B63"/><path d="M34 76c10 14 36 18 58 10-10 10-38 16-54 6z" fill="#fff"/>
+<path d="M70 42c4-14 18-20 28-16 6 2 8 10 4 16l-8 6z" fill="#8C7B63"/><path d="M78 40c6-4 14-4 20 0" stroke="#16192B" stroke-width="10" stroke-linecap="round"/>
+<path d="M102 32l18 4-16 4z" fill="#B3262E"/><path d="M84 28c-10-10-24-14-36-12" stroke="#16192B" stroke-width="2" fill="none"/><circle cx="92" cy="33" r="2.5" fill="#B3262E"/></symbol>
+</svg>`;
+function initAdornos() { document.body.insertAdjacentHTML('afterbegin', ADORNOS); }
+
+/* ---------- Grafemarios ---------- */
+const aUnificado = s => s.replace(/tx/g, 'tr').replace(/z/g, 'd').replace(/g/g, 'ng').replace(/q/g, 'g');
+const aRagileo = s => s.replace(/tx/g, 'x').replace(/ü/g, 'v').replace(/ll/g, 'j');
+function initGrafemario() {
+  const c = $('#grafemas'); if (!c) return;
+  const inp = $('#conv-in');
+  const pinta = () => {
+    const w = inp.value.toLowerCase();
+    $('#conv-u').textContent = aUnificado(w) || '—';
+    $('#conv-r').textContent = aRagileo(w) || '—';
+  };
+  inp.addEventListener('input', pinta); pinta();
+  selector(c, b => { inp.value = b.dataset.w; pinta(); inp.focus(); });
+}
+
+/* ---------- Glosario breve para el chat ---------- */
+const GLOSA = {
+  'mari mari': 'saludo: diez y diez, las dos manos', mari: 'diez', lamgen: 'hermana o hermano (mujer–mujer, mujer–hombre)',
+  peñi: 'hermano (entre hombres)', ñaña: 'mujer cercana', chacha: 'hombre cercano', papay: 'mujer mayor', chachay: 'hombre mayor',
+  inche: 'yo', eimi: 'tú', fey: 'él / ella / elle', ka: 'también, y', kay: '¿y…? (suele ir con eimi)',
+  chumleimi: 'chum (cómo) + le (estado) + imi (tú): ¿cómo estás?', chum: 'cómo',
+  kümelkalen: 'küme (bueno) + le (estado) + n (yo): estoy bien', kümelkalelan: 'küme + le + la (no) + n: no estoy bien',
+  txemolen: 'estoy bien de salud', ürkülen: 'ür + küle (estado) + n: tengo cansancio', kütxankülen: 'estoy con enfermedad',
+  mañumkülen: 'estoy con gratitud', küme: 'bueno', pigen: 'pi (decir) + ge (me) + n: me dicen, me llamo',
+  pigeimi: 'te dicen, te llamas (-imi: tú)', inei: 'quién', iney: 'quién', chew: 'dónde', mew: 'en (lugar)',
+  mülen: 'müle (estar) + n (yo): estoy', müleimi: 'estás (-imi: tú)', mülei: 'está (-i: fey)', fachantü: 'hoy',
+  feley: 'de acuerdo, así es', pewkayal: 'hasta luego', mañum: 'gracias', tañi: 'mi', tuwün: 'lugar de origen', küpan: 'linaje; venir',
+  mapu: 'tierra, territorio', waria: 'ciudad', welu: 'pero', may: 'sí', txipantü: 'año', nien: 'tengo'
+};
+function glosar(texto) {
+  const t = norm(texto), out = [];
+  if (t.includes('mari mari')) out.push(['mari mari', GLOSA['mari mari'], 'kallfu']);
+  t.split(' ').forEach(w => {
+    if (!w || (w === 'mari' && t.includes('mari mari'))) return;
+    if (GLOSA[w]) out.push([w, GLOSA[w], w === 'inche' ? 'inche' : w === 'eimi' ? 'eimi' : w === 'fey' ? 'fey' : 'kallfu']);
+    else if (w.length > 4 && w.endsWith('imi')) out.push([w, 'termina en -imi: la acción la hace eimi (tú)', 'eimi']);
+    else if (w.length > 3 && w.endsWith('n')) out.push([w, '¿termina en -n? podría ser inche (yo)', 'inche']);
+  });
+  return out.filter((x, i, a) => a.findIndex(y => y[0] === x[0]) === i);
+}
+
+/* ---------- Guía 1: chalin por mensajes ---------- */
+function initChat() {
+  const box = $('#wsp-msgs'); if (!box) return;
+  const inp = $('#wsp-in'), sug = $('#wsp-sug'), expl = $('#wsp-explica'), gl = $('#wsp-glosa');
+  const hora = () => new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' });
+  const ESTADOS = ['kümelkalen', 'kümelkalelan', 'txemolen', 'ürkülen', 'kütxankülen', 'mañumkülen', 'txemolelan', 'ürkülelan'];
+  let nombre = '', paso = 0, fallos = 0, ocupado = false;
+  const PASOS = [
+    { ella: () => ['Mari mari lamgen!'], tarea: 'Responde el saludo.', sug: ['Mari mari lamgen', 'Mari mari peñi'],
+      ok: t => t.includes('mari mari'),
+      exp: () => '<p><b class="mz">Mari mari</b> es el saludo. <b class="mz">Mari</b> es «diez»: nos damos las dos manos.</p><p><b class="mz">Lamgen</b> se usa entre mujeres, o entre mujer y hombre. Entre hombres se dice <b class="mz">peñi</b>.</p>' },
+    { ella: () => ['¿Chumleimi?'], tarea: 'Te pregunta cómo estás. Responde con una forma de estar.', sug: ['Kümelkalen', 'Ürkülen', 'Txemolen'],
+      ok: t => ESTADOS.some(e => t.includes(e)),
+      exp: t => { const e = ESTADOS.find(x => t.includes(x)); return `<p>Ella preguntó <b class="mz">chum-le-<span class="suf p-eimi">imi</span></b>: termina en <b>-imi</b> porque te habla a ti (eimi).</p><p>Tú respondiste <b class="mz">${e}</b>: ${GLOSA[e] || ''}. Termina en <b class="suf p-inche">-n</b> porque hablas de ti (inche).</p>`; } },
+    { ella: () => [], tarea: 'Ahora pregúntale de vuelta: ¿y tú?', sug: ['¿Eimi kay?', '¿Chumleimi?'],
+      ok: t => t.includes('eimi kay') || t.includes('chumleimi') || t.includes('eimi ka'),
+      exp: () => '<p><b class="mz">¿Eimi kay?</b> = ¿y tú? <b class="mz">Kay</b> es una variación de <b class="mz">ka</b> que suele ir con eimi.</p>' },
+    { ella: () => ['Inche ka kümelkalen.', '¿Inei pigeimi?'], tarea: 'Te pregunta tu nombre. Usa: Inche ___ pigen.', sug: ['Inche ___ pigen'],
+      ok: t => /pigen/.test(t),
+      antes: () => '<p><b class="mz">Inche ka kümelkalen</b>: yo también estoy bien. <b class="mz">Ka</b> = también.</p>',
+      exp: t => { const m = t.match(/(?:inche )?(\S+) pigen/); nombre = m && m[1] !== 'inche' ? m[1][0].toUpperCase() + m[1].slice(1) : ''; return '<p><b class="mz">Pigen</b> = pi (decir) + ge (a mí) + <span class="suf p-inche">n</span> (inche). Literalmente «me dicen».</p>'; } },
+    { ella: () => [`Feley${nombre ? ', ' + nombre : ''}. Inche Rayen pigen.`, '¿Chew müleimi fachantü?'], tarea: '¿Dónde estás hoy? Usa: ___ mew mülen.', sug: ['Santiago mew mülen', 'Ruka mew mülen'],
+      ok: t => /\bmülen\b/.test(t),
+      exp: () => '<p><b class="mz">Mew</b> marca el lugar (en). <b class="mz">Müle-<span class="suf p-inche">n</span></b>: estoy. Ella preguntó <b class="mz">müle-<span class="suf p-eimi">imi</span></b>: estás.</p>' },
+    { ella: () => ['Inche Temuko mew mülen. Pewkayal lamgen!'], tarea: 'Despídete.', sug: ['Feley. Pewkayal lamgen', 'Mañum lamgen'],
+      ok: t => /pewkayal|feley|mañum/.test(t),
+      exp: () => '<p><b class="mz">Pewkayal</b>: hasta luego. <b class="mz">Feley</b>: de acuerdo, así es. <b class="mz">Mañum</b>: gracias.</p>' }
+  ];
+  const agrega = (html, quien) => { box.insertAdjacentHTML('beforeend', `<div class="msg ${quien}">${html}${quien !== 'sis' ? `<small>${hora()}</small>` : ''}</div>`); box.scrollTop = box.scrollHeight; };
+  const escribe = (lineas, fin) => {
+    ocupado = true;
+    const sig = i => {
+      if (i >= lineas.length) { ocupado = false; fin && fin(); return; }
+      box.insertAdjacentHTML('beforeend', '<div class="escribiendo"><i></i><i></i><i></i></div>'); box.scrollTop = box.scrollHeight;
+      setTimeout(() => { $('.escribiendo', box)?.remove(); agrega(lineas[i], 'ella'); setTimeout(() => sig(i + 1), 350); }, 900);
+    };
+    sig(0);
+  };
+  const muestraPaso = () => {
+    const p = PASOS[paso];
+    sug.innerHTML = p.sug.map(x => `<button type="button">${x}</button>`).join('');
+    $('#wsp-tarea').textContent = p.tarea;
+  };
+  const avanza = () => {
+    if (paso >= PASOS.length) {
+      escribe(['Kümey! Pewkayal.'], () => { agrega('Terminaste el chalin. Reinícialo y prueba otras respuestas.', 'sis'); sug.innerHTML = ''; $('#wsp-tarea').textContent = '¡Kümey!'; });
+      return;
+    }
+    const p = PASOS[paso];
+    if (p.antes) expl.innerHTML = p.antes();
+    escribe(p.ella(), muestraPaso);
+  };
+  const envia = () => {
+    const txt = inp.value.trim(); if (!txt || ocupado) return;
+    agrega(txt.replace(/</g, '&lt;'), 'yo'); inp.value = ''; gl.innerHTML = '';
+    const t = norm(txt), p = PASOS[paso];
+    if (p.ok(t)) { fallos = 0; expl.innerHTML = p.exp(t); paso++; setTimeout(avanza, 500); }
+    else { fallos++; agrega(`Pista: ${p.tarea} ${fallos > 1 ? 'Toca una sugerencia si necesitas ayuda.' : ''}`, 'sis'); }
+  };
+  $('#wsp-env').addEventListener('click', envia);
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') envia(); });
+  inp.addEventListener('input', () => {
+    gl.innerHTML = glosar(inp.value).map(([w, d, c]) => `<span class="gl" style="--c:var(--${c})"><b>${w}</b>: ${d}</span>`).join('');
+  });
+  sug.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; inp.value = b.textContent; inp.focus(); inp.dispatchEvent(new Event('input')); });
+  $('#wsp-reinicia').addEventListener('click', () => { box.innerHTML = ''; paso = 0; fallos = 0; nombre = ''; expl.innerHTML = '<p>Aquí aparece la explicación de cada respuesta.</p>'; avanza(); });
+  avanza();
+}
+
+/* ---------- Guía 1: de español a mapuzugun (estados) ---------- */
+const ESTADOS_ES = [
+  [/me siento bien|de [aá]nimo/, 'kümezuam', 'küle', 'me siento bien de ánimo', 'Planilla', false],
+  [/bien de salud|\bsan[oa]\b|\bsane\b/, 'txemo', 'le', 'bien de salud', 'Guía 1', false],
+  [/\bbien\b/, 'kümelka', 'le', 'bien', 'Guía 1', false],
+  [/cansad|cansancio/, 'ür', 'küle', 'con cansancio', 'Guía 1', false],
+  [/enferm/, 'kütxan', 'küle', 'con enfermedad', 'Guía 1', false],
+  [/agradecid|gratitud/, 'mañum', 'küle', 'con gratitud', 'Guía 1', false],
+  [/energ[ií]a|fuerza/, 'newen', 'küle', 'con energía (newen)', 'Planilla', false],
+  [/content|feliz|alegr/, 'ayüw', 'küle', 'con alegría', 'Por verificar', true],
+  [/trist/, 'weñag', 'küle', 'con tristeza', 'Por verificar', true]
+];
+function initTraductor() {
+  const inp = $('#tr-in'); if (!inp) return;
+  const out = $('#tr-salida');
+  const traduce = () => {
+    const t = norm(inp.value);
+    if (!t) { out.innerHTML = ''; return; }
+    const e = ESTADOS_ES.find(x => x[0].test(t));
+    if (!e) { out.innerHTML = '<p class="fb no">Aún no tengo esa palabra. Prueba con: bien, bien de salud, cansado, enfermo, agradecido, con energía, contento, triste.</p>'; return; }
+    const p = /(^| )(tú|tu|vos|estás|estas)( |$)/.test(t) ? 1 : /(^| )(él|el|ella|elle|está)( |$)/.test(t) ? 2 : 0;
+    const neg = /\bno\b/.test(t), hoy = /\bhoy\b/.test(t);
+    const suf = ['n', 'imi', 'i'][p], pron = ['Inche', 'Eimi', 'Fey'][p];
+    const palabra = e[1] + e[2] + (neg ? 'la' : '') + suf;
+    const verificar = e[5] || p > 0;
+    out.innerHTML =
+      `<div class="morf">${hoy ? '<span class="tiempo" data-t="hoy">fachantü</span>' : ''}<span data-t="raíz">${e[1]}</span><span data-t="estado">${e[2]}</span>` +
+      (neg ? '<span class="neg" data-t="negación">la</span>' : '') + `<span class="pers p-${PERS[p]}" data-t="${PERS[p]}">${suf}</span></div>` +
+      `<p class="tr-frase">${hoy ? 'Fachantü ' + pron.toLowerCase() : pron} ${palabra}.</p>` +
+      `<p class="es">${['Yo', 'Tú', 'Él / ella / elle'][p]} ${neg ? 'no ' : ''}${['estoy', 'estás', 'está'][p]} ${e[3]}${hoy ? ', hoy' : ''}.</p>` +
+      `<span class="fuente${verificar ? ' verif' : ''}">${verificar ? (e[5] ? 'Palabra por verificar con hablante' : 'Forma derivada: verificar con hablante') : 'Fuente: ' + e[4]}</span>`;
+  };
+  inp.addEventListener('input', traduce);
+  $$('#tr-ej button').forEach(b => b.addEventListener('click', () => { inp.value = b.textContent; traduce(); }));
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  initAdornos(); initGrafemario(); initChat(); initTraductor();
   initEjercicios(); initTeclado(); initVarios(); initChalin(); initEstados();
   initPresentacion(); initChecklist(); initEscena(); initConjugador(); initSemaforo(); initRueda();
 });
