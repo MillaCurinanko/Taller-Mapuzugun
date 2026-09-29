@@ -185,7 +185,7 @@ function initPresentacion() {
       [`Inche ${r} txipantü nien.`, `Tengo ${edad || '___'} años.`],
       [`Tañi tuwün ${v('tuwun')} ${f.elements.tipo.value} mew.`, `Vengo de ${v('tuwun')}.`],
       [`Tañi küpan ${v('kupan')}.`, `Mi linaje es ${v('kupan')}.`],
-      [`Fachantü ${v('mulen')} mew mülen.`, `Hoy vivo en ${v('mulen')}.`],
+      [`Fachantü mülen ${v('mulen')} mew.`, `Hoy vivo en ${v('mulen')}.`],
       [`Fachantü ${f.elements.estado.value}.`, 'Hoy ' + f.elements.estado.selectedOptions[0].dataset.es + '.'],
       ['Fey mütem. Mañum.', 'Eso no más. Gracias.']
     ];
@@ -436,8 +436,9 @@ function initRakin() {
   pinta(37);
 }
 
-/* ---------- Bandas de witxal a los costados ---------- */
-function initAdornos() { document.body.insertAdjacentHTML('afterbegin', '<div class="witxal-lado izq" aria-hidden="true"></div><div class="witxal-lado der" aria-hidden="true"></div>'); }
+/* ---------- Símbolos: lukutuwe (3) y waglen ---------- */
+const SIMBOLOS = "<svg xmlns='http://www.w3.org/2000/svg' style='display:none'><symbol id='luku1' viewBox='0 0 225 360'><path fill-rule='evenodd' d='M111 273 98 322 125 322ZM4 315 4 340 13 340 16 331 21 331 21 345 17 346 17 359 56 359 56 346 51 345 51 331 55 330 57 332 59 340 68 340 68 315 43 315 41 313 41 269 103 268 110 238 112 237 120 268 182 269 182 313 180 315 155 315 155 340 164 340 167 331 172 331 172 345 167 347 167 359 206 359 206 346 202 345 203 330 207 331 210 340 219 340 219 315 194 315 192 313 192 256 127 257 124 253 112 207 98 255 96 257 31 256 31 313 29 315ZM79 0 79 17 92 18 92 42 83 42 83 27 53 27 53 38 73 39 73 69 66 69 66 48 36 48 36 59 56 60 56 96 48 96 48 67 19 67 19 78 40 79 40 120 9 120 10 95 29 96 29 105 15 106 15 112 34 112 34 87 0 87 0 126 103 126 105 128 78 233 76 235 41 234 41 190 43 188 68 188 68 163 59 163 57 171 55 173 51 172 51 158 56 157 56 144 17 144 17 157 21 158 21 172 16 172 13 163 4 163 4 188 29 188 31 190 31 246 84 246 110 143 112 142 139 246 192 247 192 190 194 188 219 188 219 163 210 163 207 172 203 173 202 158 206 157 206 144 167 144 167 157 172 158 172 172 167 172 164 163 155 163 155 188 180 188 182 190 182 234 147 235 145 233 119 127 223 127 224 87 189 87 189 112 208 112 208 106 194 105 194 96 213 95 214 120 184 121 183 79 204 78 204 67 175 67 175 96 167 96 167 60 187 59 187 48 157 48 157 69 151 70 150 39 170 38 170 27 140 27 141 42 132 43 131 18 144 17 144 0Z'/></symbol><symbol id='luku2' viewBox='0 0 224 360'><path fill-rule='evenodd' d='M90 0 89 50 86 47 78 19 49 19 49 38 68 38 70 40 79 80 75 81 61 56 34 56 34 76 54 76 75 107 75 110 71 114 53 97 25 97 25 118 50 118 51 140 5 141 5 167 83 167 84 169 59 239 34 238 35 227 55 227 55 189 47 189 44 209 34 210 33 176 22 176 22 209 12 210 11 184 0 184 0 227 16 228 16 255 55 256 45 269 16 269 16 300 0 301 0 343 11 343 11 319 13 317 20 317 22 319 22 359 33 359 33 318 42 317 43 346 55 346 55 301 35 301 34 289 89 288 96 270 99 267 124 267 134 288 189 289 188 301 168 301 168 346 180 346 179 319 181 317 189 317 190 359 201 359 201 319 203 317 210 317 212 319 212 343 223 343 223 301 207 300 207 269 178 269 168 256 207 255 207 228 223 227 223 184 212 184 211 210 201 209 201 176 190 176 189 210 180 210 176 189 168 189 168 227 188 227 189 238 164 239 139 168 218 167 218 141 173 141 171 139 173 118 198 118 198 97 170 97 154 113 151 114 148 110 148 107 169 76 189 76 189 56 162 56 148 81 144 80 153 40 155 38 174 38 174 19 145 19 137 47 134 50 133 0Z'/></symbol><symbol id='luku3' viewBox='0 0 225 360'><path fill-rule='evenodd' d='M112 239 89 298 136 298ZM6 309 6 336 21 336 23 330 31 345 30 347 21 347 21 359 53 359 53 347 42 346 48 332 53 331 54 336 75 336 86 309 40 309 39 279 79 278 111 212 113 211 146 278 186 279 185 309 139 309 150 336 171 336 172 331 175 330 177 332 183 346 172 347 172 359 204 359 204 347 194 346 200 332 202 330 204 336 219 336 219 309 202 308 202 266 152 266 112 187 75 264 73 266 23 266 23 308ZM99 84 99 99 126 99 126 84ZM20 20 21 31 35 55 31 56 18 39 1 39 1 140 108 141 108 150 67 233 39 232 39 205 69 204 81 179 80 172 63 172 50 187 48 186 57 167 60 166 60 151 21 151 21 166 24 168 29 185 27 187 24 187 21 184 16 172 0 173 0 204 23 205 23 246 72 246 112 165 153 246 202 246 202 205 224 204 224 172 209 172 204 184 201 187 198 187 196 185 201 168 204 166 204 151 165 151 165 166 168 167 177 186 173 186 162 172 145 172 144 179 156 204 186 205 186 232 158 233 117 150 117 141 224 140 224 39 207 39 194 56 191 56 190 54 204 31 204 20 153 20 139 40 135 40 135 37 152 9 152 0 73 0 73 9 90 37 90 40 86 40 72 20ZM59 77 94 76 95 54 130 54 131 76 166 77 166 106 131 107 130 129 95 129 94 107 59 106Z'/></symbol><symbol id='waglen' viewBox='0 0 549 554'><path fill-rule='evenodd' d='M158 0 158 162 6 164 114 276 0 391 158 392 158 553 273 441 386 553 386 391 388 389 548 389 440 281 548 167 388 167 387 6 277 114ZM177 45 277 140 367 51 369 53 369 185 504 186 414 280 503 370 368 371 367 507 274 414 177 508 176 372 45 371 139 277 50 183 176 182Z'/></symbol></svg>";
+function initAdornos() { document.body.insertAdjacentHTML('afterbegin', SIMBOLOS); }
 
 /* ---------- Grafemarios ---------- */
 const aUnificado = s => s.replace(/tx/g, 'tr').replace(/z/g, 'd').replace(/g/g, 'ng').replace(/q/g, 'g');
@@ -501,10 +502,10 @@ function initChat() {
       ok: t => /pigen/.test(t),
       antes: () => '<p><b class="mz">Inche ka kümelkalen</b>: yo también estoy bien. <b class="mz">Ka</b> = también.</p>',
       exp: t => { const m = t.match(/(?:inche )?(\S+) pigen/); nombre = m && m[1] !== 'inche' ? m[1][0].toUpperCase() + m[1].slice(1) : ''; return '<p><b class="mz">Pigen</b> = pi (decir) + ge (a mí) + <span class="suf p-inche">n</span> (inche). Literalmente «me dicen».</p>'; } },
-    { ella: () => [`Feley${nombre ? ', ' + nombre : ''}. Inche Rayen pigen.`, '¿Chew müleimi fachantü?'], tarea: '¿Dónde estás hoy? Usa: ___ mew mülen.', sug: ['Santiago mew mülen', 'Ruka mew mülen'],
+    { ella: () => [`Feley${nombre ? ', ' + nombre : ''}. Inche Rayen pigen.`, '¿Chew müleimi fachantü?'], tarea: '¿Dónde estás hoy? Usa: Inche mülen ___ mew.', sug: ['Inche mülen Santiago mew', 'Mülen ruka mew'],
       ok: t => /\bmülen\b/.test(t),
-      exp: () => '<p><b class="mz">Mew</b> marca el lugar (en). <b class="mz">Müle-<span class="suf p-inche">n</span></b>: estoy. Ella preguntó <b class="mz">müle-<span class="suf p-eimi">imi</span></b>: estás.</p>' },
-    { ella: () => ['Inche Temuko mew mülen. Pewkayal lamgen!'], tarea: 'Despídete.', sug: ['Feley. Pewkayal lamgen', 'Mañum lamgen'],
+      exp: () => '<p><b class="mz">Mew</b> marca el lugar (en) y se suele decir al final: mülen Santiago mew. <b class="mz">Müle-<span class="suf p-inche">n</span></b>: estoy. Ella preguntó <b class="mz">müle-<span class="suf p-eimi">imi</span></b>: estás.</p>' },
+    { ella: () => ['Inche mülen Temuko mew. Pewkayal lamgen!'], tarea: 'Despídete.', sug: ['Feley. Pewkayal lamgen', 'Mañum lamgen'],
       ok: t => /pewkayal|feley|mañum/.test(t),
       exp: () => '<p><b class="mz">Pewkayal</b>: hasta luego. <b class="mz">Feley</b>: de acuerdo, así es. <b class="mz">Mañum</b>: gracias.</p>' }
   ];
@@ -585,8 +586,227 @@ function initTraductor() {
   $$('#tr-ej button').forEach(b => b.addEventListener('click', () => { inp.value = b.textContent; traduce(); }));
 }
 
+/* =================== GUÍA 3: TAÑI, TAMI, ÑI =================== */
+const POS = [['tañi', 'mi', 'mis'], ['tami', 'tu', 'tus'], ['ñi', 'su', 'sus']];
+const COSAS = [['ruka', 'casa', 'casas', 'f'], ['txewa', 'perro', 'perros', 'm'], ['ñarki', 'gato', 'gatos', 'm'], ['ñuke', 'madre', 'madres', 'f'],
+  ['chaw', 'padre', 'padres', 'm'], ['lamgen', 'hermana o hermano', 'hermanas o hermanos', 'm'], ['wenüy', 'amiga o amigo', 'amigas o amigos', 'm'],
+  ['üy', 'nombre', 'nombres', 'm'], ['reñma', 'familia', 'familias', 'f'], ['logko', 'cabeza', 'cabezas', 'f'], ['namun', 'pie', 'pies', 'm']];
+function initPosesivos() {
+  const per = $('#pos-persona'); if (!per) return;
+  let p = 0, c = 0;
+  $('#pos-cosa').innerHTML = COSAS.map((x, i) => `<button type="button" aria-pressed="${i === 0}">${x[0]}</button>`).join('');
+  const pinta = () => {
+    const x = COSAS[c];
+    $('#pos-salida').innerHTML = `<p class="frase-pos"><span class="pos p-${PERS[p]}">${POS[p][0]}</span> ${x[0]}</p>` +
+      `<p class="es" style="font-size:1.3rem">${POS[p][1]} ${x[1]}</p>` +
+      (p === 2 ? `<p class="nota" style="margin-top:.6rem">También se dice <b class="mz">fey tañi ${x[0]}</b>. El <b>ta</b> es optativo: tañi o ñi, tami o mi.</p>` : '');
+  };
+  selector(per, b => { p = $$('button', per).indexOf(b); pinta(); });
+  selector($('#pos-cosa'), b => { c = $$('#pos-cosa button').indexOf(b); pinta(); });
+  pinta();
+}
+function initPuKe() {
+  const per = $('#pk-persona'); if (!per) return;
+  let p = 0;
+  const pinta = () => {
+    const x = COSAS[+$('#pk-cosa').value], pl = $('#pk-pu').checked, adj = $('#pk-kume').checked;
+    const partes = [`<span class="pers p-${PERS[p]}" data-t="${PERS[p]}">${POS[p][0]}</span>`];
+    if (pl && !adj) partes.push('<span class="neg" data-t="plural">pu</span>');
+    if (adj) partes.push('<span data-t="bueno">küme</span>');
+    if (pl && adj) partes.push('<span class="neg" data-t="plural">ke</span>');
+    partes.push(`<span data-t="${x[1]}">${x[0]}</span>`);
+    const frase = [POS[p][0], pl && !adj ? 'pu' : '', adj ? 'küme' : '', pl && adj ? 'ke' : '', x[0]].filter(Boolean).join(' ');
+    const bueno = x[3] === 'f' ? (pl ? 'buenas' : 'buena') : (pl ? 'buenos' : 'bueno');
+    $('#pk-salida').innerHTML = `<div class="morf" style="margin-top:1rem">${partes.join('')}</div><p class="frase-pos">${frase}</p>` +
+      `<p class="es" style="font-size:1.3rem">${pl ? POS[p][2] : POS[p][1]} ${pl ? x[2] : x[1]}${adj ? ' ' + bueno : ''}</p>` +
+      `<p>${pl ? (adj ? '<b class="mz">ke</b> pluraliza y va entre el adjetivo y el sustantivo.' : '<b class="mz">pu</b> pluraliza y va antes del sustantivo.') : 'Una sola cosa: no se agrega pu ni ke.'}</p>`;
+  };
+  $('#pk-cosa').innerHTML = COSAS.slice(0, 7).map((x, i) => `<option value="${i}">${x[0]} (${x[1]})</option>`).join('');
+  selector(per, b => { p = $$('button', per).indexOf(b); pinta(); });
+  ['#pk-cosa', '#pk-pu', '#pk-kume'].forEach(q => $(q).addEventListener('change', pinta));
+  pinta();
+}
+/* Ordenar palabras */
+const ORDENAR = [
+  ['Inche mülen waria mew', 'Estoy en la ciudad.'], ['Tañi ñuke mülei Santiago mew', 'Mi madre está en Santiago.'],
+  ['Inche mülen tami ruka mew', 'Estoy en tu casa.'], ['Fey tañi peñi amui waria mew', 'Su hermano fue a la ciudad.'],
+  ['Inche kimeltun mapuzugun mew', 'Enseñé en mapuzugun.'], ['Tami txewa txipai', 'Tu perro salió.'], ['Tañi pu ñarki mülei ruka mew', 'Mis gatos están en la casa.']];
+function initOrdenar() {
+  const z = $('#ordenar'); if (!z) return;
+  let i = 0;
+  const nueva = () => {
+    const [f, es] = ORDENAR[i % ORDENAR.length];
+    $('#ord-es').textContent = es;
+    $('#ord-frase').innerHTML = ''; $('#ord-frase').className = 'orden-frase';
+    $('#ord-palabras').innerHTML = azar(f.split(' '), 99).map(w => `<button type="button" class="palabra">${w}</button>`).join('');
+    $('#ord-fb').textContent = ''; $('#ord-fb').className = 'fb';
+  };
+  z.addEventListener('click', e => {
+    const b = e.target.closest('.palabra'); if (!b) return;
+    (b.parentElement.id === 'ord-palabras' ? $('#ord-frase') : $('#ord-palabras')).append(b);
+  });
+  $('#ord-revisar').addEventListener('click', () => {
+    const f = $$('#ord-frase .palabra').map(b => b.textContent).join(' '), bien = f === ORDENAR[i % ORDENAR.length][0];
+    $('#ord-frase').className = 'orden-frase ' + (bien ? 'ok' : 'mal');
+    $('#ord-fb').textContent = bien ? '¡Müna kümey!' : 'Müna weza. Recuerda: el verbo va antes y mew queda al final.';
+    $('#ord-fb').className = 'fb ' + (bien ? 'bien' : 'no');
+  });
+  $('#ord-reintentar').addEventListener('click', nueva);
+  $('#ord-otra').addEventListener('click', () => { i++; nueva(); });
+  nueva();
+}
+
+/* ---------- Awkantun en dupla: 10 preguntas ---------- */
+const P = (p, t) => `<span class="chip p-${p}">${p}</span> ${t}`;
+const QUIZ = [
+  ['q01', P('inche', '· ___ ruka'), 'mi casa', ['tañi ruka', 'tami ruka', 'ñi ruka'], 'Tañi = mi: lo que es de quien habla (inche).'],
+  ['q02', P('eimi', '· ___ ñuke'), 'tu madre', ['tami ñuke', 'tañi ñuke', 'ñi ñuke'], 'Tami = tu: lo que es de quien escucha (eimi).'],
+  ['q03', P('fey', '· ___ txewa'), 'su perro', ['ñi txewa', 'tami txewa', 'tami pu txewa'], 'Ñi = su: lo que es de quien no participa (fey). También se dice fey tañi txewa.'],
+  ['q04', P('eimi', '· ___ üy'), 'tu nombre', ['tami üy', 'tañi üy', 'ñi üy'], 'Tami = tu. Üy = nombre.'],
+  ['q05', P('inche', '· ___ reñma'), 'mi familia', ['tañi reñma', 'tami reñma', 'ñi reñma'], 'Tañi = mi. Reñma = familia.'],
+  ['q06', 'Tami chaw ülkantui', '¿Qué significa?', ['Tu padre cantó', 'Mi padre cantó', 'Tu padre cantaste'], 'Tami = tu (el padre es de eimi). -i: quien canta es fey, el padre.'],
+  ['q07', 'Tañi ñuke küzawi', '¿Quién trabajó?', ['mi madre (fey)', 'yo (inche)', 'tú (eimi)'], 'La terminación -i indica fey: trabajó la madre. Tañi solo dice de quién es la madre.'],
+  ['q08', 'Inche mülen tami ruka mew', '¿De quién es la ruka?', ['de eimi (tú)', 'de inche (yo)', 'de fey'], 'Tami = tu: la casa es de eimi. Mülen (-n) dice que quien está es inche.'],
+  ['q09', '¿Cómo se dice «mis perros»?', '', ['tañi pu txewa', 'pu tañi txewa', 'tañi txewa pu'], 'Pu pluraliza y va justo antes del sustantivo.'],
+  ['q10', '¿Cómo se dice «mis gatos buenos»?', '', ['tañi küme ke ñarki', 'tañi ke küme ñarki', 'tañi küme ñarki ke'], 'Con adjetivo, ke pluraliza entre el adjetivo y el sustantivo: küme ke ñarki.'],
+  ['q11', '¿Qué significa «pichi ke che»?', '', ['niñes (varios niños)', 'un niño', 'gente grande'], 'Pichi (chico) + ke (plural) + che (persona). Pichiche es un niño.'],
+  ['q12', '¿Cuál es la forma más usada?', 'Estoy en la ciudad.', ['Inche mülen waria mew', 'Inche waria mew mülen', 'Mew waria inche mülen'], 'Se suele decir primero el verbo y dejar mew al final: mülen waria mew.'],
+  ['q13', '¿Inei pigei tami ñuke?', 'Elige la mejor respuesta', ['Tañi ñuke Javiera pigei', 'Tami ñuke Javiera pigen', 'Tañi ñuke Javiera pigeimi'], 'Respondes con tañi (es tu madre) y pigei, porque tu madre es fey.'],
+  ['q14', 'Tami txewa txipai', '¿Qué significa?', ['Tu perro salió', 'Mi perro salió', 'Tu perro saliste'], 'Tami = tu. Txipai (-i): quien sale es fey, el perro.'],
+  ['q15', 'Fey tañi ñarki putui ko', '¿Qué significa?', ['Su gato tomó agua', 'Tu gato tomó agua', 'Mi gato tomé agua'], 'Fey tañi = su. Putui (-i): quien toma es fey, el gato.'],
+  ['q16', 'Tami namun', '¿Qué significa?', ['tu pie', 'mi cabeza', 'tu cabeza'], 'Tami = tu; namun = pie. Logko es cabeza.'],
+  ['q17', 'Tañi logko', '¿Qué significa?', ['mi cabeza', 'tu cabeza', 'mi pie'], 'Tañi = mi; logko = cabeza.'],
+  ['q18', 'Si escuchas «mi chaw»…', '¿qué significa?', ['tu padre', 'mi padre', 'su padre'], 'El ta es optativo: mi es la forma corta de tami (tu). No es el «mi» del español.'],
+  ['q19', '¿Cómo se dice «tus gatos»?', '', ['tami pu ñarki', 'tañi pu ñarki', 'tami ñarki pu'], 'Tami = tu; pu pluraliza antes del sustantivo.'],
+  ['q20', '¿Chumlei tami ñuke?', '¿Qué significa?', ['¿Cómo está tu madre?', '¿Cómo estás, madre?', '¿Dónde está tu madre?'], 'Chum-le-i: cómo está (fey). Tami ñuke: tu madre.'],
+  ['q21', 'Tañi ñuke mülei Santiago mew', '¿Qué significa?', ['Mi madre está en Santiago', 'Tu madre está en Santiago', 'Mi madre estoy en Santiago'], 'Tañi = mi. Mülei (-i): quien está es fey, la madre.']
+];
+const quizPorId = id => QUIZ.find(q => q[0] === id);
+const SESION = new URLSearchParams(location.search).get('sesion') || 'kimeltun-4';
+function numMz(n) { return n === 0 ? '0' : rakin(n); }
+function initQuiz() {
+  const caja = $('#quiz'); if (!caja) return;
+  let preg = [], i = 0, resp = [], dupla = '';
+  const cuerpo = $('.quiz-cuerpo', caja);
+  const abre = () => { caja.classList.add('abierto'); document.body.style.overflow = 'hidden'; caja.requestFullscreen?.().catch(() => {}); };
+  const cierra = () => { caja.classList.remove('abierto'); document.body.style.overflow = ''; if (document.fullscreenElement) document.exitFullscreen(); };
+  const barra = () => { $('.barra i', caja).style.width = (i / 10 * 100) + '%'; $('#quiz-cont').textContent = i < 10 ? `${rakin(i + 1)} · ${i + 1} / 10` : ''; };
+  const muestra = () => {
+    barra();
+    const q = preg[i], ops = azar(q[3], 3);
+    cuerpo.innerHTML = `<div class="q-num">Ramtun ${rakin(i + 1)}</div><div class="q-texto">${q[1]}${q[2] ? `<span class="es">${q[2]}</span>` : ''}</div>` +
+      `<div class="q-opciones">${ops.map((o, k) => `<button type="button" data-o="${o}"><b>${'ABC'[k]}</b>${o}</button>`).join('')}</div><div id="q-fb"></div>`;
+    let respondida = false;
+    $('.q-opciones', cuerpo).addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b || respondida) return;
+      respondida = true;
+      const bien = b.dataset.o === q[3][0];
+      resp.push({ id: q[0], elegida: b.dataset.o, correcta: q[3][0], ok: bien });
+      $$('.q-opciones button', cuerpo).forEach(x => { x.disabled = true; if (x.dataset.o === q[3][0]) x.classList.add('ok'); });
+      if (!bien) b.classList.add('mal');
+      $('#q-fb').innerHTML = `<div class="q-fb ${bien ? 'bien' : 'no'}"><h4>${bien ? '¡Müna kümey!' : 'Müna weza'}</h4><p>${bien ? '' : `La respuesta era <b>${q[3][0]}</b>. `}${q[4]}</p>` +
+        `<button class="btn" type="button" id="q-sig">${i < 9 ? 'Siguiente →' : 'Ver resultado'}</button></div>`;
+      $('#q-sig').focus();
+      $('#q-sig').addEventListener('click', () => { i++; i < 10 ? muestra() : final(); });
+    });
+  };
+  const final = () => {
+    barra();
+    const pts = resp.filter(r => r.ok).length;
+    let img, anim, frase, es, cred = '';
+    if (pts >= 9) { img = 'img/afafan.png'; anim = 'a-afafan'; frase = 'Müna kümey amulei tami mapuzugun. ¡Kiñe afafan tati!'; es = 'Va muy bien tu mapuzugun. ¡Un afafan!'; cred = '<p class="credito-img">Imagen: Fiestoforo</p>'; }
+    else if (pts >= 5) { img = 'img/feley.png'; anim = 'a-feley'; frase = 'Feley, küme txipay. Petu mülei mi pepikawal tufachi zugü mew.'; es = 'Bien, salió bien. ¡Aún debes prepararte para este tema!'; }
+    else { img = 'img/fotx.png'; anim = 'a-fotx'; frase = 'Fotxü anai'; es = '¡Pucha! Repasa la guía y vuelve a intentarlo.'; }
+    cuerpo.innerHTML = `<div class="resultado"><img class="${anim}" src="${img}" alt="">${cred}` +
+      `<div class="puntaje">${numMz(pts)}<small>${pts} de 10 · ${dupla}</small></div><p class="frase">${frase}</p><p class="es">${es}</p>` +
+      `<div class="acciones"><button class="btn" id="q-rev">Pellelu take tankun<small>Revisar respuestas</small></button><button class="btn sec" id="q-otra">Ka kiñe<small>Otra vez</small></button><button class="btn sec" id="q-fin">Fey mütem<small>Eso nada más</small></button></div>` +
+      `<p class="registro" id="q-reg"></p></div>`;
+    botonesFinal();
+    registra(pts);
+  };
+  const revision = () => {
+    cuerpo.innerHTML = `<div class="revision"><h2>Pellelu take tankun</h2><ol>${resp.map((r, k) => { const q = quizPorId(r.id);
+      return `<li><b>${rakin(k + 1)}.</b> <span class="mz">${q[1]}</span> ${q[2] ? `<span class="es">${q[2]}</span>` : ''}<br>` +
+        (r.ok ? `<span class="buena">✔ ${r.correcta}</span>` : `<span class="tuya">✘ Elegiste: ${r.elegida}</span><br><span class="buena">✔ Correcta: ${r.correcta}</span>`) +
+        `<br><span class="es">${q[4]}</span></li>`; }).join('')}</ol>` +
+      `<div class="acciones"><button class="btn sec" id="q-otra">Ka kiñe<small>Otra vez</small></button><button class="btn sec" id="q-fin">Fey mütem<small>Eso nada más</small></button></div></div>`;
+    botonesFinal(); cuerpo.scrollTop = 0; caja.scrollTop = 0;
+  };
+  const botonesFinal = () => {
+    $('#q-rev')?.addEventListener('click', revision);
+    $('#q-otra')?.addEventListener('click', empieza);
+    $('#q-fin')?.addEventListener('click', cierra);
+  };
+  const registra = pts => {
+    const url = window.REGISTRO_URL, reg = $('#q-reg');
+    if (!url) { reg.textContent = 'Registro en línea no configurado.'; return; }
+    fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ sesion: SESION, dupla, puntaje: pts, respuestas: resp }) })
+      .then(() => reg.textContent = 'Resultado registrado.').catch(() => reg.textContent = 'No se pudo registrar (revisa la conexión).');
+  };
+  const empieza = () => { preg = azar(QUIZ, 10); i = 0; resp = []; abre(); muestra(); };
+  $('#quiz-llitun').addEventListener('click', () => {
+    dupla = $('#quiz-dupla').value.trim();
+    if (!dupla) { $('#quiz-dupla').focus(); $('#quiz-aviso').textContent = 'Escriban un nombre para su dupla.'; return; }
+    $('#quiz-aviso').textContent = ''; empieza();
+  });
+  $('#quiz-cerrar').addEventListener('click', cierra);
+}
+
+/* ---------- Panel de resultados (kimelfe) ---------- */
+function initPanel() {
+  const zona = $('#panel'); if (!zona) return;
+  const inp = $('#panel-sesion'); inp.value = SESION;
+  const carga = async () => {
+    const url = window.REGISTRO_URL;
+    if (!url) { $('#panel-estado').textContent = 'Falta pegar la URL del registro en config.js.'; return; }
+    $('#panel-estado').textContent = 'Cargando…';
+    try {
+      const datos = await (await fetch(url + '?sesion=' + encodeURIComponent(inp.value.trim()))).json();
+      pinta(datos);
+      $('#panel-estado').textContent = `Actualizado: ${new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+    } catch (e) { $('#panel-estado').textContent = 'No se pudieron leer los resultados.'; }
+  };
+  const pinta = datos => {
+    const pts = datos.map(d => +d.puntaje);
+    if (!pts.length) { $('#panel-datos').innerHTML = '<p>Aún no hay resultados para esta sesión.</p>'; return; }
+    const prom = pts.reduce((a, b) => a + b, 0) / pts.length, max = Math.max(...pts), min = Math.min(...pts);
+    const dist = [...Array(11)].map((_, k) => pts.filter(p => p === k).length), top = Math.max(...dist);
+    const porP = {};
+    datos.forEach(d => (d.respuestas || []).forEach(r => {
+      const x = porP[r.id] ||= { n: 0, mal: 0, errores: {} };
+      x.n++; if (!r.ok) { x.mal++; x.errores[r.elegida] = (x.errores[r.elegida] || 0) + 1; }
+    }));
+    const filas = Object.entries(porP).sort((a, b) => b[1].mal / b[1].n - a[1].mal / a[1].n);
+    $('#panel-datos').innerHTML =
+      `<div class="tablero">
+        <div class="dato"><small>Duplas</small><b>${pts.length}</b><span>${numMz(pts.length)}</span></div>
+        <div class="dato" style="--c:var(--choz)"><small>Promedio</small><b>${prom.toFixed(1).replace('.', ',')}</b><span>≈ ${numMz(Math.round(prom))}</span></div>
+        <div class="dato" style="--c:var(--fey)"><small>Puntaje máximo</small><b>${max}</b><span>${numMz(max)}</span></div>
+        <div class="dato" style="--c:var(--copihue)"><small>Puntaje más bajo</small><b>${min}</b><span>${numMz(min)}</span></div>
+      </div>
+      <h3 style="margin-top:2rem">Distribución de puntajes</h3>
+      <div class="barras">${dist.map(n => `<div style="height:${top ? n / top * 100 : 0}%"><span>${n || ''}</span></div>`).join('')}</div>
+      <div class="barras-et">${dist.map((_, k) => `<span>${k}</span>`).join('')}</div>
+      <h3 style="margin-top:2rem">Dónde se equivocaron más</h3>
+      <div class="tabla-wrap"><table><tr><th>Pregunta</th><th>Errores</th><th></th><th>Respuesta incorrecta más elegida</th></tr>
+      ${filas.map(([id, x]) => { const q = quizPorId(id) || [id, id, '']; const peor = Object.entries(x.errores).sort((a, b) => b[1] - a[1])[0];
+        return `<tr><td><span class="mz">${q[1]}</span> <span class="es">${q[2] || ''}</span></td><td>${x.mal} de ${x.n}</td><td><div class="err-barra"><i style="width:${x.mal / x.n * 100}%"></i></div></td><td>${peor ? `${peor[0]} (${peor[1]})` : '—'}</td></tr>`; }).join('')}
+      </table></div>
+      <h3 style="margin-top:2rem">Duplas</h3>
+      <div class="tabla-wrap"><table><tr><th>Dupla</th><th>Puntaje</th><th>Hora</th></tr>
+      ${datos.slice().sort((a, b) => b.puntaje - a.puntaje).map(d => `<tr><td>${String(d.dupla).replace(/</g, '&lt;')}</td><td><b class="mz">${numMz(+d.puntaje)}</b> (${d.puntaje})</td><td>${new Date(d.fecha).toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' })}</td></tr>`).join('')}
+      </table></div>`;
+  };
+  $('#panel-cargar').addEventListener('click', carga);
+  let t = null;
+  $('#panel-auto').addEventListener('change', e => { clearInterval(t); if (e.target.checked) t = setInterval(carga, 15000); });
+  carga();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initAdornos(); initGeneradores(); initGrafemario(); initChat(); initTraductor();
   initEjercicios(); initTeclado(); initVarios(); initChalin(); initEstados();
   initPresentacion(); initChecklist(); initEscena(); initConjugador(); initSemaforo(); initConjuga(); initPigei(); initRakin();
+  initPosesivos(); initPuKe(); initOrdenar(); initQuiz(); initPanel();
 });

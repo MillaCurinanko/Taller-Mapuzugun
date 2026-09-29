@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía 3: tañi, tami, ñi · Kimeltun mapuzugun</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 549 554%27%3E%3Cpath fill-rule=%27evenodd%27 fill=%27%230A2D8F%27 d=%27M158%200%20158%20162%206%20164%20114%20276%200%20391%20158%20392%20158%20553%20273%20441%20386%20553%20386%20391%20388%20389%20548%20389%20440%20281%20548%20167%20388%20167%20387%206%20277%20114ZM177%2045%20277%20140%20367%2051%20369%2053%20369%20185%20504%20186%20414%20280%20503%20370%20368%20371%20367%20507%20274%20414%20177%20508%20176%20372%2045%20371%20139%20277%2050%20183%20176%20182Z%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;500;700;800&family=Alegreya:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<header class="cab"><div class="cab-in">
+  <a class="marca" href="index.html">
+    <svg viewBox="0 0 549 554" aria-hidden="true"><path fill-rule="evenodd" d="M158 0 158 162 6 164 114 276 0 391 158 392 158 553 273 441 386 553 386 391 388 389 548 389 440 281 548 167 388 167 387 6 277 114ZM177 45 277 140 367 51 369 53 369 185 504 186 414 280 503 370 368 371 367 507 274 414 177 508 176 372 45 371 139 277 50 183 176 182Z"/></svg>
+    <span><b>Kimeltun mapuzugun</b><small>Iney am ta inche mapuzugun mew</small></span>
+  </a>
+  <nav><a href="index.html">Inicio</a><a href="guia-1.html">Guía 1: chalin</a><a href="guia-2.html">Guía 2: inche, eimi, fey</a><a href="guia-3.html">Guía 3: tañi, tami, ñi</a><a href="clases.html">Clases</a></nav>
+</div></header>
+<div class="nimin"></div>
+
+<main>
+<section class="bloque"><div class="intro-guia"><div>
+  <div class="faja corta" aria-hidden="true"></div>
+  <h2>Guía 3: tañi, tami, ñi<small>Posesivos: decir de quién es algo. Kimeltun 4.</small></h2>
+  <p>El posesivo va <b>antes</b> de lo que se posee. Usamos los mismos colores de siempre: rojo inche, azul eimi, verde fey.</p>
+  <p style="font-size:1.35rem"><span class="chip p-inche">tañi</span> mi &nbsp; <span class="chip p-eimi">tami</span> tu &nbsp; <span class="chip p-fey">ñi</span> su</p>
+  <div class="acciones"><a class="btn" href="#awkantun">Ir al awkantun en dupla</a><button class="btn sec imprimir">Guardar como PDF</button></div>
+</div><svg class="luku" viewBox="0 0 225 360" aria-hidden="true"><use href="#luku3"/></svg></div></section>
+
+<!-- I -->
+<section class="bloque">
+  <h2>I. ¿De quién es la ruka?<small>Tañi, tami, ñi</small></h2>
+  <div class="pregunta-par">
+    <div class="par p-inche"><span class="es">Lo que es de quien habla (inche)</span><div class="q"><span class="pos p-inche">tañi</span> ruka</div><span class="es">mi casa</span></div>
+    <div class="par p-eimi"><span class="es">Lo que es de quien escucha (eimi)</span><div class="q"><span class="pos p-eimi">tami</span> ruka</div><span class="es">tu casa</span></div>
+    <div class="par p-fey"><span class="es">Lo que es de quien no participa (fey)</span><div class="q"><span class="pos p-fey">ñi</span> ruka</div><span class="es">su casa · también: fey tañi ruka</span></div>
+  </div>
+  <p class="nota">El <b>ta</b> es optativo: se puede decir <b class="mz">tañi</b> o <b class="mz">ñi</b>, <b class="mz">tami</b> o <b class="mz">mi</b>. Ojo: <b class="mz">mi</b> en mapuzugun significa «tu». El contexto y el pronombre ayudan a entender de quién se habla.</p>
+  <div class="traductor solo-web">
+    <h3>Arma la frase</h3>
+    <p>¿De quién es?</p>
+    <div class="selector" id="pos-persona"><button type="button" class="p-inche" aria-pressed="true">inche · mío</button><button type="button" class="p-eimi">eimi · tuyo</button><button type="button" class="p-fey">fey · suyo</button></div>
+    <p>¿Qué cosa o persona?</p>
+    <div class="selector" id="pos-cosa"></div>
+    <div id="pos-salida" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- II -->
+<section class="bloque">
+  <h2>II. De quién es ≠ quién lo hace<small>Dos preguntas distintas</small></h2>
+  <p>El posesivo dice <b>de quién es</b>. La terminación del verbo dice <b>quién hace la acción</b>.</p>
+  <div class="dos-preg">
+    <div class="par" style="--c:var(--inche)"><div class="q"><span class="pos p-inche">Tañi</span> ñuke küzaw<span class="suf p-fey">i</span></div><span class="es">Mi madre trabajó.</span><p>tañi: la madre es de inche. -i: quien trabaja es fey, la madre.</p></div>
+    <div class="par" style="--c:var(--eimi)"><div class="q"><span class="pos p-eimi">Tami</span> chaw ülkantu<span class="suf p-fey">i</span></div><span class="es">Tu padre cantó.</span><p>tami: el padre es de eimi. -i: quien canta es fey, el padre.</p></div>
+    <div class="par" style="--c:var(--inche)"><div class="q">Inche müle<span class="suf p-inche">n</span> <span class="pos p-eimi">tami</span> ruka mew</div><span class="es">Estoy en tu casa.</span><p>tami: la casa es de eimi. -n: quien está es inche.</p></div>
+  </div>
+</section>
+
+<!-- III -->
+<section class="bloque">
+  <h2>III. Pu y ke<small>Cuando son varios</small></h2>
+  <div class="grid">
+    <p><b class="mz">pu</b> pluraliza y va antes del sustantivo.<br><span class="mz">tañi pu txewa</span> <span class="es">mis perros</span><br><span class="mz">tami pu ñarki</span> <span class="es">tus gatos</span></p>
+    <p><b class="mz">ke</b> pluraliza cuando hay un adjetivo: va entre el adjetivo y el sustantivo.<br><span class="mz">tañi küme ke txewa</span> <span class="es">mis perros buenos</span></p>
+    <p><b class="mz">pichiche</b> <span class="es">niño</span>: pichi (de püchü, chico) + che (persona).<br><b class="mz">pichi ke che</b> <span class="es">niñes, varios niños</span></p>
+  </div>
+  <div class="traductor solo-web">
+    <h3>Prueba pu y ke</h3>
+    <div class="selector" id="pk-persona"><button type="button" class="p-inche" aria-pressed="true">inche · tañi</button><button type="button" class="p-eimi">eimi · tami</button><button type="button" class="p-fey">fey · ñi</button></div>
+    <div class="acciones" style="margin-top:.4rem">
+      <select id="pk-cosa" aria-label="Sustantivo"></select>
+      <label class="interruptor"><input type="checkbox" id="pk-pu"> Varios</label>
+      <label class="interruptor"><input type="checkbox" id="pk-kume"> Con küme (bueno)</label>
+    </div>
+    <div id="pk-salida" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- IV -->
+<section class="bloque">
+  <h2>IV. El orden de la frase<small>El verbo antes, mew al final</small></h2>
+  <p>En mapuzugun se suele decir primero el verbo y dejar al final la palabra con <b class="mz">mew</b>.</p>
+  <div class="grid">
+    <p>Se dice: <b class="mz">Inche mülen waria mew</b><br><span class="es">Estoy en la ciudad.</span></p>
+    <p>Se dice: <b class="mz">Inche kimeltun mapuzugun mew</b><br><span class="es">Enseñé en mapuzugun.</span></p>
+    <p>Poco usado: <span style="text-decoration:line-through">Inche waria mew mülen</span></p>
+  </div>
+  <div class="traductor solo-web" id="ordenar">
+    <h3>Ordena la frase</h3>
+    <p>Toca las palabras en orden. Si te equivocas, tócalas de nuevo para devolverlas.</p>
+    <p class="es" id="ord-es" style="font-size:1.3rem"></p>
+    <div class="orden-frase" id="ord-frase"></div>
+    <div class="palabras" id="ord-palabras"></div>
+    <div class="acciones"><button class="btn" type="button" id="ord-revisar">Revisar</button><button class="btn sec" type="button" id="ord-reintentar">Volver a intentar</button><button class="btn sec" type="button" id="ord-otra">Otra frase</button></div>
+    <p class="fb" id="ord-fb"></p>
+  </div>
+</section>
+
+<!-- V -->
+<section class="bloque solo-web" id="awkantun">
+  <h2>V. Awkantun en dupla<small>Diez preguntas, una a la vez</small></h2>
+  <div class="inicio-quiz">
+    <div class="lukus" aria-hidden="true"><svg viewBox="0 0 225 360"><use href="#luku1"/></svg><svg viewBox="0 0 225 360"><use href="#luku2"/></svg><svg viewBox="0 0 225 360"><use href="#luku3"/></svg></div>
+    <div>
+      <h3>Tañi, tami, ñi</h3>
+      <p>Respondan en dupla desde un celular. Escriban un nombre para su dupla (no hace falta poner nombres propios).</p>
+      <div class="acciones" style="margin-top:.4rem"><input id="quiz-dupla" placeholder="Nombre de la dupla" aria-label="Nombre de la dupla" maxlength="40"><button class="btn" type="button" id="quiz-llitun">Llitun · Comenzar</button></div>
+      <p id="quiz-aviso" style="color:var(--choz);font-family:var(--sans);font-weight:700"></p>
+    </div>
+  </div>
+</section>
+
+<section class="bloque">
+  <h2>Práctica con un hablante</h2>
+  <p>Pregúntale a alguien de tu familia o comunidad <b class="mz">¿inei pigei tami ñuke?</b> y <b class="mz">¿chumten txipantü niei tami ñuke?</b> Fíjate si dice tañi o ñi, y tami o mi.</p>
+</section>
+</main>
+
+<div class="quiz" id="quiz" role="dialog" aria-modal="true" aria-label="Awkantun en dupla">
+  <div class="quiz-cab"><span>Awkantun · <span id="quiz-cont"></span></span><button type="button" id="quiz-cerrar">Cerrar ✕</button></div>
+  <div class="barra"><i></i></div>
+  <div class="quiz-cuerpo"></div>
+</div>
+</main>
+
+<footer class="pie">
+  <p><b>Taller de mapuzugun nivel básico</b>. Grafemario Azümchefe.</p>
+  <p>Kimelfe: Cristián Milla Curiñanco · cristian.milla@ug.uchile.cl</p>
+</footer>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
