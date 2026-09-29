@@ -48,6 +48,15 @@ function evaluar(valor, respuestas) {
 function initEjercicios() {
   $$('.ej').forEach(ej => {
     const fb = $('.fb', ej);
+    const acc = $('.acciones', ej);
+    if (acc && $('.revisar', ej) && !$('.reintentar', ej)) {
+      acc.insertAdjacentHTML('beforeend', '<button class="btn sec reintentar" type="button">Volver a intentar</button>');
+      $('.reintentar', ej).addEventListener('click', () => {
+        $$('[data-r]', ej).forEach(c => { c.value = ''; c.classList.remove('ok', 'mal', 'casi', 'visto'); });
+        fb.textContent = ''; fb.className = 'fb';
+        $('[data-r]', ej)?.focus();
+      });
+    }
     $('.revisar', ej)?.addEventListener('click', () => {
       const campos = $$('[data-r]', ej);
       let ok = 0, casi = 0;
@@ -232,7 +241,7 @@ function initEscena() {
 
 /* ---------- Banco de verbos (planilla Vocabulario) ---------- */
 const BANCO_TXT = `Movimiento:amun=ir;amutun=irse;küpan=venir;küpalün=traer;akun=llegar (aquí);puwün=llegar (allá);tuwün=venir de;konün=entrar;txipan=salir;püran=subir;nagün=bajar;wiñon=volver;rupan=pasar (hacia acá);rumen=pasar (hacia allá);miawün=andar;txekan=caminar;lefün=correr;rügkün=saltar;weyelün=nadar;yen=llevar;yemen=ir a buscar;fülün=acercarse;matukelün=apurarse;ügümün=esperar;tügün=quedarse quieto
-Comunicación:zugun=hablar;nütxamün=narrar;nütxamkan=conversar;ramtun=preguntar;llowzugun=responder;mütxümün=llamar;pigen=llamarse;allkütun=escuchar;nüküfün=callarse;mañumün=agradecer;gülamtun=aconsejar;koylatun=mentir;chalintukun=saludar (dejar saludo)
+Comunicación:zugun=hablar;nütxamün=narrar;nütxamkan=conversar;ramtun=preguntar;llowzugun=responder;mütxümün=llamar;pigen=llamarse;allkütun=escuchar;nüküfün=callarse;mañumün=agradecer;gülamtun=aconsejar;koylatun=mentir;chalintukun=saludar (dejando saludo)
 Conocimiento:chillkatun=estudiar;kimün=saber;kimeltun=enseñar;kimuwün=conocerse;rakizuamün=pensar;azümün=entender;tukulpan=recordar;goyman=olvidar;feyentun=creer
 Percepción:pen=ver, encontrar;azkintun=mirar;kintun=buscar;pegelün=mostrar;ñamün=perder;petun=encontrar (lo perdido);ellkan=esconder;wefün=aparecer
 Afecto:poyen=amar, estimar;zuamün=necesitar;ayen=reír;ayekan=divertirse;güman=llorar;weñagkün=estar triste;illkun=enojarse;yewün=avergonzarse;llikan=tener miedo;kümentun=gustar;kümezuamün=sentirse bien
@@ -244,7 +253,7 @@ Descanso:ürkütun=descansar;ürkün=cansarse;umawtun=dormir;kuzun=acostarse;pew
 Comida:putun=beber;güñün=tener hambre;wüywün=tener sed;afümün=cocer;zewmayalün=cocinar;masan=amasar;kofken=hacer pan;kofketun=comer pan;mürketun=comer harina tostada;kagkatun=asar;wazkün=hervir;kotün=tostar;chafün=pelar;katxün=cortar;chaytun=colar
 Campo:ketxan=arar;tukun=sembrar, poner;anümün=plantar;püramün=cosechar;witxukon=regar;rügan=cavar;challwan=pescar;mamülltun=hacer leña
 Telar y arte:füwün=hilar;güren=tejer;witxalün=tejer en telar;wizün=trabajar la greda;rütxan=trabajar la platería
-Salud:kütxantun=enfermar;txemon=sanarse;chafon=toser;müñetun=bañarse;arofün=sudar
+Salud:kütxantun=enfermarse;txemon=sanarse;chafon=toser;müñetun=bañarse;arofün=sudar
 Espiritual:gellipun=rogar;gillatun=hacer rogativa;yamün=respetar;ülkantun=cantar
 Vida social:purun=bailar;kültxugtun=tocar kültxug;txawün=reunirse;wewün=ganar;awkantun=jugar;wirarün=gritar`;
 const CONSONANTE = /[^aeiouü]/;
@@ -257,7 +266,39 @@ const BANCO = BANCO_TXT.split('\n').flatMap(l => {
     return core || [v, es, cons ? v.slice(0, -2) : v.slice(0, -1), cons ? 'ün' : 'n', null, cat];
   }).map(k => (k[5] = k[5] || cat, k));
 });
-const esPersona = (v, p) => v[4] ? v[4][p] : `${PERS_ES[p]}: ${v[1]}`;
+/* Español: pretérito para acciones, presente para estados */
+const ESTADO_MZ = ['mülen', 'felen', 'gen', 'nien', 'mogen', 'kimün', 'zuamün', 'poyen', 'güñün', 'wüywün', 'llikan', 'kümezuamün'];
+const ES_FIJO = {
+  kümentun: ['me gusta', 'te gusta', 'le gusta'], weñagkün: ['estoy triste', 'estás triste', 'está triste'],
+  kimuwün: ['me conocí con alguien', 'te conociste con alguien', 'se conoció con alguien'], kütxantun: ['me enfermé', 'te enfermaste', 'se enfermó']
+};
+const PRET_IRR = { ir: ['fui', 'fuiste', 'fue'], venir: ['vine', 'viniste', 'vino'], traer: ['traje', 'trajiste', 'trajo'], hacer: ['hice', 'hiciste', 'hizo'],
+  dar: ['di', 'diste', 'dio'], ver: ['vi', 'viste', 'vio'], andar: ['anduve', 'anduviste', 'anduvo'], reír: ['reí', 'reíste', 'rio'], creer: ['creí', 'creíste', 'creyó'],
+  mentir: [0, 0, 'mintió'], dormir: [0, 0, 'durmió'], divertir: [0, 0, 'divirtió'], hervir: [0, 0, 'hirvió'], pedir: [0, 0, 'pidió'] };
+const PRES_IRR = { estar: ['estoy', 'estás', 'está'], ser: ['soy', 'eres', 'es'], tener: ['tengo', 'tienes', 'tiene'], saber: ['sé', 'sabes', 'sabe'], sentir: ['siento', 'sientes', 'siente'] };
+function conjugaEs(mz, glosa) {
+  if (ES_FIJO[mz]) return ES_FIJO[mz];
+  const g = glosa.split(',')[0].trim(), partes = g.split(' ');
+  let inf = partes[0]; const resto = partes.slice(1).join(' ');
+  const refl = /(ar|er|ir|ír)se$/.test(inf); if (refl) inf = inf.slice(0, -2);
+  const raiz = inf.slice(0, -2), term = inf.slice(-2);
+  let f;
+  if (ESTADO_MZ.includes(mz)) {
+    f = PRES_IRR[inf] || (term === 'ar' ? ['o', 'as', 'a'] : ['o', 'es', 'e']).map(x => raiz + x);
+  } else {
+    const irr = PRET_IRR[inf];
+    if (irr && irr[0]) f = irr;
+    else {
+      if (term === 'ar') {
+        const r1 = raiz.replace(/c$/, 'qu').replace(/g$/, 'gu').replace(/z$/, 'c');
+        f = [r1 + 'é', raiz + 'aste', raiz + 'ó'];
+      } else f = [raiz + 'í', raiz + 'iste', raiz + 'ió'];
+      if (irr) f[2] = irr[2];
+    }
+  }
+  return f.map((x, i) => (refl ? ['me ', 'te ', 'se '][i] : '') + x + (resto ? ' ' + resto : ''));
+}
+const esPersona = (v, p) => v[4] ? v[4][p] : conjugaEs(v[0], v[1])[p];
 
 function pintaVerbo(v) {
   $('#conj-raiz').innerHTML = `<span class="mz" style="font-size:1.3rem">${v[0]}</span> <span class="es">${v[1]}</span>. Raíz <b class="mz">${v[2]}-</b>` +
@@ -302,7 +343,7 @@ function initSemaforo() {
     if (bien) { puntos++; racha++; } else racha = 0;
     $('#sem-palabra').innerHTML = formaHTML(v, p);
     $('#sem-fb').innerHTML = (bien ? '¡Kümey! ' : 'Welulay. ') +
-      `<span class="chip p-${PERS[p]}">${PERS[p]}</span> ${forma(v, p)} (${v[0]}: ${v[1]}). Termina en <b>-${sufijo(v, p)}</b>.`;
+      `<span class="chip p-${PERS[p]}">${PERS[p]}</span> ${forma(v, p)} = ${esPersona(v, p)}. Termina en <b>-${sufijo(v, p)}</b>.`;
     $('#sem-fb').className = 'fb ' + (bien ? 'bien' : 'no');
     $('#sem-marcador').textContent = `${puntos} de ${total} · racha: ${racha}`;
     setTimeout(nueva, bien ? 1600 : 3200);
@@ -310,6 +351,38 @@ function initSemaforo() {
   $$('#semaforo .sem-botones button').forEach((b, k) => b.addEventListener('click', () => responde(k)));
   document.addEventListener('keydown', e => { if (['1', '2', '3'].includes(e.key) && !e.target.matches('input,textarea,select')) responde(+e.key - 1); });
   nueva();
+}
+
+
+/* ---------- Ejercicios que cambian ("Otras preguntas") ---------- */
+const azar = (a, n) => [...a].sort(() => Math.random() - .5).slice(0, n);
+const SITUACIONES = [
+  ['Le preguntas a tu lamgen cómo está.', 'chumleimi'], ['Le preguntas a tu peñi cómo está.', 'chumleimi'], ['Le preguntas a la kimelfe cómo está.', 'chumleimi'],
+  ['Preguntas cómo está tu mamá.', 'chumlei'], ['Preguntas cómo está tu papá.', 'chumlei'], ['Preguntas cómo está la papay, que no está aquí.', 'chumlei'],
+  ['Respondes que tú estás bien.', 'kümelkalen'], ['Te preguntan por ti y estás bien.', 'kümelkalen'],
+  ['Respondes que ella está bien.', 'kümelkalei'], ['Te preguntan por tu chaw y está bien.', 'kümelkalei']];
+const GENERADORES = {
+  chum: () => azar(SITUACIONES, 4).map(([t, r]) => `<li>${t} <select data-r="${r}"><option value="">—</option><option>chumleimi</option><option>chumlei</option><option>kümelkalen</option><option>kümelkalei</option></select></li>`),
+  terminacion: () => azar(BANCO, 8).map((v, i) => { const p = i % 3; return `<li><span class="mz">${['Inche', 'Eimi', 'Fey'][p]} ${v[2]}</span><input class="corto" data-r="${sufijo(v, p)}" aria-label="terminación"> <span class="es">${esPersona(v, p)}.</span></li>`; }),
+  quien: () => azar(BANCO, 8).map(v => { const p = Math.floor(Math.random() * 3); return `<li><span class="mz">${forma(v, p)}</span> <input class="medio" data-r="${PERS[p]}" aria-label="persona"> <span class="es solo-web" hidden>${esPersona(v, p)}</span></li>`; }),
+  rakin: () => {
+    const a = azar([...Array(98).keys()].map(x => x + 11), 5).map(n => `<li>${n} <input class="largo" data-r="${rakin(n)}"></li>`);
+    const b = azar([...Array(89).keys()].map(x => x + 11), 3).map(n => `<li><span class="mz">${rakin(n)}</span> <input class="corto" data-r="${n}"></li>`);
+    return [...a, '</ol><h3>¿Qué número es?</h3><ol>', ...b];
+  }
+};
+function initGeneradores() {
+  $$('.ej[data-gen]').forEach(ej => {
+    const ol = $('ol', ej), tipo = ej.dataset.gen;
+    const genera = () => {
+      $$('ol ~ h3, ol ~ ol', ej).forEach(x => x.remove());
+      ol.outerHTML = '<ol>' + GENERADORES[tipo]().join('') + '</ol>';
+      const fb = $('.fb', ej); fb.textContent = ''; fb.className = 'fb';
+    };
+    ej.dataset.listo || $('.acciones', ej).insertAdjacentHTML('beforeend', '<button class="btn sec otras" type="button">Otras preguntas</button>');
+    ej.dataset.listo = 1;
+    $('.otras', ej).addEventListener('click', () => { genera(); });
+  });
 }
 
 /* ---------- Conjuga tú (ejercicio generado) ---------- */
@@ -513,7 +586,7 @@ function initTraductor() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initAdornos(); initGrafemario(); initChat(); initTraductor();
+  initAdornos(); initGeneradores(); initGrafemario(); initChat(); initTraductor();
   initEjercicios(); initTeclado(); initVarios(); initChalin(); initEstados();
   initPresentacion(); initChecklist(); initEscena(); initConjugador(); initSemaforo(); initConjuga(); initPigei(); initRakin();
 });
