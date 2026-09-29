@@ -230,30 +230,68 @@ function initEscena() {
   pinta();
 }
 
-/* ---------- Guía 2: máquina de conjugar ---------- */
+/* ---------- Banco de verbos (planilla Vocabulario) ---------- */
+const BANCO_TXT = `Movimiento:amun=ir;amutun=irse;küpan=venir;küpalün=traer;akun=llegar (aquí);puwün=llegar (allá);tuwün=venir de;konün=entrar;txipan=salir;püran=subir;nagün=bajar;wiñon=volver;rupan=pasar (hacia acá);rumen=pasar (hacia allá);miawün=andar;txekan=caminar;lefün=correr;rügkün=saltar;weyelün=nadar;yen=llevar;yemen=ir a buscar;fülün=acercarse;matukelün=apurarse;ügümün=esperar;tügün=quedarse quieto
+Comunicación:zugun=hablar;nütxamün=narrar;nütxamkan=conversar;ramtun=preguntar;llowzugun=responder;mütxümün=llamar;pigen=llamarse;allkütun=escuchar;nüküfün=callarse;mañumün=agradecer;gülamtun=aconsejar;koylatun=mentir;chalintukun=saludar (dejar saludo)
+Conocimiento:chillkatun=estudiar;kimün=saber;kimeltun=enseñar;kimuwün=conocerse;rakizuamün=pensar;azümün=entender;tukulpan=recordar;goyman=olvidar;feyentun=creer
+Percepción:pen=ver, encontrar;azkintun=mirar;kintun=buscar;pegelün=mostrar;ñamün=perder;petun=encontrar (lo perdido);ellkan=esconder;wefün=aparecer
+Afecto:poyen=amar, estimar;zuamün=necesitar;ayen=reír;ayekan=divertirse;güman=llorar;weñagkün=estar triste;illkun=enojarse;yewün=avergonzarse;llikan=tener miedo;kümentun=gustar;kümezuamün=sentirse bien
+Estado:mülen=estar;felen=estar así;gen=ser;nien=tener;mogen=vivir
+Trabajo:zewman=hacer;küzawün=trabajar;pepikan=preparar;kellun=ayudar;elün=dejar, poner;künun=dejar hecho;werkün=enviar;llitun=comenzar;afün=acabar;wechun=terminar
+Intercambio:elun=dar;llowün=recibir;wiñoltun=devolver;gillan=comprar;fenzen=vender;txafkintun=intercambiar;aretun=pedir prestado;arelün=prestar
+Ruka:liftun=limpiar;küchan=lavar;lepün=barrer;nülan=abrir;rakümün=cerrar;takun=tapar, cubrir
+Descanso:ürkütun=descansar;ürkün=cansarse;umawtun=dormir;kuzun=acostarse;pewman=soñar;txepen=despertar
+Comida:putun=beber;güñün=tener hambre;wüywün=tener sed;afümün=cocer;zewmayalün=cocinar;masan=amasar;kofken=hacer pan;kofketun=comer pan;mürketun=comer harina tostada;kagkatun=asar;wazkün=hervir;kotün=tostar;chafün=pelar;katxün=cortar;chaytun=colar
+Campo:ketxan=arar;tukun=sembrar, poner;anümün=plantar;püramün=cosechar;witxukon=regar;rügan=cavar;challwan=pescar;mamülltun=hacer leña
+Telar y arte:füwün=hilar;güren=tejer;witxalün=tejer en telar;wizün=trabajar la greda;rütxan=trabajar la platería
+Salud:kütxantun=enfermar;txemon=sanarse;chafon=toser;müñetun=bañarse;arofün=sudar
+Espiritual:gellipun=rogar;gillatun=hacer rogativa;yamün=respetar;ülkantun=cantar
+Vida social:purun=bailar;kültxugtun=tocar kültxug;txawün=reunirse;wewün=ganar;awkantun=jugar;wirarün=gritar`;
+const CONSONANTE = /[^aeiouü]/;
+const BANCO = BANCO_TXT.split('\n').flatMap(l => {
+  const [cat, lista] = l.split(':');
+  return lista.split(';').map(x => {
+    const [v, es] = x.split('=');
+    const cons = v.endsWith('ün') && CONSONANTE.test(v.at(-3));
+    const core = VERBOS.find(k => k[0] === v);
+    return core || [v, es, cons ? v.slice(0, -2) : v.slice(0, -1), cons ? 'ün' : 'n', null, cat];
+  }).map(k => (k[5] = k[5] || cat, k));
+});
+const esPersona = (v, p) => v[4] ? v[4][p] : `${PERS_ES[p]}: ${v[1]}`;
+
+function pintaVerbo(v) {
+  $('#conj-raiz').innerHTML = `<span class="mz" style="font-size:1.3rem">${v[0]}</span> <span class="es">${v[1]}</span>. Raíz <b class="mz">${v[2]}-</b>` +
+    (v[3] === 'ün' ? ': termina en consonante, por eso inche lleva <b>-ün</b>.' : ': termina en vocal.');
+  $('#conj-filas').innerHTML = PERS.map((p, k) =>
+    `<div class="conj-fila p-${p}"><span class="chip">${p}</span><span class="forma">${formaHTML(v, k)}</span><span class="es">${esPersona(v, k)}</span></div>`).join('');
+}
 function initConjugador() {
-  const sel = $('#conj-verbos'); if (!sel) return;
-  sel.innerHTML = VERBOS.map((v, i) => `<button type="button" aria-pressed="${i === 0}">${v[0]}</button>`).join('');
-  const pinta = i => {
-    const v = VERBOS[i];
-    $('#conj-raiz').innerHTML = `<span class="mz">${v[0]}</span> <span class="es">${v[1]}</span>: quitamos la terminación y queda la raíz <b class="mz">${v[2]}-</b>` +
-      (v[3] === 'ün' ? ' (termina en consonante, por eso inche lleva <b>-ün</b>)' : ' (termina en vocal)');
-    $('#conj-filas').innerHTML = PERS.map((p, k) =>
-      `<div class="conj-fila p-${p}"><span class="chip">${p}</span><span class="forma">${formaHTML(v, k)}</span><span class="es">${v[4][k]}</span></div>`).join('');
-  };
-  selector(sel, b => pinta($$('button', sel).indexOf(b)));
-  pinta(0);
+  const banco = $('#banco');
   const t = $('#tabla-verbos');
-  if (t) t.innerHTML = VERBOS.map(v => `<tr><td><b class="mz">${v[0]}</b><br><span class="es">${v[1]}</span></td>` +
+  if (t) t.innerHTML = VERBOS.filter(v => v[0] !== 'pigen').map(v => `<tr><td><b class="mz">${v[0]}</b><br><span class="es">${v[1]}</span></td>` +
     PERS.map((p, k) => `<td><span class="mz">${formaHTML(v, k)}</span><br><span class="es">${v[4][k]}</span></td>`).join('') + '</tr>').join('');
+  if (!banco) return;
+  const cats = ['Todos', ...new Set(BANCO.map(v => v[5]))];
+  let cat = 'Todos';
+  $('#banco-cats').innerHTML = cats.map(c => `<button type="button" aria-pressed="${c === cat}">${c}</button>`).join('');
+  const pinta = () => {
+    const q = norm($('#banco-busca').value);
+    const lista = BANCO.filter(v => (cat === 'Todos' || v[5] === cat) && (!q || norm(v[0]).includes(q) || norm(v[1]).includes(q)));
+    banco.innerHTML = lista.map(v => `<button type="button" data-v="${v[0]}">${v[0]}<small>${v[1]}</small></button>`).join('') || '<span class="es">No hay verbos con esa búsqueda.</span>';
+    $('#banco-cuenta').textContent = `${lista.length} verbos`;
+  };
+  selector($('#banco-cats'), b => { cat = b.textContent; pinta(); });
+  $('#banco-busca').addEventListener('input', pinta);
+  selector(banco, b => pintaVerbo(BANCO.find(v => v[0] === b.dataset.v)));
+  pinta(); pintaVerbo(BANCO[0]); banco.querySelector('button').setAttribute('aria-pressed', 'true');
 }
 
-/* ---------- Guía 2: semáforo ---------- */
+/* ---------- Semáforo con todos los verbos ---------- */
 function initSemaforo() {
   const s = $('#semaforo'); if (!s) return;
   let actual, puntos = 0, total = 0, racha = 0, espera = false;
   const nueva = () => {
-    const v = VERBOS[Math.floor(Math.random() * VERBOS.length)], p = Math.floor(Math.random() * 3);
+    const v = BANCO[Math.floor(Math.random() * BANCO.length)], p = Math.floor(Math.random() * 3);
     actual = { v, p }; espera = false;
     $('#sem-palabra').textContent = forma(v, p);
     $('#sem-fb').textContent = '¿Quién hace la acción?'; $('#sem-fb').className = 'fb';
@@ -264,48 +302,69 @@ function initSemaforo() {
     if (bien) { puntos++; racha++; } else racha = 0;
     $('#sem-palabra').innerHTML = formaHTML(v, p);
     $('#sem-fb').innerHTML = (bien ? '¡Kümey! ' : 'Welulay. ') +
-      `<span class="chip p-${PERS[p]}">${PERS[p]}</span> ${forma(v, p)} = ${v[4][p]}. Termina en <b>-${sufijo(v, p)}</b>.`;
+      `<span class="chip p-${PERS[p]}">${PERS[p]}</span> ${forma(v, p)} (${v[0]}: ${v[1]}). Termina en <b>-${sufijo(v, p)}</b>.`;
     $('#sem-fb').className = 'fb ' + (bien ? 'bien' : 'no');
     $('#sem-marcador').textContent = `${puntos} de ${total} · racha: ${racha}`;
-    setTimeout(nueva, bien ? 1600 : 3000);
+    setTimeout(nueva, bien ? 1600 : 3200);
   };
   $$('#semaforo .sem-botones button').forEach((b, k) => b.addEventListener('click', () => responde(k)));
-  document.addEventListener('keydown', e => { if (['1', '2', '3'].includes(e.key) && !e.target.matches('input,textarea')) responde(+e.key - 1); });
+  document.addEventListener('keydown', e => { if (['1', '2', '3'].includes(e.key) && !e.target.matches('input,textarea,select')) responde(+e.key - 1); });
   nueva();
 }
 
-/* ---------- Guía 2: rueda de nombres ---------- */
-function initRueda() {
-  const f = $('#rueda'); if (!f) return;
-  const pinta = () => {
-    const a = f.elements.a.value.trim() || '______', b = f.elements.b.value.trim() || '______';
-    $('#rueda-salida').innerHTML = [
-      ['A dice', 0, `Inche ${a} pige`, 'Yo me llamo ' + a],
-      ['B le responde a A', 1, `Eimi ${a} pige`, 'Tú te llamas ' + a],
-      ['B presenta a A al grupo', 2, `Fey ${a} pige`, 'Se llama ' + a],
-      ['B dice su nombre', 0, `Inche ${b} pige`, 'Yo me llamo ' + b]
-    ].map(([q, p, t, es]) => `<div class="conj-fila p-${PERS[p]}"><span class="chip">${PERS[p]}</span><span class="forma" style="font-size:1.4rem">${t}<span class="suf p-${PERS[p]}">${['n', 'imi', 'i'][p]}</span></span><span class="es">${q}: ${es}</span></div>`).join('');
+/* ---------- Conjuga tú (ejercicio generado) ---------- */
+function initConjuga() {
+  const ol = $('#conjuga-lista'); if (!ol) return;
+  const genera = () => {
+    const usados = [...BANCO].sort(() => Math.random() - .5).slice(0, 6);
+    ol.innerHTML = usados.map((v, i) => {
+      const p = i % 3;
+      return `<li><span class="chip p-${PERS[p]}">${PERS[p]}</span> + <span class="mz">${v[0]}</span> <span class="es">(${v[1]})</span><br><input class="medio" data-r="${forma(v, p)}" aria-label="${PERS[p]} ${v[0]}"></li>`;
+    }).join('');
+    $('#conjuga .fb').textContent = '';
   };
-  f.addEventListener('input', pinta); pinta();
+  $('#conjuga-otros').addEventListener('click', genera);
+  genera();
 }
 
+/* ---------- Pigei con posesivo ---------- */
+function initPigei() {
+  const q = $('#pg-quien'); if (!q) return;
+  let forma = null;
+  const pinta = () => {
+    const [mz, es] = q.value.split('|'), n = $('#pg-nombre').value.trim() || '______';
+    $('#pg-pregunta').innerHTML = `¿Inei pige<span class="suf p-fey">i</span> tami ${mz}? <span class="es" style="font-size:1rem;font-weight:400">¿Cómo se llama tu ${es}?</span>`;
+    if (forma === null) { $('#pg-salida').innerHTML = '<p class="es">Elige la forma del verbo.</p>'; return; }
+    const bien = forma === 2, suf = ['n', 'imi', 'i'][forma];
+    $('#pg-salida').innerHTML = `<p class="frase-grande">Tañi ${mz} ${n} pige<span class="suf p-${PERS[forma]}">${suf}</span>.</p>` +
+      (bien ? `<p class="fb bien">¡Kümey! Tu ${es} no está en la conversación: es fey, por eso termina en -i. <span class="es">Mi ${es} se llama ${n}.</span></p>`
+            : `<p class="fb no">Revisa: ${forma === 0 ? '-n es para inche (yo).' : '-imi es para eimi, la persona a quien le hablas.'} Tu ${es} es fey.</p>`);
+  };
+  q.addEventListener('change', pinta); $('#pg-nombre').addEventListener('input', pinta);
+  selector($('#pg-forma'), b => { forma = $$('#pg-forma button').indexOf(b); pinta(); });
+  pinta();
+}
 
-/* ---------- Adornos SVG (dibujos originales) ---------- */
-const ADORNOS = `<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-<symbol id="copihue" viewBox="0 0 120 160"><path d="M60 158C58 120 40 90 20 60M40 90C60 70 70 50 68 20" stroke="#3E6B3A" stroke-width="3" fill="none"/>
-<path d="M30 100c-18-4-24-16-22-28 12 2 22 12 22 28zM52 76c14-10 28-8 34 2-12 8-24 8-34-2zM36 82c-16-10-18-24-12-34 10 8 14 20 12 34z" fill="#3E6B3A"/>
-<path d="M20 60c-8 4-18 0-20-10 6-2 12 0 16 4l2-8c4 2 6 8 2 14z" fill="#B3262E"/><path d="M8 48c2 6 8 10 12 12" stroke="#7A1418" stroke-width="1.5" fill="none"/>
-<path d="M68 20c-2-10 4-18 14-20 4 10-2 18-8 20 6 2 10 6 10 12-8 2-14-4-16-12z" fill="#B3262E"/><circle cx="72" cy="30" r="2" fill="#F6F2E8"/></symbol>
-<symbol id="pewen" viewBox="0 0 120 160"><path d="M58 160V40h4v120z" fill="#8A5A2B"/>
-<g fill="#3E6B3A"><path d="M60 30C40 30 22 36 8 48c18-4 36-6 52-4zM60 30c20 0 38 6 52 18-18-4-36-6-52-4z"/><path d="M60 48C44 48 30 54 18 64c14-4 28-5 42-3zM60 48c16 0 30 6 42 16-14-4-28-5-42-3z"/><path d="M60 14c-12 0-22 4-30 10 10-2 20-3 30-2zM60 14c12 0 22 4 30 10-10-2-20-3-30-2z"/><path d="M60 0c-4 6-6 12-6 18h12c0-6-2-12-6-18z"/></g></symbol>
-<symbol id="kultxug" viewBox="0 0 120 120"><ellipse cx="60" cy="60" rx="54" ry="54" fill="#E9D3A8" stroke="#8A5A2B" stroke-width="5"/><ellipse cx="60" cy="60" rx="44" ry="44" fill="none" stroke="#8A5A2B" stroke-width="1.5" stroke-dasharray="3 5"/>
-<path d="M92 108l24 10" stroke="#8A5A2B" stroke-width="4" stroke-linecap="round"/><circle cx="118" cy="119" r="3" fill="#B3262E"/></symbol>
-<symbol id="txegul" viewBox="0 0 140 150"><path d="M58 96l-4 50M74 96l6 50" stroke="#B3262E" stroke-width="3"/>
-<path d="M30 70c0-20 20-34 44-30 22 4 36 20 34 40-16 14-40 20-60 14-12-4-18-12-18-24z" fill="#8C7B63"/><path d="M34 76c10 14 36 18 58 10-10 10-38 16-54 6z" fill="#fff"/>
-<path d="M70 42c4-14 18-20 28-16 6 2 8 10 4 16l-8 6z" fill="#8C7B63"/><path d="M78 40c6-4 14-4 20 0" stroke="#16192B" stroke-width="10" stroke-linecap="round"/>
-<path d="M102 32l18 4-16 4z" fill="#B3262E"/><path d="M84 28c-10-10-24-14-36-12" stroke="#16192B" stroke-width="2" fill="none"/><circle cx="92" cy="33" r="2.5" fill="#B3262E"/></symbol>
-</svg>`;
-function initAdornos() { document.body.insertAdjacentHTML('afterbegin', ADORNOS); }
+/* ---------- Guía 1: rakin ---------- */
+function initRakin() {
+  const g = $('#numeros'); if (!g) return;
+  g.innerHTML = UNI.slice(1).concat('mari').map((w, i) => `<div class="numero"><b>${i + 1}</b><span>${w}</span></div>`).join('');
+  const r = $('#rk-rango'), n = $('#rk-num');
+  const pinta = v => {
+    v = Math.max(1, Math.min(999, parseInt(v, 10) || 1));
+    const c = Math.floor(v / 100), d = Math.floor((v % 100) / 10), u = v % 10, partes = [], cuenta = [];
+    if (c) { partes.push(`<span class="cen" data-t="${c}×100">${c === 1 ? 'pataka' : UNI[c] + ' pataka'}</span>`); cuenta.push(c * 100); }
+    if (d) { partes.push(`<span class="dec" data-t="${d}×10">${d === 1 ? 'mari' : UNI[d] + ' mari'}</span>`); cuenta.push(d * 10); }
+    if (u) { partes.push(`<span class="uni" data-t="+${u}">${UNI[u]}</span>`); cuenta.push(u); }
+    $('#rk-salida').innerHTML = `<div class="morf">${partes.join('')}</div><p class="frase-grande">${v} = ${rakin(v)}</p><p class="es">${cuenta.join(' + ')} = ${v}</p>`;
+  };
+  r.addEventListener('input', () => { n.value = r.value; pinta(r.value); });
+  n.addEventListener('input', () => { if (n.value <= 199) r.value = n.value; pinta(n.value); });
+  pinta(37);
+}
+
+/* ---------- Bandas de witxal a los costados ---------- */
+function initAdornos() { document.body.insertAdjacentHTML('afterbegin', '<div class="witxal-lado izq" aria-hidden="true"></div><div class="witxal-lado der" aria-hidden="true"></div>'); }
 
 /* ---------- Grafemarios ---------- */
 const aUnificado = s => s.replace(/tx/g, 'tr').replace(/z/g, 'd').replace(/g/g, 'ng').replace(/q/g, 'g');
@@ -456,5 +515,5 @@ function initTraductor() {
 document.addEventListener('DOMContentLoaded', () => {
   initAdornos(); initGrafemario(); initChat(); initTraductor();
   initEjercicios(); initTeclado(); initVarios(); initChalin(); initEstados();
-  initPresentacion(); initChecklist(); initEscena(); initConjugador(); initSemaforo(); initRueda();
+  initPresentacion(); initChecklist(); initEscena(); initConjugador(); initSemaforo(); initConjuga(); initPigei(); initRakin();
 });

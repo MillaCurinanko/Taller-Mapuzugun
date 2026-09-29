@@ -22,7 +22,7 @@
 
 <main>
 <section class="bloque">
-  <div class="divisor" aria-hidden="true" style="justify-content:flex-start;margin:0 0 .5rem"><svg class="mece" viewBox="0 0 120 160"><use href="#copihue"/></svg><svg viewBox="0 0 120 120"><use href="#kultxug"/></svg><svg class="mece lento" viewBox="0 0 120 160"><use href="#pewen"/></svg></div>
+  <div class="faja corta" aria-hidden="true"></div>
   <h2>Guía 1: chalin ka üy<small>Saludar y presentarse. Kimeltun 1 y 2.</small></h2>
   <p>Esta guía acompaña tu trabajo personal de cada semana. Léela en voz alta: el mapuzugun se aprende hablando. Todo está escrito en grafemario Azümchefe.</p>
   <div class="acciones"><button class="btn imprimir">Guardar como PDF</button><span class="es">En la ventana de impresión, elige «Guardar como PDF».</span></div>
@@ -146,7 +146,7 @@
   </div>
 </section>
 
-<div class="divisor solo-web" aria-hidden="true"><svg class="mece" viewBox="0 0 120 160"><use href="#copihue"/></svg><svg viewBox="0 0 120 120"><use href="#kultxug"/></svg><svg class="mece lento" viewBox="0 0 120 160"><use href="#pewen"/></svg></div>
+<div class="faja solo-web" aria-hidden="true"></div>
 
 <section class="bloque">
   <h2>IV. Algunas formas de estar<small>El sufijo -le / -küle</small></h2>
@@ -214,7 +214,7 @@
   </div>
 </section>
 
-<div class="divisor solo-web" aria-hidden="true"><svg class="mece" viewBox="0 0 120 160"><use href="#copihue"/></svg><svg viewBox="0 0 120 120"><use href="#kultxug"/></svg><svg class="mece lento" viewBox="0 0 120 160"><use href="#pewen"/></svg></div>
+<div class="faja solo-web" aria-hidden="true"></div>
 
 <section class="bloque">
   <h2>VI. Presentación personal<small>Ocho partes</small></h2>
@@ -262,9 +262,46 @@
   <p class="nota"><b>Rakin, para decir tu edad:</b> 1 kiñe, 2 epu, 3 küla, 4 meli, 5 kechu, 6 kayu, 7 reqle, 8 pura, 9 aylla, 10 mari. Las decenas se forman multiplicando: 20 epu mari, 30 küla mari. Luego se suma la unidad: 37 küla mari reqle. 100 es pataka.</p>
 </section>
 
-<!-- VII. EJERCICIOS -->
+<div class="faja solo-web" aria-hidden="true"></div>
+<!-- VII. RAKIN -->
 <section class="bloque">
-  <h2>VII. Ejercicios<small>Escribe y presiona «Revisar». Si fallas, vuelve a intentar antes de ver las respuestas.</small></h2>
+  <h2>VII. Rakin<small>Contar en mapuzugun</small></h2>
+  <p>El mapuzugun cuenta con base diez. Aprende del 1 al 10 y con eso puedes formar cualquier número.</p>
+  <div class="numeros" id="numeros"></div>
+  <h3 style="margin-top:1.6rem">¿Cómo se forman los demás?</h3>
+  <div class="grid">
+    <p><b>Decenas:</b> el número va <b>antes</b> de mari y se multiplica.<br><span class="mz">epu mari</span> = 2 × 10 = 20<br><span class="mz">küla mari</span> = 3 × 10 = 30</p>
+    <p><b>Unidades:</b> van <b>después</b> y se suman.<br><span class="mz">mari kiñe</span> = 10 + 1 = 11<br><span class="mz">epu mari kechu</span> = 20 + 5 = 25</p>
+    <p><b>Centenas:</b> <span class="mz">pataka</span> = 100<br><span class="mz">epu pataka</span> = 200<br><span class="mz">pataka mari</span> = 110</p>
+  </div>
+  <div class="traductor solo-web">
+    <h3>Arma un número</h3>
+    <p>Mueve la barra o escribe un número.</p>
+    <div class="acciones" style="margin-top:0"><input type="range" id="rk-rango" min="1" max="199" value="37" style="flex:1;min-width:200px"><input type="number" id="rk-num" min="1" max="999" value="37" class="corto"></div>
+    <div id="rk-salida" aria-live="polite" style="margin-top:1rem"></div>
+  </div>
+  <div class="ej">
+    <h3>Escribe en mapuzugun</h3>
+    <ol>
+      <li>12 <input class="largo" data-r="mari epu"></li>
+      <li>20 <input class="largo" data-r="epu mari"></li>
+      <li>37 <input class="largo" data-r="küla mari reqle"></li>
+      <li>48 <input class="largo" data-r="meli mari pura"></li>
+      <li>100 <input class="largo" data-r="pataka|kiñe pataka"></li>
+    </ol>
+    <h3>¿Qué número es?</h3>
+    <ol>
+      <li><span class="mz">küla mari aylla</span> <input class="corto" data-r="39"></li>
+      <li><span class="mz">meli mari kayu</span> <input class="corto" data-r="46"></li>
+      <li><span class="mz">mari reqle</span> <input class="corto" data-r="17"></li>
+    </ol>
+    <div class="acciones"><button class="btn revisar">Revisar</button><button class="btn sec ver">Ver respuestas</button></div><p class="fb"></p>
+  </div>
+</section>
+
+<!-- VIII. EJERCICIOS -->
+<section class="bloque">
+  <h2>VIII. Ejercicios<small>Escribe y presiona «Revisar». Si fallas, vuelve a intentar antes de ver las respuestas.</small></h2>
 
   <div class="ej">
     <h3>1. Une cada pregunta con su respuesta</h3>
