@@ -1,0 +1,5 @@
+# El Excel maestro es privado: nunca se sube
+*.xlsx
+*.xls
+~$*
+__pycache__/

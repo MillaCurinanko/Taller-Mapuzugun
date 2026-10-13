@@ -1,7 +1,7 @@
 /* Kimeltun mapuzugun · lógica compartida */
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
-const PERS = ['inche', 'eimi', 'fey'];
+const PERS = ['inche', 'eymi', 'fey'];
 const PERS_ES = ['yo', 'tú', 'él / ella / elle'];
 
 /* ---------- Verbos del taller (Kimeltun 3) ---------- */
@@ -18,7 +18,8 @@ const VERBOS = [
   ['putun', 'tomar, beber', 'putu', 'n', ['tomé', 'tomaste', 'tomó']],
   ['pigen', 'llamarse (me llaman)', 'pige', 'n', ['me llamo', 'te llamas', 'se llama']]
 ];
-const sufijo = (v, p) => [v[3], 'imi', 'i'][p];
+/* Azümchefe: tras vocal -ymi / -y; tras consonante -imi / -i */
+const sufijo = (v, p) => (v[3] === 'ün' ? ['ün', 'imi', 'i'] : ['n', 'ymi', 'y'])[p];
 const forma = (v, p) => v[2] + sufijo(v, p);
 const formaHTML = (v, p) => `<span class="raiz">${v[2]}</span><span class="suf p-${PERS[p]}">${sufijo(v, p)}</span>`;
 
@@ -36,7 +37,7 @@ function rakin(n) {
 
 /* ---------- Normalización de respuestas ---------- */
 const norm = s => (s || '').toLowerCase().normalize('NFC').replace(/[¿?¡!.,;:«»"“”()]/g, ' ').replace(/\s+/g, ' ').trim();
-const sinU = s => norm(s).replace(/ü/g, 'u').replace(/ñ/g, 'n');
+const sinU = s => norm(s).replace(/ü/g, 'u').replace(/ñ/g, 'n').replace(/y/g, 'i');
 function evaluar(valor, respuestas) {
   const lista = respuestas.split('|').map(norm);
   if (lista.includes(norm(valor))) return 'ok';
@@ -67,7 +68,7 @@ function initEjercicios() {
         if (r === 'ok') ok++; if (r === 'casi') casi++;
       });
       let t = `${ok} de ${campos.length} correctas.`;
-      if (casi) t += ` ${casi} casi: revisa la ü o la ñ.`;
+      if (casi) t += ` ${casi} casi: revisa la ü, la ñ o la y.`;
       if (ok === campos.length) t = `¡Kümey! ${campos.length} de ${campos.length}.`;
       fb.textContent = t;
       fb.className = 'fb ' + (ok === campos.length ? 'bien' : 'no');
@@ -204,14 +205,14 @@ function initChecklist() {
   $$('[data-check]').forEach(ta => {
     const lista = $(ta.dataset.check);
     const revisa = () => {
-      const t = norm(ta.value);
-      $$('li', lista).forEach(li => li.classList.toggle('hecho', li.dataset.k.split('|').some(k => t.includes(k))));
+      const t = sinU(ta.value);
+      $$('li', lista).forEach(li => li.classList.toggle('hecho', li.dataset.k.split('|').some(k => t.includes(sinU(k)))));
     };
     ta.addEventListener('input', revisa);
   });
 }
 
-/* ---------- Guía 2: escena inche / eimi / fey ---------- */
+/* ---------- Guía 2: escena inche / eymi / fey ---------- */
 function initEscena() {
   const e = $('#escena'); if (!e) return;
   let habla = 0, oye = 1;
@@ -357,13 +358,13 @@ function initSemaforo() {
 /* ---------- Ejercicios que cambian ("Otras preguntas") ---------- */
 const azar = (a, n) => [...a].sort(() => Math.random() - .5).slice(0, n);
 const SITUACIONES = [
-  ['Le preguntas a tu lamgen cómo está.', 'chumleimi'], ['Le preguntas a tu peñi cómo está.', 'chumleimi'], ['Le preguntas a la kimelfe cómo está.', 'chumleimi'],
-  ['Preguntas cómo está tu mamá.', 'chumlei'], ['Preguntas cómo está tu papá.', 'chumlei'], ['Preguntas cómo está la papay, que no está aquí.', 'chumlei'],
+  ['Le preguntas a tu lamgen cómo está.', 'chumleymi'], ['Le preguntas a tu peñi cómo está.', 'chumleymi'], ['Le preguntas a la kimelfe cómo está.', 'chumleymi'],
+  ['Preguntas cómo está tu mamá.', 'chumley'], ['Preguntas cómo está tu papá.', 'chumley'], ['Preguntas cómo está la papay, que no está aquí.', 'chumley'],
   ['Respondes que tú estás bien.', 'kümelkalen'], ['Te preguntan por ti y estás bien.', 'kümelkalen'],
-  ['Respondes que ella está bien.', 'kümelkalei'], ['Te preguntan por tu chaw y está bien.', 'kümelkalei']];
+  ['Respondes que ella está bien.', 'kümelkaley'], ['Te preguntan por tu chaw y está bien.', 'kümelkaley']];
 const GENERADORES = {
-  chum: () => azar(SITUACIONES, 4).map(([t, r]) => `<li>${t} <select data-r="${r}"><option value="">—</option><option>chumleimi</option><option>chumlei</option><option>kümelkalen</option><option>kümelkalei</option></select></li>`),
-  terminacion: () => azar(BANCO, 8).map((v, i) => { const p = i % 3; return `<li><span class="mz">${['Inche', 'Eimi', 'Fey'][p]} ${v[2]}</span><input class="corto" data-r="${sufijo(v, p)}" aria-label="terminación"> <span class="es">${esPersona(v, p)}.</span></li>`; }),
+  chum: () => azar(SITUACIONES, 4).map(([t, r]) => `<li>${t} <select data-r="${r}"><option value="">—</option><option>chumleymi</option><option>chumley</option><option>kümelkalen</option><option>kümelkaley</option></select></li>`),
+  terminacion: () => azar(BANCO, 8).map((v, i) => { const p = i % 3; return `<li><span class="mz">${['Inche', 'Eymi', 'Fey'][p]} ${v[2]}</span><input class="corto" data-r="${sufijo(v, p)}" aria-label="terminación"> <span class="es">${esPersona(v, p)}.</span></li>`; }),
   quien: () => azar(BANCO, 8).map(v => { const p = Math.floor(Math.random() * 3); return `<li><span class="mz">${forma(v, p)}</span> <input class="medio" data-r="${PERS[p]}" aria-label="persona"> <span class="es solo-web" hidden>${esPersona(v, p)}</span></li>`; }),
   rakin: () => {
     const a = azar([...Array(98).keys()].map(x => x + 11), 5).map(n => `<li>${n} <input class="largo" data-r="${rakin(n)}"></li>`);
@@ -406,12 +407,12 @@ function initPigei() {
   let forma = null;
   const pinta = () => {
     const [mz, es] = q.value.split('|'), n = $('#pg-nombre').value.trim() || '______';
-    $('#pg-pregunta').innerHTML = `¿Inei pige<span class="suf p-fey">i</span> tami ${mz}? <span class="es" style="font-size:1rem;font-weight:400">¿Cómo se llama tu ${es}?</span>`;
+    $('#pg-pregunta').innerHTML = `¿Iney pige<span class="suf p-fey">y</span> tami ${mz}? <span class="es" style="font-size:1rem;font-weight:400">¿Cómo se llama tu ${es}?</span>`;
     if (forma === null) { $('#pg-salida').innerHTML = '<p class="es">Elige la forma del verbo.</p>'; return; }
-    const bien = forma === 2, suf = ['n', 'imi', 'i'][forma];
+    const bien = forma === 2, suf = ['n', 'ymi', 'y'][forma];
     $('#pg-salida').innerHTML = `<p class="frase-grande">Tañi ${mz} ${n} pige<span class="suf p-${PERS[forma]}">${suf}</span>.</p>` +
-      (bien ? `<p class="fb bien">¡Kümey! Tu ${es} no está en la conversación: es fey, por eso termina en -i. <span class="es">Mi ${es} se llama ${n}.</span></p>`
-            : `<p class="fb no">Revisa: ${forma === 0 ? '-n es para inche (yo).' : '-imi es para eimi, la persona a quien le hablas.'} Tu ${es} es fey.</p>`);
+      (bien ? `<p class="fb bien">¡Kümey! Tu ${es} no está en la conversación: es fey, por eso termina en -y. <span class="es">Mi ${es} se llama ${n}.</span></p>`
+            : `<p class="fb no">Revisa: ${forma === 0 ? '-n es para inche (yo).' : '-ymi es para eymi, la persona a quien le hablas.'} Tu ${es} es fey.</p>`);
   };
   q.addEventListener('change', pinta); $('#pg-nombre').addEventListener('input', pinta);
   selector($('#pg-forma'), b => { forma = $$('#pg-forma button').indexOf(b); pinta(); });
@@ -459,13 +460,13 @@ function initGrafemario() {
 const GLOSA = {
   'mari mari': 'saludo: diez y diez, las dos manos', mari: 'diez', lamgen: 'hermana o hermano (mujer–mujer, mujer–hombre)',
   peñi: 'hermano (entre hombres)', ñaña: 'mujer cercana', chacha: 'hombre cercano', papay: 'mujer mayor', chachay: 'hombre mayor',
-  inche: 'yo', eimi: 'tú', fey: 'él / ella / elle', ka: 'también, y', kay: '¿y…? (suele ir con eimi)',
-  chumleimi: 'chum (cómo) + le (estado) + imi (tú): ¿cómo estás?', chum: 'cómo',
+  inche: 'yo', eymi: 'tú', fey: 'él / ella / elle', ka: 'también, y', kay: '¿y…? (suele ir con eymi)',
+  chumleymi: 'chum (cómo) + le (estado) + ymi (tú): ¿cómo estás?', chum: 'cómo',
   kümelkalen: 'küme (bueno) + le (estado) + n (yo): estoy bien', kümelkalelan: 'küme + le + la (no) + n: no estoy bien',
   txemolen: 'estoy bien de salud', ürkülen: 'ür + küle (estado) + n: tengo cansancio', kütxankülen: 'estoy con enfermedad',
   mañumkülen: 'estoy con gratitud', küme: 'bueno', pigen: 'pi (decir) + ge (me) + n: me dicen, me llamo',
-  pigeimi: 'te dicen, te llamas (-imi: tú)', inei: 'quién', iney: 'quién', chew: 'dónde', mew: 'en (lugar)',
-  mülen: 'müle (estar) + n (yo): estoy', müleimi: 'estás (-imi: tú)', mülei: 'está (-i: fey)', fachantü: 'hoy',
+  pigeymi: 'te dicen, te llamas (-ymi: tú)', iney: 'quién', chew: 'dónde', mew: 'en (lugar)',
+  mülen: 'müle (estar) + n (yo): estoy', müleymi: 'estás (-ymi: tú)', müley: 'está (-y: fey)', fachantü: 'hoy',
   feley: 'de acuerdo, así es', pewkayal: 'hasta luego', mañum: 'gracias', tañi: 'mi', tuwün: 'lugar de origen', küpan: 'linaje; venir',
   mapu: 'tierra, territorio', waria: 'ciudad', welu: 'pero', may: 'sí', txipantü: 'año', nien: 'tengo'
 };
@@ -474,8 +475,8 @@ function glosar(texto) {
   if (t.includes('mari mari')) out.push(['mari mari', GLOSA['mari mari'], 'kallfu']);
   t.split(' ').forEach(w => {
     if (!w || (w === 'mari' && t.includes('mari mari'))) return;
-    if (GLOSA[w]) out.push([w, GLOSA[w], w === 'inche' ? 'inche' : w === 'eimi' ? 'eimi' : w === 'fey' ? 'fey' : 'kallfu']);
-    else if (w.length > 4 && w.endsWith('imi')) out.push([w, 'termina en -imi: la acción la hace eimi (tú)', 'eimi']);
+    if (GLOSA[w]) out.push([w, GLOSA[w], w === 'inche' ? 'inche' : w === 'eymi' ? 'eymi' : w === 'fey' ? 'fey' : 'kallfu']);
+    else if (w.length > 4 && /[yi]mi$/.test(w)) out.push([w, 'termina en -ymi (o -imi tras consonante): la acción la hace eymi (tú)', 'eymi']);
     else if (w.length > 3 && w.endsWith('n')) out.push([w, '¿termina en -n? podría ser inche (yo)', 'inche']);
   });
   return out.filter((x, i, a) => a.findIndex(y => y[0] === x[0]) === i);
@@ -492,19 +493,19 @@ function initChat() {
     { ella: () => ['Mari mari lamgen!'], tarea: 'Responde el saludo.', sug: ['Mari mari lamgen', 'Mari mari peñi'],
       ok: t => t.includes('mari mari'),
       exp: () => '<p><b class="mz">Mari mari</b> es el saludo. <b class="mz">Mari</b> es «diez»: nos damos las dos manos.</p><p><b class="mz">Lamgen</b> se usa entre mujeres, o entre mujer y hombre. Entre hombres se dice <b class="mz">peñi</b>.</p>' },
-    { ella: () => ['¿Chumleimi?'], tarea: 'Te pregunta cómo estás. Responde con una forma de estar.', sug: ['Kümelkalen', 'Ürkülen', 'Txemolen'],
+    { ella: () => ['¿Chumleymi?'], tarea: 'Te pregunta cómo estás. Responde con una forma de estar.', sug: ['Kümelkalen', 'Ürkülen', 'Txemolen'],
       ok: t => ESTADOS.some(e => t.includes(e)),
-      exp: t => { const e = ESTADOS.find(x => t.includes(x)); return `<p>Ella preguntó <b class="mz">chum-le-<span class="suf p-eimi">imi</span></b>: termina en <b>-imi</b> porque te habla a ti (eimi).</p><p>Tú respondiste <b class="mz">${e}</b>: ${GLOSA[e] || ''}. Termina en <b class="suf p-inche">-n</b> porque hablas de ti (inche).</p>`; } },
-    { ella: () => [], tarea: 'Ahora pregúntale de vuelta: ¿y tú?', sug: ['¿Eimi kay?', '¿Chumleimi?'],
-      ok: t => t.includes('eimi kay') || t.includes('chumleimi') || t.includes('eimi ka'),
-      exp: () => '<p><b class="mz">¿Eimi kay?</b> = ¿y tú? <b class="mz">Kay</b> es una variación de <b class="mz">ka</b> que suele ir con eimi.</p>' },
-    { ella: () => ['Inche ka kümelkalen.', '¿Inei pigeimi?'], tarea: 'Te pregunta tu nombre. Usa: Inche ___ pigen.', sug: ['Inche ___ pigen'],
+      exp: t => { const e = ESTADOS.find(x => t.includes(x)); return `<p>Ella preguntó <b class="mz">chum-le-<span class="suf p-eymi">ymi</span></b>: termina en <b>-ymi</b> porque te habla a ti (eymi).</p><p>Tú respondiste <b class="mz">${e}</b>: ${GLOSA[e] || ''}. Termina en <b class="suf p-inche">-n</b> porque hablas de ti (inche).</p>`; } },
+    { ella: () => [], tarea: 'Ahora pregúntale de vuelta: ¿y tú?', sug: ['¿Eymi kay?', '¿Chumleymi?'],
+      ok: t => /\be[yi]mi ka|chumle[yi]mi/.test(t),
+      exp: () => '<p><b class="mz">¿Eymi kay?</b> = ¿y tú? <b class="mz">Kay</b> es una variación de <b class="mz">ka</b> que suele ir con eymi.</p>' },
+    { ella: () => ['Inche ka kümelkalen.', '¿Iney pigeymi?'], tarea: 'Te pregunta tu nombre. Usa: Inche ___ pigen.', sug: ['Inche ___ pigen'],
       ok: t => /pigen/.test(t),
       antes: () => '<p><b class="mz">Inche ka kümelkalen</b>: yo también estoy bien. <b class="mz">Ka</b> = también.</p>',
       exp: t => { const m = t.match(/(?:inche )?(\S+) pigen/); nombre = m && m[1] !== 'inche' ? m[1][0].toUpperCase() + m[1].slice(1) : ''; return '<p><b class="mz">Pigen</b> = pi (decir) + ge (a mí) + <span class="suf p-inche">n</span> (inche). Literalmente «me dicen».</p>'; } },
-    { ella: () => [`Feley${nombre ? ', ' + nombre : ''}. Inche Rayen pigen.`, '¿Chew müleimi fachantü?'], tarea: '¿Dónde estás hoy? Usa: Inche mülen ___ mew.', sug: ['Inche mülen Santiago mew', 'Mülen ruka mew'],
+    { ella: () => [`Feley${nombre ? ', ' + nombre : ''}. Inche Rayen pigen.`, '¿Chew müleymi fachantü?'], tarea: '¿Dónde estás hoy? Usa: Inche mülen ___ mew.', sug: ['Inche mülen Santiago mew', 'Mülen ruka mew'],
       ok: t => /\bmülen\b/.test(t),
-      exp: () => '<p><b class="mz">Mew</b> marca el lugar (en) y se suele decir al final: mülen Santiago mew. <b class="mz">Müle-<span class="suf p-inche">n</span></b>: estoy. Ella preguntó <b class="mz">müle-<span class="suf p-eimi">imi</span></b>: estás.</p>' },
+      exp: () => '<p><b class="mz">Mew</b> marca el lugar (en) y se suele decir al final: mülen Santiago mew. <b class="mz">Müle-<span class="suf p-inche">n</span></b>: estoy. Ella preguntó <b class="mz">müle-<span class="suf p-eymi">ymi</span></b>: estás.</p>' },
     { ella: () => ['Inche mülen Temuko mew. Pewkayal lamgen!'], tarea: 'Despídete.', sug: ['Feley. Pewkayal lamgen', 'Mañum lamgen'],
       ok: t => /pewkayal|feley|mañum/.test(t),
       exp: () => '<p><b class="mz">Pewkayal</b>: hasta luego. <b class="mz">Feley</b>: de acuerdo, así es. <b class="mz">Mañum</b>: gracias.</p>' }
@@ -572,7 +573,7 @@ function initTraductor() {
     if (!e) { out.innerHTML = '<p class="fb no">Aún no tengo esa palabra. Prueba con: bien, bien de salud, cansado, enfermo, agradecido, con energía, contento, triste.</p>'; return; }
     const p = /(^| )(tú|tu|vos|estás|estas)( |$)/.test(t) ? 1 : /(^| )(él|el|ella|elle|está)( |$)/.test(t) ? 2 : 0;
     const neg = /\bno\b/.test(t), hoy = /\bhoy\b/.test(t);
-    const suf = ['n', 'imi', 'i'][p], pron = ['Inche', 'Eimi', 'Fey'][p];
+    const suf = ['n', 'ymi', 'y'][p], pron = ['Inche', 'Eymi', 'Fey'][p];
     const palabra = e[1] + e[2] + (neg ? 'la' : '') + suf;
     const verificar = e[5] || p > 0;
     out.innerHTML =
@@ -628,9 +629,9 @@ function initPuKe() {
 }
 /* Ordenar palabras */
 const ORDENAR = [
-  ['Inche mülen waria mew', 'Estoy en la ciudad.'], ['Tañi ñuke mülei Santiago mew', 'Mi madre está en Santiago.'],
-  ['Inche mülen tami ruka mew', 'Estoy en tu casa.'], ['Fey tañi peñi amui waria mew', 'Su hermano fue a la ciudad.'],
-  ['Inche kimeltun mapuzugun mew', 'Enseñé en mapuzugun.'], ['Tami txewa txipai', 'Tu perro salió.'], ['Tañi pu ñarki mülei ruka mew', 'Mis gatos están en la casa.']];
+  ['Inche mülen waria mew', 'Estoy en la ciudad.'], ['Tañi ñuke müley Santiago mew', 'Mi madre está en Santiago.'],
+  ['Inche mülen tami ruka mew', 'Estoy en tu casa.'], ['Fey tañi peñi amuy waria mew', 'Su hermano fue a la ciudad.'],
+  ['Inche kimeltun mapuzugun mew', 'Enseñé en mapuzugun.'], ['Tami txewa txipay', 'Tu perro salió.'], ['Tañi pu ñarki müley ruka mew', 'Mis gatos están en la casa.']];
 function initOrdenar() {
   const z = $('#ordenar'); if (!z) return;
   let i = 0;
@@ -657,35 +658,36 @@ function initOrdenar() {
 }
 
 /* ---------- Awkantun en dupla: 10 preguntas ---------- */
-const P = (p, t) => `<span class="chip p-${p}">${p}</span> ${t}`;
+const FIGURA = { inche: '●', eymi: '■', fey: '▲' };
+const P = (p, t) => `<span class="chip p-${p}"><span class="fig">${FIGURA[p]}</span> ${p}</span> ${t}`;
 const QUIZ = [
   ['q01', P('inche', '· ___ ruka'), 'mi casa', ['tañi ruka', 'tami ruka', 'ñi ruka'], 'Tañi = mi: lo que es de quien habla (inche).'],
-  ['q02', P('eimi', '· ___ ñuke'), 'tu madre', ['tami ñuke', 'tañi ñuke', 'ñi ñuke'], 'Tami = tu: lo que es de quien escucha (eimi).'],
+  ['q02', P('eymi', '· ___ ñuke'), 'tu madre', ['tami ñuke', 'tañi ñuke', 'ñi ñuke'], 'Tami = tu: lo que es de quien escucha (eymi).'],
   ['q03', P('fey', '· ___ txewa'), 'su perro', ['ñi txewa', 'tami txewa', 'tami pu txewa'], 'Ñi = su: lo que es de quien no participa (fey). También se dice fey tañi txewa.'],
-  ['q04', P('eimi', '· ___ üy'), 'tu nombre', ['tami üy', 'tañi üy', 'ñi üy'], 'Tami = tu. Üy = nombre.'],
+  ['q04', P('eymi', '· ___ üy'), 'tu nombre', ['tami üy', 'tañi üy', 'ñi üy'], 'Tami = tu. Üy = nombre.'],
   ['q05', P('inche', '· ___ reñma'), 'mi familia', ['tañi reñma', 'tami reñma', 'ñi reñma'], 'Tañi = mi. Reñma = familia.'],
-  ['q06', 'Tami chaw ülkantui', '¿Qué significa?', ['Tu padre cantó', 'Mi padre cantó', 'Tu padre cantaste'], 'Tami = tu (el padre es de eimi). -i: quien canta es fey, el padre.'],
-  ['q07', 'Tañi ñuke küzawi', '¿Quién trabajó?', ['mi madre (fey)', 'yo (inche)', 'tú (eimi)'], 'La terminación -i indica fey: trabajó la madre. Tañi solo dice de quién es la madre.'],
-  ['q08', 'Inche mülen tami ruka mew', '¿De quién es la ruka?', ['de eimi (tú)', 'de inche (yo)', 'de fey'], 'Tami = tu: la casa es de eimi. Mülen (-n) dice que quien está es inche.'],
+  ['q06', 'Tami chaw ülkantuy', '¿Qué significa?', ['Tu padre cantó', 'Mi padre cantó', 'Tu padre cantaste'], 'Tami = tu (el padre es de eymi). -y: quien canta es fey, el padre.'],
+  ['q07', 'Tañi ñuke küzawi', '¿Quién trabajó?', ['mi madre (fey)', 'yo (inche)', 'tú (eymi)'], 'La terminación -i (tras consonante, como küzaw-) indica fey: trabajó la madre. Tañi solo dice de quién es la madre.'],
+  ['q08', 'Inche mülen tami ruka mew', '¿De quién es la ruka?', ['de eymi (tú)', 'de inche (yo)', 'de fey'], 'Tami = tu: la casa es de eymi. Mülen (-n) dice que quien está es inche.'],
   ['q09', '¿Cómo se dice «mis perros»?', '', ['tañi pu txewa', 'pu tañi txewa', 'tañi txewa pu'], 'Pu pluraliza y va justo antes del sustantivo.'],
   ['q10', '¿Cómo se dice «mis gatos buenos»?', '', ['tañi küme ke ñarki', 'tañi ke küme ñarki', 'tañi küme ñarki ke'], 'Con adjetivo, ke pluraliza entre el adjetivo y el sustantivo: küme ke ñarki.'],
   ['q11', '¿Qué significa «pichi ke che»?', '', ['niñes (varios niños)', 'un niño', 'gente grande'], 'Pichi (chico) + ke (plural) + che (persona). Pichiche es un niño.'],
   ['q12', '¿Cuál es la forma más usada?', 'Estoy en la ciudad.', ['Inche mülen waria mew', 'Inche waria mew mülen', 'Mew waria inche mülen'], 'Se suele decir primero el verbo y dejar mew al final: mülen waria mew.'],
-  ['q13', '¿Inei pigei tami ñuke?', 'Elige la mejor respuesta', ['Tañi ñuke Javiera pigei', 'Tami ñuke Javiera pigen', 'Tañi ñuke Javiera pigeimi'], 'Respondes con tañi (es tu madre) y pigei, porque tu madre es fey.'],
-  ['q14', 'Tami txewa txipai', '¿Qué significa?', ['Tu perro salió', 'Mi perro salió', 'Tu perro saliste'], 'Tami = tu. Txipai (-i): quien sale es fey, el perro.'],
-  ['q15', 'Fey tañi ñarki putui ko', '¿Qué significa?', ['Su gato tomó agua', 'Tu gato tomó agua', 'Mi gato tomé agua'], 'Fey tañi = su. Putui (-i): quien toma es fey, el gato.'],
+  ['q13', '¿Iney pigey tami ñuke?', 'Elige la mejor respuesta', ['Tañi ñuke Javiera pigey', 'Tami ñuke Javiera pigen', 'Tañi ñuke Javiera pigeymi'], 'Respondes con tañi (es tu madre) y pigey, porque tu madre es fey.'],
+  ['q14', 'Tami txewa txipay', '¿Qué significa?', ['Tu perro salió', 'Mi perro salió', 'Tu perro saliste'], 'Tami = tu. Txipay (-y): quien sale es fey, el perro.'],
+  ['q15', 'Fey tañi ñarki putuy ko', '¿Qué significa?', ['Su gato tomó agua', 'Tu gato tomó agua', 'Mi gato tomé agua'], 'Fey tañi = su. Putuy (-y): quien toma es fey, el gato.'],
   ['q16', 'Tami namun', '¿Qué significa?', ['tu pie', 'mi cabeza', 'tu cabeza'], 'Tami = tu; namun = pie. Logko es cabeza.'],
   ['q17', 'Tañi logko', '¿Qué significa?', ['mi cabeza', 'tu cabeza', 'mi pie'], 'Tañi = mi; logko = cabeza.'],
   ['q18', 'Si escuchas «mi chaw»…', '¿qué significa?', ['tu padre', 'mi padre', 'su padre'], 'El ta es optativo: mi es la forma corta de tami (tu). No es el «mi» del español.'],
   ['q19', '¿Cómo se dice «tus gatos»?', '', ['tami pu ñarki', 'tañi pu ñarki', 'tami ñarki pu'], 'Tami = tu; pu pluraliza antes del sustantivo.'],
-  ['q20', '¿Chumlei tami ñuke?', '¿Qué significa?', ['¿Cómo está tu madre?', '¿Cómo estás, madre?', '¿Dónde está tu madre?'], 'Chum-le-i: cómo está (fey). Tami ñuke: tu madre.'],
-  ['q21', 'Tañi ñuke mülei Santiago mew', '¿Qué significa?', ['Mi madre está en Santiago', 'Tu madre está en Santiago', 'Mi madre estoy en Santiago'], 'Tañi = mi. Mülei (-i): quien está es fey, la madre.']
+  ['q20', '¿Chumley tami ñuke?', '¿Qué significa?', ['¿Cómo está tu madre?', '¿Cómo estás, madre?', '¿Dónde está tu madre?'], 'Chum-le-y: cómo está (fey). Tami ñuke: tu madre.'],
+  ['q21', 'Tañi ñuke müley Santiago mew', '¿Qué significa?', ['Mi madre está en Santiago', 'Tu madre está en Santiago', 'Mi madre estoy en Santiago'], 'Tañi = mi. Müley (-y): quien está es fey, la madre.']
 ];
 const quizPorId = id => QUIZ.find(q => q[0] === id);
 const SESION = new URLSearchParams(location.search).get('sesion') || 'kimeltun-4';
 function numMz(n) { return n === 0 ? '0' : rakin(n); }
 function initQuiz() {
-  const caja = $('#quiz'); if (!caja) return;
+  const caja = $('#quiz'); if (!caja || !$('#quiz-llitun')) return;
   let preg = [], i = 0, resp = [], dupla = '';
   const cuerpo = $('.quiz-cuerpo', caja);
   const abre = () => { caja.classList.add('abierto'); document.body.style.overflow = 'hidden'; caja.requestFullscreen?.().catch(() => {}); };
@@ -714,9 +716,9 @@ function initQuiz() {
     barra();
     const pts = resp.filter(r => r.ok).length;
     let img, anim, frase, es, cred = '';
-    if (pts >= 9) { img = 'img/afafan.png'; anim = 'a-afafan'; frase = 'Müna kümey amulei tami mapuzugun. ¡Kiñe afafan tati!'; es = 'Va muy bien tu mapuzugun. ¡Un afafan!'; cred = '<p class="credito-img">Imagen: Fiestoforo</p>'; }
-    else if (pts >= 5) { img = 'img/feley.png'; anim = 'a-feley'; frase = 'Feley, küme txipay. Petu mülei mi pepikawal tufachi zugü mew.'; es = 'Bien, salió bien. ¡Aún debes prepararte para este tema!'; }
-    else { img = 'img/fotx.png'; anim = 'a-fotx'; frase = 'Fotxü anai'; es = '¡Pucha! Repasa la guía y vuelve a intentarlo.'; }
+    if (pts >= 9) { img = 'img/afafan.png'; anim = 'a-afafan'; frase = 'Müna kümey amuley tami mapuzugun. ¡Kiñe afafan tati!'; es = 'Va muy bien tu mapuzugun. ¡Un afafan!'; cred = '<p class="credito-img">Imagen: Fiestoforo</p>'; }
+    else if (pts >= 5) { img = 'img/feley.png'; anim = 'a-feley'; frase = 'Feley, küme txipay. Petu müley mi pepikawal tufachi zugü mew.'; es = 'Bien, salió bien. ¡Aún debes prepararte para este tema!'; }
+    else { img = 'img/fotx.png'; anim = 'a-fotx'; frase = 'Fotxü anay'; es = '¡Pucha! Repasa la guía y vuelve a intentarlo.'; }
     cuerpo.innerHTML = `<div class="resultado"><img class="${anim}" src="${img}" alt="">${cred}` +
       `<div class="puntaje">${numMz(pts)}<small>${pts} de 10 · ${dupla}</small></div><p class="frase">${frase}</p><p class="es">${es}</p>` +
       `<div class="acciones"><button class="btn" id="q-rev">Pellelu take tankun<small>Revisar respuestas</small></button><button class="btn sec" id="q-otra">Ka kiñe<small>Otra vez</small></button><button class="btn sec" id="q-fin">Fey mütem<small>Eso nada más</small></button></div>` +
@@ -741,7 +743,7 @@ function initQuiz() {
     const url = window.REGISTRO_URL, reg = $('#q-reg');
     if (!url) { reg.textContent = 'Registro en línea no configurado.'; return; }
     fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ sesion: SESION, dupla, puntaje: pts, respuestas: resp }) })
+      body: JSON.stringify({ sesion: SESION, actividad: 'posesivos', nivel: 'basico', dupla, puntaje: pts, respuestas: resp }) })
       .then(() => reg.textContent = 'Resultado registrado.').catch(() => reg.textContent = 'No se pudo registrar (revisa la conexión).');
   };
   const empieza = () => { preg = azar(QUIZ, 10); i = 0; resp = []; abre(); muestra(); };
@@ -757,12 +759,21 @@ function initQuiz() {
 function initPanel() {
   const zona = $('#panel'); if (!zona) return;
   const inp = $('#panel-sesion'); inp.value = SESION;
+  const act = $('#panel-actividad'), niv = $('#panel-nivel');
+  const qs = new URLSearchParams(location.search);
+  if (act && qs.get('actividad')) act.value = qs.get('actividad');
+  if (niv && qs.get('nivel')) niv.value = qs.get('nivel');
   const carga = async () => {
     const url = window.REGISTRO_URL;
     if (!url) { $('#panel-estado').textContent = 'Falta pegar la URL del registro en config.js.'; return; }
     $('#panel-estado').textContent = 'Cargando…';
     try {
-      const datos = await (await fetch(url + '?sesion=' + encodeURIComponent(inp.value.trim()))).json();
+      const f = { sesion: inp.value.trim(), actividad: act?.value || '', nivel: niv?.value || '' };
+      const params = new URLSearchParams(Object.entries(f).filter(([, v]) => v));
+      let datos = await (await fetch(url + '?' + params)).json();
+      /* Por si el Apps Script aún no filtra por actividad y nivel */
+      datos = datos.filter(d => (!f.actividad || (d.actividad || '') === f.actividad) && (!f.nivel || (d.nivel || '') === f.nivel));
+      datos.forEach(d => { if (typeof d.respuestas === 'string') try { d.respuestas = JSON.parse(d.respuestas); } catch (e) { d.respuestas = []; } });
       pinta(datos);
       $('#panel-estado').textContent = `Actualizado: ${new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
     } catch (e) { $('#panel-estado').textContent = 'No se pudieron leer los resultados.'; }
@@ -774,7 +785,8 @@ function initPanel() {
     const dist = [...Array(11)].map((_, k) => pts.filter(p => p === k).length), top = Math.max(...dist);
     const porP = {};
     datos.forEach(d => (d.respuestas || []).forEach(r => {
-      const x = porP[r.id] ||= { n: 0, mal: 0, errores: {} };
+      const x = porP[r.id] ||= { n: 0, mal: 0, pista: 0, errores: {}, t: r.t || '' };
+      if (r.ok && r.intento === 2) x.pista++;
       x.n++; if (!r.ok) { x.mal++; x.errores[r.elegida] = (x.errores[r.elegida] || 0) + 1; }
     }));
     const filas = Object.entries(porP).sort((a, b) => b[1].mal / b[1].n - a[1].mal / a[1].n);
@@ -790,15 +802,16 @@ function initPanel() {
       <div class="barras-et">${dist.map((_, k) => `<span>${k}</span>`).join('')}</div>
       <h3 style="margin-top:2rem">Dónde se equivocaron más</h3>
       <div class="tabla-wrap"><table><tr><th>Pregunta</th><th>Errores</th><th></th><th>Respuesta incorrecta más elegida</th></tr>
-      ${filas.map(([id, x]) => { const q = quizPorId(id) || [id, id, '']; const peor = Object.entries(x.errores).sort((a, b) => b[1] - a[1])[0];
-        return `<tr><td><span class="mz">${q[1]}</span> <span class="es">${q[2] || ''}</span></td><td>${x.mal} de ${x.n}</td><td><div class="err-barra"><i style="width:${x.mal / x.n * 100}%"></i></div></td><td>${peor ? `${peor[0]} (${peor[1]})` : '—'}</td></tr>`; }).join('')}
+      ${filas.map(([id, x]) => { const q = quizPorId(id) || [id, x.t || id, '']; const peor = Object.entries(x.errores).sort((a, b) => b[1] - a[1])[0];
+        return `<tr><td><span class="mz">${q[1]}</span> <span class="es">${q[2] || ''}</span></td><td>${x.mal} de ${x.n}${x.pista ? ` <small class="es">(${x.pista} con pista)</small>` : ''}</td><td><div class="err-barra"><i style="width:${x.mal / x.n * 100}%"></i></div></td><td>${peor ? `${peor[0]} (${peor[1]})` : '—'}</td></tr>`; }).join('')}
       </table></div>
       <h3 style="margin-top:2rem">Duplas</h3>
-      <div class="tabla-wrap"><table><tr><th>Dupla</th><th>Puntaje</th><th>Hora</th></tr>
-      ${datos.slice().sort((a, b) => b.puntaje - a.puntaje).map(d => `<tr><td>${String(d.dupla).replace(/</g, '&lt;')}</td><td><b class="mz">${numMz(+d.puntaje)}</b> (${d.puntaje})</td><td>${new Date(d.fecha).toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' })}</td></tr>`).join('')}
+      <div class="tabla-wrap"><table><tr><th>Dupla</th><th>Actividad</th><th>Puntaje</th><th>Hora</th></tr>
+      ${datos.slice().sort((a, b) => b.puntaje - a.puntaje).map(d => `<tr><td>${String(d.dupla).replace(/</g, '&lt;')}</td><td>${[d.actividad, d.nivel === 'basico' ? 'básico' : d.nivel].filter(Boolean).join(' · ') || '—'}</td><td><b class="mz">${numMz(+d.puntaje)}</b> (${d.puntaje}${+d.con_pista ? ` + ${d.con_pista} con pista` : ''})</td><td>${new Date(d.fecha).toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit' })}</td></tr>`).join('')}
       </table></div>`;
   };
   $('#panel-cargar').addEventListener('click', carga);
+  [act, niv].forEach(x => x?.addEventListener('change', carga));
   let t = null;
   $('#panel-auto').addEventListener('change', e => { clearInterval(t); if (e.target.checked) t = setInterval(carga, 15000); });
   carga();

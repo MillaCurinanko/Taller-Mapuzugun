@@ -1,0 +1,2677 @@
+[
+ {
+  "id": "VRB-0002",
+  "mz": "afümün",
+  "raiz": "afüm",
+  "final": "consonante",
+  "es": "cocer la comida",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0004",
+  "mz": "agkümün",
+  "raiz": "agküm",
+  "final": "consonante",
+  "es": "secar (tr.)",
+  "transitividad": "transitivo",
+  "campo": "Trabajo de campo",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0005",
+  "mz": "agkün",
+  "raiz": "agk",
+  "final": "consonante",
+  "es": "secarse",
+  "transitividad": null,
+  "campo": "Naturaleza",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0006",
+    "mz": "agkünoael",
+    "es": "Para no secarse",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0007",
+  "mz": "akun",
+  "raiz": "aku",
+  "final": "vocal",
+  "es": "llegar (aquí); Llegar (acá)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0010",
+  "mz": "allkün / allkütun",
+  "raiz": "allk",
+  "final": "consonante",
+  "es": "oír / escuchar",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0013",
+  "mz": "amun",
+  "raiz": "amu",
+  "final": "vocal",
+  "es": "ir",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0014",
+    "mz": "amulafuyu",
+    "es": "Podríamos conversar entre los dos",
+    "ejemplo": "Amuay yu nutxam ; üa a ir nuestra conüersa.",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0015",
+  "mz": "amutun",
+  "raiz": "amutu",
+  "final": "vocal",
+  "es": "irse",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0016",
+  "mz": "anümkan / anümün",
+  "raiz": "anümka",
+  "final": "vocal",
+  "es": "plantar",
+  "transitividad": null,
+  "campo": "Trabajo de campo",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0017",
+  "mz": "anün",
+  "raiz": "an",
+  "final": "consonante",
+  "es": "Sentarse",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0018",
+  "mz": "arelün",
+  "raiz": "arel",
+  "final": "consonante",
+  "es": "prestar",
+  "transitividad": null,
+  "campo": "Intercambio",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0019",
+  "mz": "aretun",
+  "raiz": "aretu",
+  "final": "vocal",
+  "es": "pedir prestado",
+  "transitividad": null,
+  "campo": "Intercambio",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0020",
+  "mz": "arofün",
+  "raiz": "arof",
+  "final": "consonante",
+  "es": "sudar",
+  "transitividad": null,
+  "campo": "Cuerpo",
+  "validacion": "Respaldada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0021",
+    "mz": "arofun",
+    "es": "Transpiró",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0022",
+  "mz": "arowün",
+  "raiz": "arow",
+  "final": "consonante",
+  "es": "Desesperarse - estar aburrido",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0023",
+  "mz": "awkantun",
+  "raiz": "awkantu",
+  "final": "vocal",
+  "es": "jugar",
+  "transitividad": null,
+  "campo": "Juego",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0025",
+  "mz": "ayen",
+  "raiz": "aye",
+  "final": "vocal",
+  "es": "reír / alegrarse; Reírse / divertirse",
+  "transitividad": null,
+  "campo": "Afecto",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0027",
+  "mz": "ayün",
+  "raiz": "ay",
+  "final": "consonante",
+  "es": "querer / amar / gustar de",
+  "transitividad": null,
+  "campo": "Afecto",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0028",
+    "mz": "ayewelay",
+    "es": "Ya no le gusta / participar",
+    "ejemplo": "Ayewelay konalu gillatun",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0029",
+    "mz": "ayulaenew",
+    "es": "No le gusto",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0030",
+  "mz": "ayüwün",
+  "raiz": "ayüw",
+  "final": "consonante",
+  "es": "Alegrarse",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0031",
+  "mz": "azkintun",
+  "raiz": "azkintu",
+  "final": "vocal",
+  "es": "mirar",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0033",
+  "mz": "azümün",
+  "raiz": "azüm",
+  "final": "consonante",
+  "es": "entender",
+  "transitividad": null,
+  "campo": "Conocimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0034",
+    "mz": "neweazumfalay",
+    "es": "Algo que es complicado",
+    "ejemplo": "Neweazumfalay tañi kuzaw",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0035",
+  "mz": "chafon",
+  "raiz": "chafo",
+  "final": "vocal",
+  "es": "toser / resfriarse",
+  "transitividad": null,
+  "campo": "Salud",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0037",
+  "mz": "chafün",
+  "raiz": "chaf",
+  "final": "consonante",
+  "es": "pelar (fruta o papas)",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0038",
+  "mz": "chalin",
+  "raiz": "chali",
+  "final": "i",
+  "es": "saludar",
+  "transitividad": null,
+  "campo": "Relacional",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0039",
+  "mz": "chalintukun",
+  "raiz": "chalintuku",
+  "final": "vocal",
+  "es": "saludar (sentido mapuche: dejar saludo)",
+  "transitividad": null,
+  "campo": "Relacional y espiritual",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0040",
+  "mz": "challwan",
+  "raiz": "challwa",
+  "final": "vocal",
+  "es": "pescar",
+  "transitividad": null,
+  "campo": "Trabajo de campo",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0042",
+  "mz": "chaytun",
+  "raiz": "chaytu",
+  "final": "vocal",
+  "es": "colar",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0043",
+    "mz": "chaytugekey",
+    "es": "Se cuela",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0044",
+  "mz": "chillkatun",
+  "raiz": "chillkatu",
+  "final": "vocal",
+  "es": "estudiar / leer / escribir",
+  "transitividad": null,
+  "campo": "Estudio",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0046",
+  "mz": "choyün",
+  "raiz": "choy",
+  "final": "consonante",
+  "es": "Se entiende como brote - también se le dice a los hijos - también se refiere a nacer.",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0048",
+  "mz": "chumkon",
+  "raiz": "chumko",
+  "final": "vocal",
+  "es": "rodearon todos",
+  "transitividad": null,
+  "campo": "Movimiento colectivo",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0049",
+  "mz": "chumün",
+  "raiz": "chum",
+  "final": "consonante",
+  "es": "hacer qué; Hacer qué / estar cómo (verbo interrogativo)",
+  "transitividad": null,
+  "campo": "Acción general y pregunta",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0050",
+    "mz": "chumafun",
+    "es": "Qué haré",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0051",
+    "mz": "chumkefui",
+    "es": "Qué hacían",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0052",
+    "mz": "chumlaeyu",
+    "es": "No te haré nada",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0053",
+    "mz": "chumlan",
+    "es": "No hice nada",
+    "ejemplo": "Inche chumlan no hice nada",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0054",
+  "mz": "echiwün",
+  "raiz": "echiw",
+  "final": "consonante",
+  "es": "estornudar",
+  "transitividad": null,
+  "campo": "Salud",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0055",
+  "mz": "ellkan",
+  "raiz": "ellka",
+  "final": "vocal",
+  "es": "esconder",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0057",
+  "mz": "elun / wülün",
+  "raiz": "elu",
+  "final": "vocal",
+  "es": "dar; Dar (a alguien)",
+  "transitividad": null,
+  "campo": "Intercambio",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0058",
+  "mz": "elün",
+  "raiz": "el",
+  "final": "consonante",
+  "es": "dejar / poner",
+  "transitividad": null,
+  "campo": "Acción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0059",
+  "mz": "entun",
+  "raiz": "entu",
+  "final": "vocal",
+  "es": "Sacar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0060",
+  "mz": "falin",
+  "raiz": "fali",
+  "final": "i",
+  "es": "valer",
+  "transitividad": null,
+  "campo": "Intercambio comercial",
+  "validacion": "Respaldada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0061",
+    "mz": "faliltulafi",
+    "es": "No lo valora",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0062",
+    "mz": "faliwtugeam",
+    "es": "Para que se valore",
+    "ejemplo": "faliwtugeam fill mapu püle",
+    "verificar": null
+   }
+  ]
+ },
+ {
+  "id": "VRB-0064",
+  "mz": "felen",
+  "raiz": "fele",
+  "final": "vocal",
+  "es": "ser así / estar así",
+  "transitividad": null,
+  "campo": "Estado",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0065",
+    "mz": "felewelay",
+    "es": "Ya no es así",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0067",
+    "mz": "felewelay",
+    "es": "ya no es así",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0069",
+  "mz": "femün",
+  "raiz": "fem",
+  "final": "consonante",
+  "es": "hacer esto; Hacer así",
+  "transitividad": null,
+  "campo": "Acción general",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0070",
+    "mz": "femafuymi",
+    "es": "Serás así",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0071",
+    "mz": "femafunchi",
+    "es": "Si es que se puede",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0072",
+    "mz": "femfemtuanchi",
+    "es": "Si es que se puede",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0073",
+    "mz": "femkaafunchi",
+    "es": "Si es que voy",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0074",
+    "mz": "femkapelay",
+    "es": "parece que así es",
+    "ejemplo": "Así fue - le creo aunque no lo haya üysto",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0075",
+    "mz": "femlay",
+    "es": "No es así",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0076",
+    "mz": "femlayan",
+    "es": "No lo haré",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0077",
+    "mz": "fempewelay",
+    "es": "Ya no lo está haciendo -- Puede ser así o no",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0078",
+  "mz": "fenzen",
+  "raiz": "fenze",
+  "final": "vocal",
+  "es": "vender",
+  "transitividad": null,
+  "campo": "Intercambio comercial",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0079",
+  "mz": "feyentun",
+  "raiz": "feyentu",
+  "final": "vocal",
+  "es": "creer / obedecer",
+  "transitividad": null,
+  "campo": "Conocimiento y relacional",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0080",
+  "mz": "feypin",
+  "raiz": "feypi",
+  "final": "i",
+  "es": "decir (antepuesto)",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0081",
+  "mz": "fillamzugukawün",
+  "raiz": "fillamzugukaw",
+  "final": "consonante",
+  "es": "Ponernos de acuerdo",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0083",
+  "mz": "fürenen",
+  "raiz": "fürene",
+  "final": "vocal",
+  "es": "Hacer un favor",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0084",
+  "mz": "fürin",
+  "raiz": "füri",
+  "final": "i",
+  "es": "freír",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0085",
+    "mz": "füriam",
+    "es": "Para freir",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0086",
+  "mz": "füwün",
+  "raiz": "füw",
+  "final": "consonante",
+  "es": "hilar",
+  "transitividad": null,
+  "campo": "Telar",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0087",
+    "mz": "fuwukey",
+    "es": "Alguien que hila",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0088",
+    "mz": "fuwün",
+    "es": "Hilar",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0096",
+  "mz": "gillan",
+  "raiz": "gilla",
+  "final": "vocal",
+  "es": "comprar",
+  "transitividad": null,
+  "campo": "Intercambio comercial",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0097",
+    "mz": "gillalelmeaeyu",
+    "es": "Le compraré allá para usted",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0098",
+    "mz": "gillanentuwun",
+    "es": "Me compré mi libertad",
+    "ejemplo": "Se está comprando así mismo",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0099",
+  "mz": "gillatun",
+  "raiz": "gillatu",
+  "final": "vocal",
+  "es": "hacer rogativa; Rogar, hacer rogativa",
+  "transitividad": null,
+  "campo": "Espiritual",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0100",
+    "mz": "gillatuñmanieaeyu",
+    "es": "te tendré en mi guillatun",
+    "ejemplo": "Gillatuñmanieaeyu liwen mew",
+    "verificar": null
+   }
+  ]
+ },
+ {
+  "id": "VRB-0101",
+  "mz": "gillañmawün",
+  "raiz": "gillañmaw",
+  "final": "consonante",
+  "es": "Hacer rogativa para sí; hacer gillatun",
+  "transitividad": null,
+  "campo": "Espiritual",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0104",
+  "mz": "güman",
+  "raiz": "güma",
+  "final": "vocal",
+  "es": "llorar",
+  "transitividad": null,
+  "campo": "Afecto",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0109",
+  "mz": "güren / gürekan",
+  "raiz": "güre",
+  "final": "vocal",
+  "es": "tejer",
+  "transitividad": null,
+  "campo": "Telar",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0110",
+  "mz": "gütxamkan",
+  "raiz": "gütxamka",
+  "final": "vocal",
+  "es": "Conversar, contar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0113",
+  "mz": "güñün",
+  "raiz": "güñ",
+  "final": "consonante",
+  "es": "tener hambre",
+  "transitividad": null,
+  "campo": "Comida",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0114",
+    "mz": "guñin",
+    "es": "Tengo hambre",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0115",
+  "mz": "illkun",
+  "raiz": "illku",
+  "final": "vocal",
+  "es": "Enojarse",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0118",
+  "mz": "ilotun",
+  "raiz": "ilotu",
+  "final": "vocal",
+  "es": "Comer carne",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0119",
+  "mz": "in",
+  "raiz": "i",
+  "final": "i",
+  "es": "comer; Comer / comida",
+  "transitividad": null,
+  "campo": "Comida",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0121",
+  "mz": "inan / inanien",
+  "raiz": "ina",
+  "final": "vocal",
+  "es": "seguir / continuar",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0122",
+  "mz": "inarumen",
+  "raiz": "inarume",
+  "final": "vocal",
+  "es": "Llamar o atender a las aves de la ruka (uso cotidiano citado de Juan Bautista Antinao)",
+  "transitividad": null,
+  "campo": "Conocimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0123",
+  "mz": "ipagentun",
+  "raiz": "ipagentu",
+  "final": "vocal",
+  "es": "Convidar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0125",
+  "mz": "kagkatun",
+  "raiz": "kagkatu",
+  "final": "vocal",
+  "es": "asar a carbón",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0126",
+  "mz": "kalukatun",
+  "raiz": "kalukatu",
+  "final": "vocal",
+  "es": "Retar (confirmar)",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0127",
+  "mz": "katxün",
+  "raiz": "katx",
+  "final": "consonante",
+  "es": "cortar",
+  "transitividad": null,
+  "campo": "Cocina y trabajo",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0128",
+  "mz": "kellun",
+  "raiz": "kellu",
+  "final": "vocal",
+  "es": "ayudar",
+  "transitividad": null,
+  "campo": "Relacional",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0129",
+  "mz": "ketxan",
+  "raiz": "ketxa",
+  "final": "vocal",
+  "es": "Arar/siembra",
+  "transitividad": null,
+  "campo": "Trabajo de campo",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0130",
+  "mz": "kewan",
+  "raiz": "kewa",
+  "final": "vocal",
+  "es": "Pelear, pegar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0133",
+  "mz": "keyuntukun",
+  "raiz": "keyuntuku",
+  "final": "vocal",
+  "es": "Apoyar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0134",
+    "mz": "keyuntukugeafun",
+    "es": "Que me ayuden",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0135",
+  "mz": "kimeltun",
+  "raiz": "kimeltu",
+  "final": "vocal",
+  "es": "enseñar",
+  "transitividad": null,
+  "campo": "Conocimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0137",
+  "mz": "kimuwün",
+  "raiz": "kimuw",
+  "final": "consonante",
+  "es": "conocerse (entre personas)",
+  "transitividad": null,
+  "campo": "Conocimiento y relacional",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0138",
+  "mz": "kimün",
+  "raiz": "kim",
+  "final": "consonante",
+  "es": "saber / conocer / aprender",
+  "transitividad": null,
+  "campo": "Conocimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0139",
+    "mz": "kimpafin",
+    "es": "Lo conoci acá - loalcance a conocer y sigue vivo",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0140",
+    "mz": "kimpelay",
+    "es": "Tiene que saber",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0141",
+    "mz": "kimürkefuy",
+    "es": "Se conocian antes la gente",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0142",
+    "mz": "kimürpafin",
+    "es": "Lo alcance a conocer y murió",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0143",
+    "mz": "kimürpuan",
+    "es": "Voy conociendo más y más",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0145",
+  "mz": "kintun",
+  "raiz": "kintu",
+  "final": "vocal",
+  "es": "buscar",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0147",
+  "mz": "kofken",
+  "raiz": "kofke",
+  "final": "vocal",
+  "es": "hacer pan",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0148",
+  "mz": "kofketun",
+  "raiz": "kofketu",
+  "final": "vocal",
+  "es": "comer pan",
+  "transitividad": null,
+  "campo": "Comida",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0150",
+  "mz": "konün",
+  "raiz": "kon",
+  "final": "consonante",
+  "es": "entrar",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0151",
+    "mz": "konfemputuy",
+    "es": "Entró en algo propio (su casa)",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0154",
+  "mz": "kutxanün",
+  "raiz": "kutxan",
+  "final": "consonante",
+  "es": "Enfermarse, doler",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0156",
+  "mz": "kuñiwtun",
+  "raiz": "kuñiwtu",
+  "final": "vocal",
+  "es": "proteger",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0157",
+  "mz": "küchan",
+  "raiz": "kücha",
+  "final": "vocal",
+  "es": "lavar / mojar",
+  "transitividad": null,
+  "campo": "Trabajo en la ruka",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0158",
+    "mz": "kuchafin",
+    "es": "lavarlo (para comer como una galline)",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0161",
+  "mz": "kümelkalen",
+  "raiz": "kümelkale",
+  "final": "vocal",
+  "es": "Estar bien",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0163",
+  "mz": "kümezuamün",
+  "raiz": "kümezuam",
+  "final": "consonante",
+  "es": "sentirse bien",
+  "transitividad": null,
+  "campo": "Estado anímico",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0164",
+    "mz": "kümezuamkülelafun",
+    "es": "No me siento muy bien / no me he sentido muy bien",
+    "ejemplo": "Kümezuamkülelafun fachantü",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0165",
+  "mz": "künun",
+  "raiz": "künu",
+  "final": "vocal",
+  "es": "dejar algo hecho",
+  "transitividad": null,
+  "campo": "Acción y aspecto",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0167",
+  "mz": "küpalün",
+  "raiz": "küpal",
+  "final": "consonante",
+  "es": "traer",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0168",
+  "mz": "küpan",
+  "raiz": "küpa",
+  "final": "vocal",
+  "es": "venir",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0169",
+  "mz": "kütxantun",
+  "raiz": "kütxantu",
+  "final": "vocal",
+  "es": "doler / enfermar",
+  "transitividad": null,
+  "campo": "Salud",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0170",
+    "mz": "kütxantuy",
+    "es": "Le dolió",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0171",
+  "mz": "küzawetuy",
+  "raiz": "",
+  "final": "vocal",
+  "es": "difícil / se puso trabajoso",
+  "transitividad": null,
+  "campo": "Valoración",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0172",
+  "mz": "küzawün",
+  "raiz": "küzaw",
+  "final": "consonante",
+  "es": "trabajar",
+  "transitividad": null,
+  "campo": "Trabajo",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0173",
+    "mz": "echaküzawkülen",
+    "es": "He trabajado demasiado",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0174",
+    "mz": "kuzawyegey",
+    "es": "La trabajarán",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0175",
+    "mz": "zewkuzawniefin",
+    "es": "Ya lo tengo preparado (trabajado)",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0176",
+  "mz": "lagümün",
+  "raiz": "lagüm",
+  "final": "consonante",
+  "es": "matar",
+  "transitividad": null,
+  "campo": "Acción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0177",
+  "mz": "lan",
+  "raiz": "la",
+  "final": "vocal",
+  "es": "morir",
+  "transitividad": null,
+  "campo": "Estado",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0181",
+  "mz": "lefün",
+  "raiz": "lef",
+  "final": "consonante",
+  "es": "correr; Correr / huir",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0183",
+  "mz": "lelin / lelintukun",
+  "raiz": "leli",
+  "final": "i",
+  "es": "mirar",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0185",
+  "mz": "lepün / lepütun",
+  "raiz": "lep",
+  "final": "consonante",
+  "es": "barrer",
+  "transitividad": null,
+  "campo": "Trabajo en la ruka",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0188",
+  "mz": "llazkün / illkun",
+  "raiz": "llazk",
+  "final": "consonante",
+  "es": "enojarse / afligirse; Pena (además de enojo, aparece de las dos maneras; Entristecerse, enojarse",
+  "transitividad": null,
+  "campo": "Afecto, Emoción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0189",
+  "mz": "llegün",
+  "raiz": "lleg",
+  "final": "consonante",
+  "es": "nacer de las plantas - peero también es para la persona como nacer",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0191",
+  "mz": "llitun",
+  "raiz": "llitu",
+  "final": "vocal",
+  "es": "comenzar",
+  "transitividad": null,
+  "campo": "Estructura del discurso",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0192",
+    "mz": "llituaiñ",
+    "es": "Comenzaremos",
+    "ejemplo": "Lliftuaiñ tufachi ttxawün",
+    "verificar": null
+   }
+  ]
+ },
+ {
+  "id": "VRB-0196",
+  "mz": "llükan",
+  "raiz": "llüka",
+  "final": "vocal",
+  "es": "Tener miedo",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0197",
+    "mz": "llükay",
+    "es": "Le dio miedo",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0198",
+  "mz": "mageln",
+  "raiz": "",
+  "final": "vocal",
+  "es": "invitar",
+  "transitividad": null,
+  "campo": "Vida social",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0202",
+  "mz": "malütun",
+  "raiz": "malütu",
+  "final": "vocal",
+  "es": "Es revisar algo que no es tuyo, intrometerse en algo que no es parte de uno. Aplica a nivel físico, no se puede trajinar tocando algo inmaterial como un poema",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0203",
+  "mz": "mamülltun",
+  "raiz": "mamülltu",
+  "final": "vocal",
+  "es": "hacer leña",
+  "transitividad": null,
+  "campo": "Trabajo",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0204",
+  "mz": "mapuzugun",
+  "raiz": "mapuzugu",
+  "final": "vocal",
+  "es": "Hablar mapuzugun",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0205",
+  "mz": "masan",
+  "raiz": "masa",
+  "final": "vocal",
+  "es": "amasar",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0206",
+  "mz": "matukelün",
+  "raiz": "matukel",
+  "final": "consonante",
+  "es": "apurarse",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0207",
+    "mz": "matukelege",
+    "es": "Apúrate",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0209",
+  "mz": "mañumün / mañumtun",
+  "raiz": "mañum",
+  "final": "consonante",
+  "es": "agradecer",
+  "transitividad": null,
+  "campo": "Relacional",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0210",
+  "mz": "medkün / rügümün",
+  "raiz": "medk",
+  "final": "consonante",
+  "es": "moler",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0211",
+  "mz": "meñon",
+  "raiz": "meño",
+  "final": "vocal",
+  "es": "llenar",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0212",
+    "mz": "meñoafin",
+    "es": "Llenaré",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0213",
+    "mz": "meñolafin",
+    "es": "No lo llené",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0214",
+  "mz": "miawün",
+  "raiz": "miaw",
+  "final": "consonante",
+  "es": "andar / caminar",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0216",
+  "mz": "mogen",
+  "raiz": "moge",
+  "final": "vocal",
+  "es": "vivir",
+  "transitividad": null,
+  "campo": "Estado",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0222",
+  "mz": "mülen",
+  "raiz": "müle",
+  "final": "vocal",
+  "es": "estar / haber / residir; Estar, vivir, haber",
+  "transitividad": null,
+  "campo": "Estado y existencia",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0223",
+    "mz": "mulepatuy",
+    "es": "se quedó acá",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0224",
+    "mz": "muletuy",
+    "es": "se quedó",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0227",
+  "mz": "mütxümün / gütxümün",
+  "raiz": "mütxüm",
+  "final": "consonante",
+  "es": "llamar",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0228",
+  "mz": "müñetun",
+  "raiz": "müñetu",
+  "final": "vocal",
+  "es": "bañarse",
+  "transitividad": null,
+  "campo": "Aseo",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0229",
+  "mz": "nagün",
+  "raiz": "nag",
+  "final": "consonante",
+  "es": "bajar / descender (intr.)",
+  "transitividad": "intransitivo",
+  "campo": "Movimiento",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0232",
+  "mz": "nien",
+  "raiz": "nie",
+  "final": "vocal",
+  "es": "tener",
+  "transitividad": null,
+  "campo": "Estado y posesión",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0233",
+    "mz": "nietuay",
+    "es": "Tener en algún lado. Por ejemplo, dejar a los animales, \"tengámoslo por acá\"",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0235",
+  "mz": "non",
+  "raiz": "no",
+  "final": "vocal",
+  "es": "Cruzar las aguas (lago, mar, estero); distinto de rupan (cruzar tierra)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0243",
+  "mz": "nülan",
+  "raiz": "nüla",
+  "final": "vocal",
+  "es": "abrir",
+  "transitividad": null,
+  "campo": "Trabajo en la ruka",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0245",
+    "mz": "nülafe/ge",
+    "es": "Abra",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0248",
+  "mz": "nün / tun",
+  "raiz": "n",
+  "final": "consonante",
+  "es": "tomar / agarrar / coger",
+  "transitividad": null,
+  "campo": "Acción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0249",
+  "mz": "nütxamkan",
+  "raiz": "nütxamka",
+  "final": "vocal",
+  "es": "conversar",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0253",
+  "mz": "pegelün",
+  "raiz": "pegel",
+  "final": "consonante",
+  "es": "mostrar",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0254",
+  "mz": "pen",
+  "raiz": "pe",
+  "final": "vocal",
+  "es": "ver / hallar / encontrar",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0255",
+    "mz": "pegelu",
+    "es": "Que está viendo",
+    "ejemplo": "Pegelu tufachi üideo",
+    "verificar": null
+   }
+  ]
+ },
+ {
+  "id": "VRB-0257",
+  "mz": "pepikan",
+  "raiz": "pepika",
+  "final": "vocal",
+  "es": "preparar",
+  "transitividad": null,
+  "campo": "Trabajo",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0258",
+  "mz": "pepikawün",
+  "raiz": "pepikaw",
+  "final": "consonante",
+  "es": "prepararse",
+  "transitividad": null,
+  "campo": "Trabajo",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0259",
+    "mz": "pepikawimun",
+    "es": "Preparense ustedes",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0260",
+    "mz": "pepikawun",
+    "es": "Prepararse",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0262",
+  "mz": "pewman",
+  "raiz": "pewma",
+  "final": "vocal",
+  "es": "soñar; desear (pewmagen = ojalá)",
+  "transitividad": null,
+  "campo": "Descanso y espiritual",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0264",
+  "mz": "pigen",
+  "raiz": "pige",
+  "final": "vocal",
+  "es": "llamarse",
+  "transitividad": null,
+  "campo": "Comunicación e identidad",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0265",
+  "mz": "pin",
+  "raiz": "pi",
+  "final": "i",
+  "es": "decir",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0266",
+    "mz": "pikefenew",
+    "es": "Me decían",
+    "ejemplo": "kefenew - me hacían algo antes",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0267",
+    "mz": "pikünukefin",
+    "es": "mari mari pikvnokefin",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0268",
+    "mz": "pilewetuy",
+    "es": "Iba a hacer algo lo iba a hacer y no lo podre hacer --> estaba diciendo algo de ir a hacer casa pero ya no pudo ser",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0269",
+    "mz": "pipefun",
+    "es": "Decía yo en ese momento",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0270",
+    "mz": "pipigekey",
+    "es": "Se puede hacer",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0271",
+    "mz": "pipurkey",
+    "es": "Fue a decirle allá (dicen)",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0273",
+  "mz": "piwkeyen",
+  "raiz": "piwkeye",
+  "final": "vocal",
+  "es": "Querer (con el corazón)",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0274",
+  "mz": "poyen",
+  "raiz": "poye",
+  "final": "vocal",
+  "es": "amar / estimar",
+  "transitividad": null,
+  "campo": "Afecto",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0276",
+  "mz": "purun",
+  "raiz": "puru",
+  "final": "vocal",
+  "es": "bailar",
+  "transitividad": null,
+  "campo": "Música",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0277",
+  "mz": "putun / pütokon",
+  "raiz": "putu",
+  "final": "vocal",
+  "es": "beber",
+  "transitividad": null,
+  "campo": "Comida",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0278",
+  "mz": "puwün",
+  "raiz": "puw",
+  "final": "consonante",
+  "es": "llegar (allá); cumplir (edad)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0279",
+    "mz": "puwülam",
+    "es": "Que falta (Aún no se llega)",
+    "ejemplo": "Inche fuwan ta kal puwülam",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0281",
+  "mz": "püran",
+  "raiz": "püra",
+  "final": "vocal",
+  "es": "subir / montar",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0282",
+    "mz": "purañmafiyiñ",
+    "es": "Lo subiremos",
+    "ejemplo": "Pürañmafin tufachi azentu ñarki",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0283",
+  "mz": "pütokon",
+  "raiz": "pütoko",
+  "final": "vocal",
+  "es": "Beber agua",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0285",
+  "mz": "rakizuamün",
+  "raiz": "rakizuam",
+  "final": "consonante",
+  "es": "pensar",
+  "transitividad": null,
+  "campo": "Conocimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0288",
+  "mz": "ramtun",
+  "raiz": "ramtu",
+  "final": "vocal",
+  "es": "preguntar",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0289",
+    "mz": "ramtuniefel",
+    "es": "Le están preguntando",
+    "ejemplo": "Ramtunieafulu: Debieron haber preguntado (llegaron y tomaron una decisión)",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0294",
+  "mz": "rumen",
+  "raiz": "rume",
+  "final": "vocal",
+  "es": "pasar (de acá hacia allá)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Respaldada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0295",
+    "mz": "rumerumetugelayan",
+    "es": "Que no me pase a llevar",
+    "ejemplo": "rumerumegetukelay CHE",
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0296",
+  "mz": "rupan",
+  "raiz": "rupa",
+  "final": "vocal",
+  "es": "pasar (de allá hacia acá)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0299",
+  "mz": "rügkün",
+  "raiz": "rügk",
+  "final": "consonante",
+  "es": "saltar",
+  "transitividad": null,
+  "campo": "Movimiento y cuerpo",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0303",
+  "mz": "takun",
+  "raiz": "taku",
+  "final": "vocal",
+  "es": "tapar / cubrir / vestir",
+  "transitividad": null,
+  "campo": "Trabajo en la ruka",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0304",
+    "mz": "takuwi",
+    "es": "Taparse con ropa",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0305",
+    "mz": "takuwkülean",
+    "es": "Voy a estar tapade",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0310",
+  "mz": "tukulpan",
+  "raiz": "tukulpa",
+  "final": "vocal",
+  "es": "Recordar",
+  "transitividad": null,
+  "campo": "Conocimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0311",
+  "mz": "tukun",
+  "raiz": "tuku",
+  "final": "vocal",
+  "es": "sembrar / poner / vaciar; Poner, sembrar, vestir",
+  "transitividad": null,
+  "campo": "Trabajo de campo",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0312",
+  "mz": "tuwün",
+  "raiz": "tuw",
+  "final": "consonante",
+  "es": "venir de / ser originario de / Tomarse / Sujetarse",
+  "transitividad": null,
+  "campo": "Movimiento e identidad",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0316",
+  "mz": "txafon",
+  "raiz": "txafo",
+  "final": "vocal",
+  "es": "Quebrar algo vegetal (plantas, ramas)",
+  "transitividad": null,
+  "campo": "Acción",
+  "validacion": "Validada",
+  "verificar": "Zúñiga no distingue material (trafolün / watrotun); la distinción viene del kimelfe"
+ },
+ {
+  "id": "VRB-0317",
+  "mz": "txafün",
+  "raiz": "txaf",
+  "final": "consonante",
+  "es": "Encontrarse con alguien",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0318",
+    "mz": "txafmefimi",
+    "es": "Lo encontraste",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0322",
+  "mz": "txanan",
+  "raiz": "txana",
+  "final": "vocal",
+  "es": "molido (como el ajo); machacar / caer al suelo",
+  "transitividad": null,
+  "campo": "Cocina y acción",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0323",
+    "mz": "txanakünuwün",
+    "es": "Recostarse",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0324",
+    "mz": "txanün",
+    "es": "Me cai",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0325",
+  "mz": "txapumün",
+  "raiz": "txapum",
+  "final": "consonante",
+  "es": "Juntar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0326",
+  "mz": "txarin / txapelün",
+  "raiz": "txari",
+  "final": "i",
+  "es": "amarrar / atar",
+  "transitividad": null,
+  "campo": "Trabajo",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0328",
+  "mz": "txawün",
+  "raiz": "txaw",
+  "final": "consonante",
+  "es": "reunirse; Juntarse, reunirse",
+  "transitividad": null,
+  "campo": "Vida social",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0329",
+    "mz": "txawucheai",
+    "es": "Se juntará la gente",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0330",
+  "mz": "txekan",
+  "raiz": "txeka",
+  "final": "vocal",
+  "es": "caminar",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0332",
+  "mz": "txekerwi",
+  "raiz": "",
+  "final": "vocal",
+  "es": "moverse como culebra",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0333",
+  "mz": "txemon",
+  "raiz": "txemo",
+  "final": "vocal",
+  "es": "mejorarse / sanarse",
+  "transitividad": null,
+  "campo": "Salud",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0334",
+  "mz": "txemün",
+  "raiz": "txem",
+  "final": "consonante",
+  "es": "Crecer, criarse",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0335",
+  "mz": "txepen / nepen",
+  "raiz": "txepe",
+  "final": "vocal",
+  "es": "despertar",
+  "transitividad": null,
+  "campo": "Descanso",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0338",
+  "mz": "txipan",
+  "raiz": "txipa",
+  "final": "vocal",
+  "es": "salir",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0343",
+  "mz": "umawtun",
+  "raiz": "umawtu",
+  "final": "vocal",
+  "es": "dormir",
+  "transitividad": null,
+  "campo": "Descanso",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0351",
+  "mz": "wechun / wechulün",
+  "raiz": "wechu",
+  "final": "vocal",
+  "es": "terminar / cumplir",
+  "transitividad": null,
+  "campo": "Estructura del discurso",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0352",
+  "mz": "wefün",
+  "raiz": "wef",
+  "final": "consonante",
+  "es": "aparecer",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Respaldada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0353",
+    "mz": "weftual",
+    "es": "Para que renazca, para que reaparezca",
+    "ejemplo": "Günezuamal ta mapu weftual",
+    "verificar": null
+   }
+  ]
+ },
+ {
+  "id": "VRB-0355",
+  "mz": "wellel",
+  "raiz": "",
+  "final": "vocal",
+  "es": "Nadar",
+  "transitividad": null,
+  "campo": "Ejercicio",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0356",
+  "mz": "welulkawün",
+  "raiz": "welulkaw",
+  "final": "consonante",
+  "es": "Embarrarla, no saber qué hacer. Se le olvidó",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0360",
+  "mz": "wewün",
+  "raiz": "wew",
+  "final": "consonante",
+  "es": "ganar / vencer",
+  "transitividad": null,
+  "campo": "Competencia",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0361",
+    "mz": "wewgelayan",
+    "es": "Que no me ganen (en rogativa)",
+    "ejemplo": "Chew rume mulelu inche wewgelayan tati",
+    "verificar": null
+   }
+  ]
+ },
+ {
+  "id": "VRB-0362",
+  "mz": "weyelün",
+  "raiz": "weyel",
+  "final": "consonante",
+  "es": "nadar",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0363",
+  "mz": "weñagkün",
+  "raiz": "weñagk",
+  "final": "consonante",
+  "es": "estar triste / tener pena; Estar triste, afligido",
+  "transitividad": null,
+  "campo": "Afecto",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0365",
+  "mz": "wirarün",
+  "raiz": "wirar",
+  "final": "consonante",
+  "es": "gritar",
+  "transitividad": null,
+  "campo": "Acción y ceremonial",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0366",
+  "mz": "wirin",
+  "raiz": "wiri",
+  "final": "i",
+  "es": "escribir",
+  "transitividad": null,
+  "campo": "Escritura",
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0367",
+  "mz": "wirintukun",
+  "raiz": "wirintuku",
+  "final": "vocal",
+  "es": "Escribir",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0370",
+  "mz": "witxan",
+  "raiz": "witxa",
+  "final": "vocal",
+  "es": "Levantarse, pararse",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0371",
+    "mz": "witxakünoaymi",
+    "es": "Quedarás parada",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0372",
+  "mz": "witxukon",
+  "raiz": "witxuko",
+  "final": "vocal",
+  "es": "regar",
+  "transitividad": null,
+  "campo": "Trabajo de campo",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0373",
+    "mz": "witxokoafin",
+    "es": "Lo regaré",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0376",
+  "mz": "wiñon / wiñolün",
+  "raiz": "wiño",
+  "final": "vocal",
+  "es": "volver",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0377",
+  "mz": "wiñon / wiñotun",
+  "raiz": "wiño",
+  "final": "vocal",
+  "es": "Volver, regresar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0379",
+  "mz": "wülün",
+  "raiz": "wül",
+  "final": "consonante",
+  "es": "Dar, entregar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Respaldada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0387",
+  "mz": "yemen",
+  "raiz": "yeme",
+  "final": "vocal",
+  "es": "ir a buscar (allá)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0388",
+    "mz": "yemeaymi",
+    "es": "Vaya a buscar allá",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0389",
+    "mz": "yemekefuy",
+    "es": "Iba a buscar",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0390",
+    "mz": "yemeturkey",
+    "es": "Lo fue a buscar",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0394",
+  "mz": "yen / yelün",
+  "raiz": "ye",
+  "final": "vocal",
+  "es": "llevar; ir a buscar (con -pa-: venir a buscar)",
+  "transitividad": null,
+  "campo": "Movimiento",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0396",
+  "mz": "yewen",
+  "raiz": "yewe",
+  "final": "vocal",
+  "es": "Avergonzarse",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0397",
+    "mz": "yewey",
+    "es": "Avergonzó",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0398",
+    "mz": "yewetuy",
+    "es": "Le da vergüenza",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0400",
+  "mz": "yewün",
+  "raiz": "yew",
+  "final": "consonante",
+  "es": "avergonzarse",
+  "transitividad": null,
+  "campo": "Afecto",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0407",
+  "mz": "zewman",
+  "raiz": "zewma",
+  "final": "vocal",
+  "es": "hacer / fabricar / terminar",
+  "transitividad": null,
+  "campo": "Acción general",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0408",
+    "mz": "zewmallayu",
+    "es": "Vamos a preparar",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0409",
+  "mz": "zewmayalün",
+  "raiz": "zewmayal",
+  "final": "consonante",
+  "es": "cocinar",
+  "transitividad": null,
+  "campo": "Cocina",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0410",
+  "mz": "zuamün",
+  "raiz": "zuam",
+  "final": "consonante",
+  "es": "necesitar / desear / querer; Necesitar, anhelar; preocuparse",
+  "transitividad": null,
+  "campo": "Afecto y voluntad",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0411",
+    "mz": "zuamgekey",
+    "es": "tiene por objetivo / suele necesitarse",
+    "ejemplo": "Kimuwun zuamgekey ñi küme muleam che",
+    "verificar": null
+   },
+   {
+    "id": "VRB-0412",
+    "mz": "zuamgekey",
+    "es": "Algo que siempre está presente",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0413",
+    "mz": "zuamlley",
+    "es": "Necesita llevar (por ejemplo la semilla, chem ka zuamlley chi fun",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0415",
+  "mz": "zugun",
+  "raiz": "zugu",
+  "final": "vocal",
+  "es": "hablar",
+  "transitividad": null,
+  "campo": "Comunicación",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0416",
+    "mz": "zugufal-lay",
+    "es": "Mejor ni hablarle",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0417",
+    "mz": "zugufalnolu",
+    "es": "Como no le gusta que le hablen",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0418",
+    "mz": "zuguwetulay",
+    "es": "No habló más",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0420",
+  "mz": "zuyin",
+  "raiz": "zuyi",
+  "final": "i",
+  "es": "Elegir",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0421",
+    "mz": "zuyiel",
+    "es": "Elegido",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0422",
+    "mz": "zuyilafin",
+    "es": "No lo elegi",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   },
+   {
+    "id": "VRB-0423",
+    "mz": "zuyintun",
+    "es": "Yo elegi",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0425",
+  "mz": "ñamün",
+  "raiz": "ñam",
+  "final": "consonante",
+  "es": "Perdi; Perder; perder (algo)",
+  "transitividad": null,
+  "campo": "Percepción",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0431",
+  "mz": "ülkantun",
+  "raiz": "ülkantu",
+  "final": "vocal",
+  "es": "cantar",
+  "transitividad": null,
+  "campo": "Música y espiritual",
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0433",
+  "mz": "üngümün",
+  "raiz": "üngüm",
+  "final": "consonante",
+  "es": "Esperar",
+  "transitividad": null,
+  "campo": null,
+  "validacion": "Validada",
+  "verificar": null
+ },
+ {
+  "id": "VRB-0436",
+  "mz": "ürkütun",
+  "raiz": "ürkütu",
+  "final": "vocal",
+  "es": "descansar",
+  "transitividad": null,
+  "campo": "Descanso",
+  "validacion": "Validada",
+  "verificar": null,
+  "formas": [
+   {
+    "id": "VRB-0437",
+    "mz": "ürkutun",
+    "es": "Descansar",
+    "ejemplo": null,
+    "verificar": "Lema propuesto por Claude; Raíz y regla aplicadas mecánicamente"
+   }
+  ]
+ },
+ {
+  "id": "VRB-0438",
+  "mz": "ürlan",
+  "raiz": "ürla",
+  "final": "vocal",
+  "es": "masticar una comida y dejarla en el muchay para agarrar newen",
+  "transitividad": null,
+  "campo": "Ceremonial",
+  "validacion": "Validada",
+  "verificar": null
+ }
+]

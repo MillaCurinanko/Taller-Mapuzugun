@@ -2,7 +2,7 @@
   --kallfu:#0A2D8F; --kallfu-2:#1B45B8; --kallfu-claro:#E7ECFA;
   --tinta:#16192B; --gris:#5A6078; --linea:#D8DDEB; --papel:#F4F6FB; --blanco:#fff;
   --choz:#F2B705;
-  --inche:#C62828; --eimi:#1E63D6; --fey:#2E7D32;
+  --inche:#C62828; --eymi:#1E63D6; --fey:#2E7D32;
   --ok:#2E7D32; --mal:#C62828; --casi:#B26A00;
   --sans:"Alegreya Sans",system-ui,sans-serif; --serif:"Alegreya",Georgia,serif;
   --r:14px; --copihue:#B3262E; --hoja:#3E6B3A; --madera:#8A5A2B; --crudo:#F6F2E8;
@@ -49,7 +49,7 @@ td.mz{font-size:1.25rem}
 /* Palabras en mapuzugun y personas */
 .mz{font-weight:800;color:var(--kallfu)}
 .es{color:var(--gris);font-style:italic}
-.p-inche{--c:var(--inche)} .p-eimi{--c:var(--eimi)} .p-fey{--c:var(--fey)}
+.p-inche{--c:var(--inche)} .p-eymi{--c:var(--eymi)} .p-fey{--c:var(--fey)}
 .chip{display:inline-block;font-family:var(--sans);font-weight:800;color:#fff;background:var(--c,var(--kallfu));padding:.1rem .6rem;border-radius:999px;font-size:.95em}
 .suf{color:var(--c);font-weight:800;border-bottom:3px solid var(--c)}
 .raiz{color:var(--tinta);font-weight:800}
@@ -295,7 +295,7 @@ mark{background:var(--choz);color:var(--kallfu);border-radius:4px;padding:0 2px}
 .traductor{margin-top:1.5rem;padding:1.3rem;border-radius:var(--r);background:var(--papel);border:2px solid var(--kallfu-claro)}
 .traductor input{font-size:1.3rem;width:min(100%,30rem)}
 .tr-frase{font-family:var(--sans);font-weight:800;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--kallfu);margin:.6rem 0}
-.morf .pers.p-eimi{background:var(--eimi)} .morf .pers.p-fey{background:var(--fey)}
+.morf .pers.p-eymi{background:var(--eymi)} .morf .pers.p-fey{background:var(--fey)}
 .morf .tiempo{background:var(--choz);color:var(--kallfu)}
 .fuente{display:inline-block;font-family:var(--sans);font-size:.85rem;font-weight:700;padding:.1rem .6rem;border-radius:999px;background:#EAF5EA;color:var(--ok)}
 .fuente.verif{background:#FFF3DF;color:var(--casi)}
@@ -416,3 +416,36 @@ mark{background:var(--choz);color:var(--kallfu);border-radius:4px;padding:0 2px}
   .inicio-quiz{grid-template-columns:1fr}
   .inicio-quiz .lukus svg{width:44px;height:70px}
 }
+
+/* =================== Guía 4 =================== */
+.fig{font-family:system-ui,sans-serif;letter-spacing:.05em}
+.chip .fig{margin-right:.15rem}
+.leyenda{display:flex;flex-wrap:wrap;gap:.5rem;font-size:1.15rem}
+table.resumen td{font-size:1.05rem}
+table.resumen th[style]{color:#fff}
+.conj3 td{text-align:center}
+.conj3 td .es{font-size:.9rem}
+.neg-m{color:var(--copihue);font-weight:800;border-bottom:3px dotted var(--copihue)}
+.dos-tj{grid-template-columns:1fr 1.3fr;align-items:start}
+.tj-form label{display:block;font-weight:700;margin:.6rem 0 .2rem;font-size:.95rem;font-family:var(--sans)}
+.tj-form input,.tj-form select{width:100%}
+.tarjeta{border:6px solid var(--kallfu);border-radius:var(--r);overflow:hidden;background:#fff}
+.tj-cab{display:flex;align-items:center;gap:.7rem;background:var(--kallfu);color:#fff;padding:.8rem 1.1rem;border-bottom:5px solid var(--copihue)}
+.tj-cab svg{width:34px;height:34px;fill:#fff}
+.tj-cab b{font-family:var(--sans);font-size:1.5rem;font-weight:800}
+.tarjeta ol{list-style:none;margin:0;padding:1rem 1.2rem}
+.tarjeta li{padding:.35rem 0;border-bottom:1px solid var(--linea)}
+.tarjeta li:last-child{border:0}
+.tarjeta li .mz{display:block;font-size:1.25rem}
+.tarjeta li .es{font-size:1rem}
+.actividades{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:1.2rem}
+.actividades button{text-align:left;border:2px solid var(--c);border-radius:var(--r);background:#fff;padding:1rem 1.1rem;cursor:pointer;font-family:var(--sans);display:flex;flex-direction:column;gap:.3rem;transition:transform .15s,background .15s}
+.actividades button:hover{background:var(--kallfu-claro);transform:translateY(-2px)}
+.actividades .fig{color:var(--c);font-size:1.6rem;line-height:1}
+.actividades b{font-size:1.15rem;color:var(--tinta)}
+.actividades small{color:var(--gris);font-family:var(--serif);font-size:1rem}
+.q-viejo{display:inline-block;margin-left:.5rem;padding:.05rem .5rem;border-radius:999px;background:var(--choz);color:var(--kallfu);font-size:.8rem;font-weight:800;letter-spacing:0;text-transform:none}
+.q-fb.pista{background:#FFF7DA;border-left:5px solid var(--choz)}
+.q-texto .chip{font-size:.85em;vertical-align:middle}
+@media (max-width:760px){.dos-tj{grid-template-columns:1fr}}
+@media print{.actividades{display:none}.tarjeta{break-inside:avoid}}
