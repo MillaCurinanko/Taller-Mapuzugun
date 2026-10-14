@@ -426,6 +426,7 @@ table.resumen th[style]{color:#fff}
 .conj3 td{text-align:center}
 .conj3 td .es{font-size:.9rem}
 .neg-m{color:var(--copihue);font-weight:800;border-bottom:3px dotted var(--copihue)}
+.fut-m{color:var(--hoja);font-weight:800;border-bottom:3px solid var(--hoja);background:#E6F1E4}
 .dos-tj{grid-template-columns:1fr 1.3fr;align-items:start}
 .tj-form label{display:block;font-weight:700;margin:.6rem 0 .2rem;font-size:.95rem;font-family:var(--sans)}
 .tj-form input,.tj-form select{width:100%}

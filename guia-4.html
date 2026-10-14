@@ -121,13 +121,19 @@
 
 <!-- VII -->
 <section class="bloque" id="conjugar">
-  <h2>VII. Tabla de conjugación<small>Verbos clave con su traducción</small></h2>
-  <p>Elige un verbo. Cambia a condicional (<b class="mz">si…</b>) o agrega la negación y mira cómo cambia la traducción.</p>
+  <h2>VII. Tabla de conjugación<small>Busca cualquier verbo</small></h2>
+  <p>Escribe el verbo en mapuzugun o su significado en español, elígelo y mira cómo se conjuga. Después agrega la <b>negación</b> y el <b>futuro</b>: se marcan en la palabra y cambia la traducción.</p>
   <div class="traductor">
     <div class="acciones" style="margin-top:0">
-      <select id="tc-verbo" aria-label="Verbo"></select>
-      <div class="selector" id="tc-modo"><button type="button" aria-pressed="true" data-modo="ind">Indicativo</button><button type="button" data-modo="cond">Condicional (si…)</button></div>
-      <label class="interruptor"><input type="checkbox" id="tc-neg"> Negación</label>
+      <input id="tc-busca" class="medio" placeholder="Buscar verbo o significado (ej.: amun, ir, trabajar)" aria-label="Buscar verbo" style="flex:1;max-width:26rem">
+      <span class="es" id="tc-cuenta"></span>
+    </div>
+    <div class="banco" id="tc-lista" style="margin-top:.5rem"></div>
+    <p style="margin:.8rem 0 .2rem"><b>Verbo elegido:</b> <span id="tc-elegido"></span></p>
+    <div class="acciones" style="margin-top:0">
+      <span class="chip">Indicativo</span>
+      <label class="interruptor"><input type="checkbox" id="tc-neg"> Negación <b class="neg-m">-la-</b></label>
+      <label class="interruptor"><input type="checkbox" id="tc-fut"> Futuro <b class="fut-m">-a-</b></label>
     </div>
     <div class="tabla-wrap"><table class="resumen tc" id="tc-tabla"></table></div>
     <p class="es" id="tc-nota"></p>

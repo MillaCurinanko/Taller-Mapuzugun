@@ -44,13 +44,15 @@ function conjHTML(v, o) {
 
 /* ---------- Verbos: núcleo del taller + datos/verbos.json ---------- */
 const NUCLEO = VERBOS.filter(v => v[0] !== 'pigen').map(v => ({ mz: v[0], es: v[1], raiz: v[2], final: v[3] === 'ün' ? 'consonante' : 'vocal', esF: v[4] }));
-let DATOS_VERBOS = [], DATOS_VOCAB = [];
+let DATOS_VERBOS = [], DATOS_VOCAB = [], DATOS_TC = [];
 const glosa = es => { const g = (es || '').split(/[;/(]/)[0].replace(/["«»]/g, '').trim(); return g.charAt(0).toLowerCase() + g.slice(1); };
 async function cargaDatos() {
   try {
     const [vb, vc] = await Promise.all(['datos/verbos.json', 'datos/vocabulario.json'].map(u => fetch(u).then(r => r.ok ? r.json() : [])));
     DATOS_VERBOS = vb.filter(v => v.validacion === 'Validada' && !v.verificar && v.final !== 'i' && v.raiz && glosa(v.es) && glosa(v.es).length <= 28 && v.mz.length > 2)
       .map(v => ({ mz: v.mz, es: glosa(v.es), raiz: v.raiz, final: v.final }));
+    DATOS_TC = vb.filter(v => v.validacion === 'Validada' && !v.verificar && v.final !== 'i' && v.raiz && /^[a-zñü]+$/.test(v.mz) && v.mz.length > 2 && INF_ES.test(glosaTC(v.es)))
+      .map(v => ({ mz: v.mz, raiz: v.raiz, final: v.final, gl: glosaTC(v.es) }));
     DATOS_VOCAB = vc.filter(v => v.validacion === 'Validada' && !v.verificar && /^[a-zñü]+$/.test(v.mz) && glosa(v.es).length < 30 && v.contexto);
   } catch (e) { /* sin datos: se usa el banco de app.js */ }
 }
@@ -322,9 +324,9 @@ function initAwkantun() {
   $('#quiz-cerrar').addEventListener('click', cierra);
 }
 
-/* ---------- Tabla de conjugación: verbos clave con traducción ---------- */
-/* [mz, raíz, consonante?, glosa, indicativo yo/tú/fey, condicional (si…) yo/tú/fey] */
-const CLAVE = [
+/* ---------- Tabla de conjugación: buscador de verbos, con negación y futuro ---------- */
+/* Traducciones escritas a mano para los verbos clave: [mz, raíz, consonante?, glosa, indicativo yo/tú/fey, (sin uso)] */
+const CLAVE_ES = [
   ['zugun', 'zugu', 0, 'hablar', ['hablé', 'hablaste', 'habló'], ['hablo', 'hablas', 'habla']],
   ['allkütun', 'allkütu', 0, 'escuchar', ['escuché', 'escuchaste', 'escuchó'], ['escucho', 'escuchas', 'escucha']],
   ['azümün', 'azüm', 1, 'entender', ['entendí', 'entendiste', 'entendió'], ['entiendo', 'entiendes', 'entiende']],
@@ -349,30 +351,79 @@ const CLAVE = [
   ['güman', 'güma', 0, 'llorar', ['lloré', 'lloraste', 'lloró'], ['lloro', 'lloras', 'llora']],
   ['mañumün', 'mañum', 1, 'agradecer', ['agradecí', 'agradeciste', 'agradeció'], ['agradezco', 'agradeces', 'agradece']]
 ];
-const SUF_TC = {
-  ind: [['n', 'ymi', 'y'], ['ün', 'imi', 'i']],
-  cond: [['li', 'lmi', 'le'], ['li', 'ülmi', 'le']]
+/* Español del futuro: infinitivo + é / ás / á (con raíces irregulares) */
+const FUT_RAIZ = { venir: 'vendr', tener: 'tendr', salir: 'saldr', poner: 'pondr', hacer: 'har', decir: 'dir', saber: 'sabr', poder: 'podr', querer: 'querr', caber: 'cabr', valer: 'valdr' };
+const FUT_FIJO = {
+  kümentun: ['me gustará', 'te gustará', 'le gustará'], weñagkün: ['estaré triste', 'estarás triste', 'estará triste'],
+  kimuwün: ['me conoceré con alguien', 'te conocerás con alguien', 'se conocerá con alguien'], kütxantun: ['me enfermaré', 'te enfermarás', 'se enfermará']
 };
+function futuroEs(mz, gl) {
+  if (FUT_FIJO[mz]) return FUT_FIJO[mz];
+  const partes = gl.split(',')[0].trim().split(' ');
+  let inf = partes[0]; const resto = partes.slice(1).join(' ');
+  const refl = /(ar|er|ir|ír)se$/.test(inf); if (refl) inf = inf.slice(0, -2);
+  if (!/(ar|er|ir|ír)$/.test(inf)) return null;
+  const raiz = FUT_RAIZ[inf] || inf.replace(/ír$/, 'ir');
+  return ['é', 'ás', 'á'].map((t, i) => (refl ? ['me ', 'te ', 'se '][i] : '') + raiz + t + (resto ? ' ' + resto : ''));
+}
+const glosaTC = es => (es || '').split(/[;\/(,]| - /)[0].replace(/["«»]/g, '').trim().toLowerCase();
+const INF_ES = /^[a-záéíóúñ]+(ar|er|ir|ír)(se)?(\s|$)/;
+let TC_VERBOS = null;
+/* Une: verbos clave del taller + banco de app.js + verbos validados de datos/verbos.json */
+function verbosTC() {
+  if (TC_VERBOS) return TC_VERBOS;
+  const mapa = new Map();
+  CLAVE_ES.forEach(c => mapa.set(c[0], { mz: c[0], raiz: c[1], cons: !!c[2], gl: c[3], ind: c[4] }));
+  BANCO.forEach(v => { if (!mapa.has(v[0])) mapa.set(v[0], { mz: v[0], raiz: v[2], cons: v[3] === 'ün', gl: glosaTC(v[1]), ind: [0, 1, 2].map(k => esPersona(v, k)) }); });
+  DATOS_TC.forEach(v => { if (!mapa.has(v.mz)) mapa.set(v.mz, { mz: v.mz, raiz: v.raiz, cons: v.final === 'consonante', gl: v.gl, ind: conjugaEs(v.mz, v.gl) }); });
+  TC_VERBOS = [...mapa.values()].sort((a, b) => a.mz.localeCompare(b.mz, 'es'));
+  return TC_VERBOS;
+}
 function initTablaConj() {
-  const sel = $('#tc-verbo'); if (!sel) return;
-  let modo = 'ind';
-  sel.innerHTML = CLAVE.map((v, k) => `<option value="${k}">${v[0]} · ${v[3]}</option>`).join('');
-  const pinta = () => {
-    const [mz, raiz, cons, , esInd, esCond] = CLAVE[+sel.value], neg = $('#tc-neg').checked;
-    const marca = neg ? (modo === 'ind' ? 'la' : 'no') : '';
-    const suf = SUF_TC[modo][cons && !neg ? 1 : 0];
-    const es = modo === 'ind' ? esInd : esCond;
-    $('#tc-tabla').innerHTML = P3.map((p, k) =>
-      `<tr><th class="p-${p}" style="background:var(--c)"><span class="fig">${FIG[p]}</span> ${p}</th>` +
-      `<td><b class="mz"><span class="raiz">${raiz}</span>${marca ? `<span class="neg-m">${marca}</span>` : ''}<span class="suf p-${p}">${suf[k]}</span></b></td>` +
-      `<td class="es">${modo === 'cond' ? 'si ' : ''}${neg ? 'no ' : ''}${es[k]}</td></tr>`).join('');
-    $('#tc-nota').innerHTML = modo === 'ind'
-      ? `Raíz <b class="mz">${raiz}-</b>${cons ? ' termina en consonante: -ün, -imi, -i.' : ' termina en vocal: -n, -ymi, -y.'}${neg ? ' Con -la- la palabra sigue en vocal.' : ''}`
-      : `Condicional: <b class="mz">-li, -lmi, -le</b> (si…). ${neg ? 'Se niega con <b class="mz">-no-</b>, no con -la-.' : ''} Formas armadas con las reglas del maestro: verifícalas con un hablante.`;
+  const lista = $('#tc-lista'); if (!lista) return;
+  let elegido = 'amun';
+  const pintaTabla = () => {
+    const v = verbosTC().find(x => x.mz === elegido) || verbosTC()[0];
+    const neg = $('#tc-neg').checked, fut = $('#tc-fut').checked;
+    const futEs = fut ? futuroEs(v.mz, v.gl) : null;
+    const base = fut ? futEs : v.ind;
+    // Forma: raíz + -la- (negación) + -a-/-ya- (futuro) + persona. Tras -la- o -a- ya no hay consonante final.
+    const voc = !(v.cons && !neg && !fut);
+    const marcaF = fut ? ((v.raiz + (neg ? 'la' : '')).endsWith('a') ? 'ya' : 'a') : '';
+    $('#tc-elegido').innerHTML = `<b class="mz">${v.mz}</b> <span class="es">${v.gl}</span>`;
+    $('#tc-tabla').innerHTML = P3.map((p, k) => {
+      let suf = FIN.ind[voc ? 'v' : 'c'][0][k];
+      const es = base ? (neg ? 'no ' : '') + base[k] : null;
+      return `<tr><th class="p-${p}" style="background:var(--c)"><span class="fig">${FIG[p]}</span> ${p}</th>` +
+        `<td><b class="mz"><span class="raiz">${v.raiz}</span>${neg ? '<span class="neg-m">la</span>' : ''}${fut ? `<span class="fut-m">${marcaF}</span>` : ''}<span class="suf p-${p}">${suf}</span></b></td>` +
+        `<td class="es">${es || 'traducción: revisa con un hablante'}</td></tr>`;
+    }).join('');
+    const partes = [`Raíz <b class="mz">${v.raiz}-</b>${v.cons ? ' termina en consonante: -ün, -imi, -i.' : ' termina en vocal: -n, -ymi, -y.'}`];
+    if (neg) partes.push('<b class="neg-m">-la-</b> niega la acción y va entre la raíz y la persona.');
+    if (fut) partes.push(`<b class="fut-m">${marcaF}</b> marca el futuro${marcaF === 'ya' ? ' (-ya- porque lo anterior termina en a)' : ''}.`);
+    if (neg && fut) partes.push('Juntos: raíz + -la- + -ya- + persona.');
+    if (v.cons && (neg || fut)) partes.push('Con -la- o -a- la palabra ya no termina en consonante, por eso inche lleva -n.');
+    partes.push('Sin negación ni futuro, el indicativo se traduce según el contexto (pasado o presente). Las traducciones y formas armadas con reglas: verifícalas con un hablante.');
+    $('#tc-nota').innerHTML = partes.join(' ');
   };
-  selector($('#tc-modo'), b => { modo = b.dataset.modo; pinta(); });
-  sel.addEventListener('change', pinta); $('#tc-neg').addEventListener('change', pinta);
-  pinta();
+  const pintaLista = () => {
+    const q = sinU($('#tc-busca').value);
+    const todos = verbosTC();
+    const res = todos.filter(v => !q || sinU(v.mz).includes(q) || sinU(v.gl).includes(q));
+    lista.innerHTML = res.map(v => `<button type="button" data-v="${v.mz}" aria-pressed="${v.mz === elegido}">${v.mz}<small>${v.gl}</small></button>`).join('') || '<span class="es">No hay verbos con esa búsqueda.</span>';
+    $('#tc-cuenta').textContent = `${res.length} de ${todos.length} verbos`;
+  };
+  lista.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    elegido = b.dataset.v;
+    $$('button', lista).forEach(x => x.setAttribute('aria-pressed', x === b));
+    pintaTabla();
+  });
+  $('#tc-busca').addEventListener('input', pintaLista);
+  $('#tc-neg').addEventListener('change', pintaTabla); $('#tc-fut').addEventListener('change', pintaTabla);
+  const arranca = () => { pintaLista(); pintaTabla(); const s = lista.querySelector('[aria-pressed=true]'); if (s) lista.scrollTop = s.offsetTop - lista.offsetTop - 20; };
+  arranca();
+  document.addEventListener('g4-datos', () => { TC_VERBOS = null; pintaLista(); pintaTabla(); });
 }
 
 /* ---------- Formas de estar ---------- */
