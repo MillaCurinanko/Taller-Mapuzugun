@@ -14,8 +14,14 @@
  * - Autocorrección: el puntaje se vuelve a calcular aquí a partir de las
  *   respuestas (aciertos al primer intento), no se confía en el que manda
  *   el celular. «errores» guarda los id de las preguntas falladas.
- * - doGet filtra por ?sesion=, ?actividad= y ?nivel= para el panel.
+ * - doGet filtra por ?sesion=, ?actividad= y ?nivel= para el panel, y solo
+ *   entrega datos si recibe la clave correcta (?clave=). Así nadie más puede
+ *   ver los resultados, aunque encuentre resultados.html.
  */
+
+/* ▼▼▼ CAMBIA ESTA CLAVE por una tuya (sin espacios). Es la que escribirás en el panel. ▼▼▼ */
+const CLAVE = 'cambia-esta-clave';
+
 const HOJA = 'Respuestas';
 const COLUMNAS = ['fecha', 'sesion', 'dupla', 'puntaje', 'errores', 'respuestas', 'actividad', 'nivel', 'con_pista'];
 
@@ -57,6 +63,9 @@ function doPost(e) {
 
 function doGet(e) {
   const p = (e && e.parameter) || {};
+  if (!CLAVE || CLAVE === 'cambia-esta-clave' || p.clave !== CLAVE) {
+    return ContentService.createTextOutput(JSON.stringify({ error: 'clave' })).setMimeType(ContentService.MimeType.JSON);
+  }
   const { sh, cab } = hoja_();
   const n = sh.getLastRow() - 1;
   const filas = n > 0 ? sh.getRange(2, 1, n, cab.length).getValues() : [];

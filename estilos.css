@@ -449,3 +449,42 @@ table.resumen th[style]{color:#fff}
 .q-texto .chip{font-size:.85em;vertical-align:middle}
 @media (max-width:760px){.dos-tj{grid-template-columns:1fr}}
 @media print{.actividades{display:none}.tarjeta{break-inside:avoid}}
+
+/* Letra más grande en todo el sitio */
+html{font-size:112.5%}
+
+/* Selector de nivel: que se note cuál está elegido */
+#g4-nivel{gap:.6rem}
+#g4-nivel button{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7);font-size:1.1rem;padding:.5rem 1.3rem}
+#g4-nivel button[aria-pressed=true]{background:var(--choz);border-color:var(--choz);color:var(--kallfu);box-shadow:0 0 0 4px rgba(242,183,5,.35)}
+#g4-nivel button[aria-pressed=true]::before{content:"✓ ";font-weight:800}
+#g4-nivel-desc{color:#fff;opacity:.9;margin:.6rem 0}
+.aviso-nivel{background:#FFF7DA;color:var(--tinta);border-left:5px solid var(--choz);border-radius:0 12px 12px 0;padding:.8rem 1rem;margin:.8rem 0;font-size:1rem;max-width:62ch}
+.aviso-nivel ul{margin:.4rem 0 .4rem 1.2rem;padding:0}
+
+/* Formas de estar y tabla de conjugación */
+.estados-lista button{font-size:1.05rem}
+table.tc{margin-top:1rem;max-width:40rem}
+table.tc td{font-size:1.2rem;vertical-align:middle}
+table.tc td.es{font-size:1.1rem}
+
+/* Memorice */
+.mem-elige{display:grid;gap:.5rem;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));margin:1rem 0 .4rem}
+.mem-elige button{text-align:left;border:2px solid var(--linea);background:#fff;border-radius:12px;padding:.5rem .7rem;cursor:pointer;font-family:var(--sans)}
+.mem-elige button b{display:block;color:var(--kallfu);font-size:1.05rem}
+.mem-elige button small{color:var(--gris);font-family:var(--serif);font-style:italic;font-size:.95rem}
+.mem-elige button[aria-pressed=true]{border-color:var(--kallfu);background:var(--kallfu-claro);box-shadow:inset 4px 0 0 var(--kallfu)}
+.mem-tablero{display:grid;gap:.6rem;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));margin-top:.8rem}
+.mem-carta{position:relative;min-height:110px;border:0;border-radius:12px;cursor:pointer;padding:0;background:transparent;font-family:var(--sans)}
+.mem-carta .dorso,.mem-carta .cara-m{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:12px;padding:.5rem;text-align:center;transition:opacity .25s}
+.mem-carta .dorso{background:var(--kallfu)}
+.mem-carta .dorso svg{width:44px;height:44px;fill:#fff;opacity:.85}
+.mem-carta .cara-m{background:#fff;border:2px solid var(--linea);opacity:0;font-size:1.05rem;font-style:italic;color:var(--gris)}
+.mem-carta.mz-c .cara-m{font-style:normal;font-weight:800;color:var(--kallfu)}
+.mem-carta.vuelta .dorso{opacity:0}
+.mem-carta.vuelta .cara-m{opacity:1}
+.mem-carta.par .cara-m{border-color:var(--ok);background:#EAF5EA}
+.mem-ronda{margin-top:1rem;background:var(--papel);border-radius:var(--r);padding:1rem 1.2rem}
+.mem-ronda .opc{display:flex;flex-wrap:wrap;gap:.5rem}
+.cab nav a{font-size:.92rem;padding:.35rem .7rem}
+.morf .neg{opacity:1}

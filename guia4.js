@@ -214,30 +214,30 @@ const ACTIVIDADES = {
   gutxam: { nombre: 'Gütxam: un diálogo', fig: '●■▲' }
 };
 function armar(act, nivel) {
-  const filtra = b => b.filter(x => x.n === (nivel === 'avanzado' ? 'a' : 'b'));
+  const filtra = b => b.filter(x => x.n === (nivel === 'intermedio' ? 'a' : 'b'));
   const basicos = b => b.filter(x => x.n === 'b');
   let lista;
   if (act === 'conjugacion') {
-    const gen = nivel === 'avanzado'
+    const gen = nivel === 'intermedio'
       ? [...Array(5)].map(itemConjAvanzado).concat([itemPersonaBasico(), itemQuienBasico()])
       : [...Array(4)].map(itemPersonaBasico).concat([...Array(3)].map(itemQuienBasico));
     const pos = azar(QUIZ, 1).map(q => ({ id: q[0], n: 'b', t: q[1], s: q[2], o: q[3], p: 'Tañi = de quien habla; tami = de quien escucha; ñi = de quien no participa.', e: q[4] }));
     lista = [...gen, ...pos, ...itemsAntiguos(2)];
   } else if (act === 'gutxam') {
-    /* El diálogo va en orden; en avanzado se mezclan turnos básicos */
+    /* El diálogo va en orden; en intermedio se mezclan turnos básicos */
     const b = BANCO_G4.gutxam;
-    const sel = nivel === 'avanzado' ? azar(filtra(b), 8).concat(azar(basicos(b), 2)) : azar(basicos(b), 10);
+    const sel = nivel === 'intermedio' ? azar(filtra(b), 8).concat(azar(basicos(b), 2)) : azar(basicos(b), 10);
     lista = sel.sort((x, y) => b.indexOf(x) - b.indexOf(y));
     return lista.slice(0, 10);
   } else {
     const b = BANCO_G4[act];
-    lista = nivel === 'avanzado' ? [...azar(filtra(b), 6), ...azar(basicos(b), 2)] : azar(basicos(b), 8);
+    lista = nivel === 'intermedio' ? [...azar(filtra(b), 6), ...azar(basicos(b), 2)] : azar(basicos(b), 8);
     lista = [...lista, ...itemsAntiguos(2)];
   }
   /* Evita repetir el mismo texto y entrega 10 */
   const vistos = new Set();
   lista = lista.filter(x => !vistos.has(x.t + x.s) && vistos.add(x.t + x.s));
-  while (lista.length < 10) lista.push(act === 'conjugacion' && nivel === 'avanzado' ? itemConjAvanzado() : itemPersonaBasico());
+  while (lista.length < 10) lista.push(act === 'conjugacion' && nivel === 'intermedio' ? itemConjAvanzado() : itemPersonaBasico());
   return azar(lista.slice(0, 10), 10);
 }
 
@@ -308,7 +308,11 @@ function initAwkantun() {
       .then(() => reg.textContent = 'Resultado registrado.').catch(() => reg.textContent = 'No se pudo registrar (revisa la conexión).');
   };
   const empieza = () => { preg = armar(act, nivel); i = 0; resp = []; abre(); muestra(); };
-  selector($('#g4-nivel'), b => { nivel = b.dataset.nivel; $('#g4-nivel-desc').innerHTML = b.dataset.desc; });
+  selector($('#g4-nivel'), b => {
+    nivel = b.dataset.nivel;
+    $('#g4-aviso').hidden = nivel !== 'intermedio';
+    $('#g4-nivel-desc').hidden = nivel === 'intermedio';
+  });
   $('#g4-actividades').addEventListener('click', e => {
     const b = e.target.closest('button[data-act]'); if (!b) return;
     dupla = $('#quiz-dupla').value.trim();
@@ -318,34 +322,171 @@ function initAwkantun() {
   $('#quiz-cerrar').addEventListener('click', cierra);
 }
 
-/* ---------- Tabla de conjugación (avanzado) ---------- */
+/* ---------- Tabla de conjugación: verbos clave con traducción ---------- */
+/* [mz, raíz, consonante?, glosa, indicativo yo/tú/fey, condicional (si…) yo/tú/fey] */
+const CLAVE = [
+  ['zugun', 'zugu', 0, 'hablar', ['hablé', 'hablaste', 'habló'], ['hablo', 'hablas', 'habla']],
+  ['allkütun', 'allkütu', 0, 'escuchar', ['escuché', 'escuchaste', 'escuchó'], ['escucho', 'escuchas', 'escucha']],
+  ['azümün', 'azüm', 1, 'entender', ['entendí', 'entendiste', 'entendió'], ['entiendo', 'entiendes', 'entiende']],
+  ['küpan', 'küpa', 0, 'venir', ['vine', 'viniste', 'vino'], ['vengo', 'vienes', 'viene']],
+  ['amun', 'amu', 0, 'ir', ['fui', 'fuiste', 'fue'], ['voy', 'vas', 'va']],
+  ['txipan', 'txipa', 0, 'salir', ['salí', 'saliste', 'salió'], ['salgo', 'sales', 'sale']],
+  ['mülen', 'müle', 0, 'estar, vivir', ['estoy', 'estás', 'está'], ['estoy', 'estás', 'está']],
+  ['nien', 'nie', 0, 'tener', ['tengo', 'tienes', 'tiene'], ['tengo', 'tienes', 'tiene']],
+  ['pigen', 'pige', 0, 'llamarse', ['me llamo', 'te llamas', 'se llama'], ['me llamo', 'te llamas', 'se llama']],
+  ['kimün', 'kim', 1, 'saber', ['sé', 'sabes', 'sabe'], ['sé', 'sabes', 'sabe']],
+  ['küzawün', 'küzaw', 1, 'trabajar', ['trabajé', 'trabajaste', 'trabajó'], ['trabajo', 'trabajas', 'trabaja']],
+  ['chillkatun', 'chillkatu', 0, 'estudiar', ['estudié', 'estudiaste', 'estudió'], ['estudio', 'estudias', 'estudia']],
+  ['ülkantun', 'ülkantu', 0, 'cantar', ['canté', 'cantaste', 'cantó'], ['canto', 'cantas', 'canta']],
+  ['putun', 'putu', 0, 'beber', ['tomé', 'tomaste', 'tomó'], ['tomo', 'tomas', 'toma']],
+  ['kellun', 'kellu', 0, 'ayudar', ['ayudé', 'ayudaste', 'ayudó'], ['ayudo', 'ayudas', 'ayuda']],
+  ['ramtun', 'ramtu', 0, 'preguntar', ['pregunté', 'preguntaste', 'preguntó'], ['pregunto', 'preguntas', 'pregunta']],
+  ['pen', 'pe', 0, 'ver', ['vi', 'viste', 'vio'], ['veo', 'ves', 've']],
+  ['txekan', 'txeka', 0, 'caminar', ['caminé', 'caminaste', 'caminó'], ['camino', 'caminas', 'camina']],
+  ['umawtun', 'umawtu', 0, 'dormir', ['dormí', 'dormiste', 'durmió'], ['duermo', 'duermes', 'duerme']],
+  ['ürkütun', 'ürkütu', 0, 'descansar', ['descansé', 'descansaste', 'descansó'], ['descanso', 'descansas', 'descansa']],
+  ['ayen', 'aye', 0, 'reír', ['reí', 'reíste', 'rio'], ['río', 'ríes', 'ríe']],
+  ['güman', 'güma', 0, 'llorar', ['lloré', 'lloraste', 'lloró'], ['lloro', 'lloras', 'llora']],
+  ['mañumün', 'mañum', 1, 'agradecer', ['agradecí', 'agradeciste', 'agradeció'], ['agradezco', 'agradeces', 'agradece']]
+];
+const SUF_TC = {
+  ind: [['n', 'ymi', 'y'], ['ün', 'imi', 'i']],
+  cond: [['li', 'lmi', 'le'], ['li', 'ülmi', 'le']]
+};
 function initTablaConj() {
   const sel = $('#tc-verbo'); if (!sel) return;
-  const llena = () => {
-    const lista = verbosAvanzado();
-    sel.innerHTML = lista.map((v, k) => `<option value="${k}">${v.mz} · ${v.es}${v.final === 'consonante' ? ' (raíz en consonante)' : ''}</option>`).join('');
-    pinta();
-  };
+  let modo = 'ind';
+  sel.innerHTML = CLAVE.map((v, k) => `<option value="${k}">${v[0]} · ${v[3]}</option>`).join('');
   const pinta = () => {
-    const v = verbosAvanzado()[+sel.value || 0]; if (!v) return;
-    const [modo, extra] = $('#tc-modo').value.split(':');
-    const o = { modo, neg: $('#tc-neg').checked, fut: extra === 'a', fu: extra === 'fu' };
-    $('#tc-tabla').innerHTML = `<tr><th></th>${NUM_ES.map(n => `<th>${n}</th>`).join('')}</tr>` +
-      [0, 1, 2].map(p => `<tr><th class="p-${P3[p]}" style="background:var(--c)">${FIG[P3[p]]} ${['1ª', '2ª', '3ª'][p]}</th>` +
-        [0, 1, 2].map(n => `<td><span class="es">${PRON[n][p]}</span><br><b class="mz">${conjHTML(v, { ...o, p, n })}</b></td>`).join('') + '</tr>').join('');
-    const nucleo = NUCLEO.some(x => x.mz === v.mz) && modo === 'ind' && !o.neg && !o.fut && !o.fu;
-    $('#tc-nota').innerHTML = (modo === 'imp' && v.final === 'consonante' ? 'El imperativo con raíz en consonante no se arma aquí: pregúntalo a un hablante. ' : '') +
-      (modo === 'imp' && o.neg ? 'La prohibición con -kil- se muestra solo para eymi, eymu y eymün. ' : '') +
-      (nucleo ? 'Singular trabajado en clases.' : 'Formas armadas con las reglas de la pestaña Sufijos del maestro. Verifícalas con un hablante antes de usarlas en material.');
+    const [mz, raiz, cons, , esInd, esCond] = CLAVE[+sel.value], neg = $('#tc-neg').checked;
+    const marca = neg ? (modo === 'ind' ? 'la' : 'no') : '';
+    const suf = SUF_TC[modo][cons && !neg ? 1 : 0];
+    const es = modo === 'ind' ? esInd : esCond;
+    $('#tc-tabla').innerHTML = P3.map((p, k) =>
+      `<tr><th class="p-${p}" style="background:var(--c)"><span class="fig">${FIG[p]}</span> ${p}</th>` +
+      `<td><b class="mz"><span class="raiz">${raiz}</span>${marca ? `<span class="neg-m">${marca}</span>` : ''}<span class="suf p-${p}">${suf[k]}</span></b></td>` +
+      `<td class="es">${modo === 'cond' ? 'si ' : ''}${neg ? 'no ' : ''}${es[k]}</td></tr>`).join('');
+    $('#tc-nota').innerHTML = modo === 'ind'
+      ? `Raíz <b class="mz">${raiz}-</b>${cons ? ' termina en consonante: -ün, -imi, -i.' : ' termina en vocal: -n, -ymi, -y.'}${neg ? ' Con -la- la palabra sigue en vocal.' : ''}`
+      : `Condicional: <b class="mz">-li, -lmi, -le</b> (si…). ${neg ? 'Se niega con <b class="mz">-no-</b>, no con -la-.' : ''} Formas armadas con las reglas del maestro: verifícalas con un hablante.`;
   };
-  ['#tc-modo', '#tc-neg'].forEach(q => $(q).addEventListener('change', pinta));
-  sel.addEventListener('change', pinta);
-  llena();
-  document.addEventListener('g4-datos', llena);
+  selector($('#tc-modo'), b => { modo = b.dataset.modo; pinta(); });
+  sel.addEventListener('change', pinta); $('#tc-neg').addEventListener('change', pinta);
+  pinta();
+}
+
+/* ---------- Formas de estar ---------- */
+/* [raíz, -le / -küle, complemento en español, nota] */
+const ESTADOS4 = [
+  ['kümelka', 'le', 'bien'], ['txemo', 'le', 'bien de salud'], ['ür', 'küle', 'con cansancio'], ['kütxan', 'küle', 'con enfermedad'],
+  ['mañum', 'küle', 'con gratitud'], ['newen', 'küle', 'con energía (newen)'], ['kümezuam', 'küle', 'de buen ánimo'],
+  ['tun', 'küle', 'tranquila/o, en paz'], ['küzaw', 'küle', 'trabajando'], ['zugu', 'le', 'hablando']
+];
+const ESTAR = ['estoy', 'estás', 'está'];
+function initEstados4() {
+  const lista = $('#es-lista'); if (!lista) return;
+  let e = 0, p = 0;
+  lista.innerHTML = ESTADOS4.map((x, k) => `<button type="button" aria-pressed="${k === 0}">${x[0]}${x[1]}n</button>`).join('');
+  const pinta = () => {
+    const [raiz, est, es] = ESTADOS4[e], neg = $('#es-neg').checked, suf = ['n', 'ymi', 'y'][p];
+    $('#es-salida').innerHTML = `<div class="morf"><span data-t="${raiz === 'zugu' || raiz === 'küzaw' ? 'verbo' : 'palabra'}">${raiz}</span><span data-t="estado">${est}</span>` +
+      (neg ? '<span class="neg" data-t="negación">la</span>' : '') + `<span class="pers p-${P3[p]}" data-t="${P3[p]}">${suf}</span></div>` +
+      `<p class="tr-frase">${['Inche', 'Eymi', 'Fey'][p]} ${raiz}${est}${neg ? 'la' : ''}${suf}.</p>` +
+      `<p class="es">${['Yo', 'Tú', 'Él / ella'][p]} ${neg ? 'no ' : ''}${ESTAR[p]} ${es}.</p>` +
+      `<p class="es" style="font-size:1rem">${est === 'le' ? `${raiz} termina en vocal: lleva -le-.` : `${raiz} termina en consonante: lleva -küle-.`}</p>`;
+  };
+  selector(lista, b => { e = $$('button', lista).indexOf(b); pinta(); });
+  selector($('#es-persona'), b => { p = $$('#es-persona button').indexOf(b); pinta(); });
+  $('#es-neg').addEventListener('change', pinta);
+  $('#es-tabla').innerHTML = '<tr><th>Forma</th><th>Significa</th><th>Negación</th></tr>' +
+    ESTADOS4.map(([r, s, es]) => `<tr><td class="mz">${r}${s}n</td><td>estoy ${es}</td><td class="mz">${r}${s}lan</td></tr>`).join('');
+  pinta();
+}
+
+/* ---------- Memorice ---------- */
+const MEM = [
+  ['¿Chumleymi?', '¿Cómo estás?'], ['¿Eymi kay?', '¿Y tú?'], ['Inche ka kümelkalen', 'Yo también estoy bien'],
+  ['¿Chumley tami ñuke?', '¿Cómo está tu madre?'], ['¿Kümelkaleymi?', '¿Estás bien?'], ['¿Iney pigeymi?', '¿Cómo te llamas?'],
+  ['¿Chew müleymi?', '¿Dónde estás (vives)?'], ['¿Chew tuwimi?', '¿De dónde eres?'], ['¿Chumten txipantü nieymi?', '¿Cuántos años tienes?'],
+  ['kümelkalen', 'estoy bien'], ['kümelkalelan', 'no estoy bien'], ['txemolen', 'estoy bien de salud'], ['ürkülen', 'estoy con cansancio'],
+  ['kütxankülen', 'estoy con enfermedad'], ['mañumkülen', 'estoy con gratitud'], ['newenkülen', 'estoy con energía'],
+  ['kümezuamkülen', 'estoy de buen ánimo'], ['tunkülen', 'estoy tranquila/o'], ['küzawkülen', 'estoy trabajando'],
+  ['Mañum', 'Gracias'], ['Feley', 'De acuerdo, así es'], ['Pewkayal', 'Hasta luego']
+];
+const MEM_INICIAL = [0, 1, 2, 3, 9, 10, 11, 12, 13, 14];
+function initMemorice() {
+  const caja = $('#mem-elige'); if (!caja) return;
+  let elegidas;
+  try { elegidas = JSON.parse(localStorage.getItem('g4-memorice')); } catch (e) { elegidas = null; }
+  if (!Array.isArray(elegidas) || !elegidas.length) elegidas = [...MEM_INICIAL];
+  const guarda = () => { try { localStorage.setItem('g4-memorice', JSON.stringify(elegidas)); } catch (e) {} };
+  const pintaLista = () => {
+    caja.innerHTML = MEM.map(([mz, es], k) => `<button type="button" aria-pressed="${elegidas.includes(k)}" data-k="${k}"><b>${mz}</b><small>${es}</small></button>`).join('');
+    $('#mem-cuenta').textContent = `${elegidas.length} de 10 elegidas${elegidas.length < 4 ? ' · elige al menos 4 para jugar' : ''}`;
+  };
+  caja.addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    const k = +b.dataset.k;
+    if (elegidas.includes(k)) elegidas = elegidas.filter(x => x !== k);
+    else if (elegidas.length < 10) elegidas.push(k);
+    else { $('#mem-cuenta').textContent = 'Ya tienes 10. Quita una para elegir otra.'; return; }
+    guarda(); pintaLista();
+  });
+  pintaLista();
+  const juego = $('#mem-juego');
+  const jugar = () => {
+    if (elegidas.length < 4) return;
+    const cartas = azar(elegidas.flatMap(k => [{ k, t: MEM[k][0], mz: true }, { k, t: MEM[k][1], mz: false }]), 99);
+    let abiertas = [], pares = 0, intentos = 0, bloqueo = false;
+    juego.innerHTML = `<p class="marcador" id="mem-marca">Encuentra cada palabra con su traducción.</p><div class="mem-tablero">${cartas.map((c, i) =>
+      `<button type="button" class="mem-carta${c.mz ? ' mz-c' : ''}" data-i="${i}" aria-label="Carta ${i + 1}"><span class="dorso"><svg viewBox="0 0 549 554" aria-hidden="true"><use href="#waglen"/></svg></span><span class="cara-m">${c.t}</span></button>`).join('')}</div>`;
+    $('.mem-tablero', juego).addEventListener('click', ev => {
+      const b = ev.target.closest('.mem-carta'); if (!b || bloqueo || b.classList.contains('vuelta')) return;
+      b.classList.add('vuelta'); abiertas.push(b);
+      if (abiertas.length < 2) return;
+      intentos++;
+      const [a, c] = abiertas.map(x => cartas[+x.dataset.i]);
+      if (a.k === c.k && a.mz !== c.mz) {
+        abiertas.forEach(x => x.classList.add('par')); abiertas = []; pares++;
+        $('#mem-marca').innerHTML = `<b class="mz">${MEM[a.k][0]}</b> = ${MEM[a.k][1]}. Dilo en voz alta.`;
+        if (pares === elegidas.length) $('#mem-marca').innerHTML = `¡Müna kümey! Terminaste en ${intentos} intentos (${rakin(intentos)}). Ahora prueba la ronda rápida, sin mirar las cartas.`;
+      } else {
+        bloqueo = true;
+        setTimeout(() => { abiertas.forEach(x => x.classList.remove('vuelta')); abiertas = []; bloqueo = false; }, 1100);
+      }
+    });
+  };
+  const ronda = () => {
+    if (elegidas.length < 4) return;
+    const orden = azar(elegidas, 99).concat(azar(elegidas, 99)).slice(0, 10);
+    let i = 0, ok = 0;
+    const muestra = () => {
+      if (i >= orden.length) {
+        juego.innerHTML = `<div class="mem-ronda"><p class="frase-grande">${ok} de ${orden.length}</p><p>${ok >= 8 ? '¡Müna kümey! Ya las tienes.' : 'Feley. Juega otra vez el memorice y vuelve a la ronda.'}</p></div>`;
+        return;
+      }
+      const k = orden[i], haciaMz = i % 2 === 0;
+      const ops = azar([k, ...azar(elegidas.filter(x => x !== k), 2)], 3);
+      juego.innerHTML = `<div class="mem-ronda"><p class="es">${i + 1} / ${orden.length} · ${haciaMz ? '¿Cómo se dice en mapuzugun?' : '¿Qué significa?'}</p>` +
+        `<p class="frase-grande">${haciaMz ? MEM[k][1] : MEM[k][0]}</p><div class="opc">${ops.map(x => `<button type="button" data-k="${x}">${haciaMz ? MEM[x][0] : MEM[x][1]}</button>`).join('')}</div><p class="fb" id="mem-fb"></p></div>`;
+      $('.opc', juego).addEventListener('click', ev => {
+        const b = ev.target.closest('button'); if (!b || b.disabled) return;
+        const bien = +b.dataset.k === k; if (bien) ok++;
+        $$('.opc button', juego).forEach(x => { x.disabled = true; if (+x.dataset.k === k) x.classList.add('ok'); });
+        if (!bien) b.classList.add('mal');
+        $('#mem-fb').innerHTML = `${bien ? '¡Kümey!' : 'Welulay.'} <b class="mz">${MEM[k][0]}</b> = ${MEM[k][1]}.`;
+        $('#mem-fb').className = 'fb ' + (bien ? 'bien' : 'no');
+        setTimeout(() => { i++; muestra(); }, bien ? 1300 : 2600);
+      });
+    };
+    muestra();
+  };
+  $('#mem-jugar').addEventListener('click', jugar);
+  $('#mem-ronda').addEventListener('click', ronda);
 }
 
 /* ---------- Tarjeta «Mi presentación» ---------- */
-const ANIMAL_ES = { txewa: ['un perro', 'perro'], ñarki: ['un gato', 'gato'], achawall: ['una gallina', 'gallina'], kawellu: ['un caballo', 'caballo'] };
+const ANIMAL_ES = { txewa: ['un perro', 'perro', 'Mi perro'], ñarki: ['un gato', 'gato', 'Mi gato'], achawall: ['una gallina', 'gallina', 'Mi gallina'], kawellu: ['un caballo', 'caballo', 'Mi caballo'] };
 function initTarjeta() {
   const f = $('#tj-form'); if (!f) return;
   const val = k => (f.elements[k].value || '').trim();
@@ -359,6 +500,9 @@ function initTarjeta() {
     const est = f.elements.estado; l.push([`Fachantü ${est.value}.`, `Hoy ${est.selectedOptions[0].dataset.es}.`]);
     if (val('nuke')) l.push([`Tañi ñuke ${val('nuke')} pigey.`, `Mi madre se llama ${val('nuke')}.`]);
     if (val('mascota')) l.push([f.elements.tiene.value === 'si' ? `Kiñe ${val('mascota')} nien.` : `Nielan ${val('mascota')}.`, f.elements.tiene.value === 'si' ? `Tengo ${ANIMAL_ES[val('mascota')][0]}.` : `No tengo ${ANIMAL_ES[val('mascota')][1]}.`]);
+    const tiene = val('mascota') && f.elements.tiene.value === 'si';
+    $('#tj-mascota-nombre').hidden = !tiene;
+    if (tiene && val('mascotaNombre')) l.push([`Tañi ${val('mascota')} ${val('mascotaNombre')} pigey.`, `${ANIMAL_ES[val('mascota')][2]} se llama ${val('mascotaNombre')}.`]);
     l.push(['Fey mütem. Mañum.', 'Eso no más. Gracias.']);
     return l;
   };
@@ -393,6 +537,6 @@ function initTarjeta() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initAwkantun(); initTarjeta(); initTablaConj();
+  initAwkantun(); initTarjeta(); initTablaConj(); initEstados4(); initMemorice();
   cargaDatos().then(() => document.dispatchEvent(new Event('g4-datos')));
 });

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Resultados del awkantun · Kimeltun mapuzugun</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 549 554%27%3E%3Cpath fill-rule=%27evenodd%27 fill=%27%230A2D8F%27 d=%27M158%200%20158%20162%206%20164%20114%20276%200%20391%20158%20392%20158%20553%20273%20441%20386%20553%20386%20391%20388%20389%20548%20389%20440%20281%20548%20167%20388%20167%20387%206%20277%20114ZM177%2045%20277%20140%20367%2051%20369%2053%20369%20185%20504%20186%20414%20280%20503%20370%20368%20371%20367%20507%20274%20414%20177%20508%20176%20372%2045%20371%20139%20277%2050%20183%20176%20182Z%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +25,10 @@
 <section class="bloque" id="panel">
   <h2>Resultados del awkantun<small>Panel para kimelfe. Proyéctalo al terminar la actividad.</small></h2>
   <div class="acciones" style="margin-top:0">
+    <label>Clave <input id="panel-clave" class="medio" type="password" autocomplete="current-password"></label>
     <label>Sesión <input id="panel-sesion" class="medio"></label>
     <label>Actividad <select id="panel-actividad"><option value="">Todas</option><option value="posesivos">Guía 3 · posesivos</option><option value="presentarse">Guía 4 · presentarse</option><option value="conjugacion">Guía 4 · conjugación y posesivos</option><option value="preguntas">Guía 4 · preguntas y estados</option><option value="gutxam">Guía 4 · gütxam</option></select></label>
-    <label>Nivel <select id="panel-nivel"><option value="">Todos</option><option value="basico">Básico</option><option value="avanzado">Avanzado</option></select></label>
+    <label>Nivel <select id="panel-nivel"><option value="">Todos</option><option value="basico">Básico</option><option value="intermedio">Intermedio</option></select></label>
     <button class="btn" type="button" id="panel-cargar">Actualizar</button>
     <label class="interruptor"><input type="checkbox" id="panel-auto"> Actualizar cada 15 segundos</label>
   </div>

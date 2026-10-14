@@ -759,7 +759,8 @@ function initQuiz() {
 function initPanel() {
   const zona = $('#panel'); if (!zona) return;
   const inp = $('#panel-sesion'); inp.value = SESION;
-  const act = $('#panel-actividad'), niv = $('#panel-nivel');
+  const act = $('#panel-actividad'), niv = $('#panel-nivel'), cl = $('#panel-clave');
+  try { cl.value = localStorage.getItem('panel-clave') || ''; } catch (e) {}
   const qs = new URLSearchParams(location.search);
   if (act && qs.get('actividad')) act.value = qs.get('actividad');
   if (niv && qs.get('nivel')) niv.value = qs.get('nivel');
@@ -768,9 +769,13 @@ function initPanel() {
     if (!url) { $('#panel-estado').textContent = 'Falta pegar la URL del registro en config.js.'; return; }
     $('#panel-estado').textContent = 'Cargando…';
     try {
+      const clave = cl.value.trim();
+      if (!clave) { $('#panel-estado').textContent = 'Escribe tu clave para ver los resultados.'; $('#panel-datos').innerHTML = ''; return; }
+      try { localStorage.setItem('panel-clave', clave); } catch (e) {}
       const f = { sesion: inp.value.trim(), actividad: act?.value || '', nivel: niv?.value || '' };
-      const params = new URLSearchParams(Object.entries(f).filter(([, v]) => v));
+      const params = new URLSearchParams(Object.entries({ ...f, clave }).filter(([, v]) => v));
       let datos = await (await fetch(url + '?' + params)).json();
+      if (!Array.isArray(datos)) { $('#panel-estado').textContent = 'Clave incorrecta, o falta actualizar el Apps Script.'; $('#panel-datos').innerHTML = ''; return; }
       /* Por si el Apps Script aún no filtra por actividad y nivel */
       datos = datos.filter(d => (!f.actividad || (d.actividad || '') === f.actividad) && (!f.nivel || (d.nivel || '') === f.nivel));
       datos.forEach(d => { if (typeof d.respuestas === 'string') try { d.respuestas = JSON.parse(d.respuestas); } catch (e) { d.respuestas = []; } });
@@ -812,6 +817,7 @@ function initPanel() {
   };
   $('#panel-cargar').addEventListener('click', carga);
   [act, niv].forEach(x => x?.addEventListener('change', carga));
+  cl.addEventListener('keydown', e => { if (e.key === 'Enter') carga(); });
   let t = null;
   $('#panel-auto').addEventListener('change', e => { clearInterval(t); if (e.target.checked) t = setInterval(carga, 15000); });
   carga();
