@@ -20,7 +20,7 @@
  */
 
 /* ▼▼▼ CAMBIA ESTA CLAVE por una tuya (sin espacios). Es la que escribirás en el panel. ▼▼▼ */
-const CLAVE = 'cambia-esta-clave';
+const CLAVE = 'kimeltun';
 
 const HOJA = 'Respuestas';
 const COLUMNAS = ['fecha', 'sesion', 'dupla', 'puntaje', 'errores', 'respuestas', 'actividad', 'nivel', 'con_pista'];
